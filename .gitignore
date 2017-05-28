@@ -1,0 +1,14 @@
+deps
+www
+*.xml
+home-assistant.db
+home-assistant_v2.db
+home-assistant.log
+OZW_Log.txt
+*.conf
+*.sqlite
+mysensors2.json
+secrets.yaml
+grupos2.yaml
+.HA_VERSION
+known_devices.yaml
