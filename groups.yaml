@@ -1,0 +1,25 @@
+driveway:
+  name: Driveway
+  entities:
+  - switch.driveway_gate
+  - switch.driveway_door
+  - switch.stair_front_door
+  - switch.driveway_lights
+living_room:
+  name: Living Room
+  entities:
+  - media_player.samsung_led55_ue55hu7100
+kitchen:
+  name: Kitchen
+  entities:
+  - climate.entryway
+  - sensor.entryway_thermostat_temperature
+  - sensor.entryway_thermostat_humidity
+environment:
+  name: Environment
+  entities:
+  - sun.sun
+  - sensor.entryway_thermostat_temperature
+  - sensor.entryway_thermostat_humidity
+  - climate.entryway
+  - sensor.yr_symbol

@@ -10,9 +10,21 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Rome
+  
+  customize:
+    switch.driveway_lights:
+      icon: mdi:lightbulb
+    switch.driveway_gate:
+      icon: mdi:gate
+    switch.driveway_door:
+      icon: mdi:lock
+    switch.stair_front_door:
+      icon: mdi:stairs
+    sensor.entryway_thermostat_humidity:
+      icon: mdi:water-percent
 
 # Show links to resources in log and frontend
-introduction:
+#introduction:
 
 # Enables the frontend
 frontend:
@@ -60,6 +72,9 @@ sensor:
 tts:
   platform: google
 
+
+
+
 mqtt:
   broker: !secret mqtt_broker
   port: !secret mqtt_port
@@ -99,5 +114,10 @@ switch:
     state_topic: "catingham_palace/driveway/lights/state"
     qos: 1
  
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 192.168.0.1/24
+    home_interval: 10
+
 group: !include groups.yaml
 automation: !include automations.yaml
