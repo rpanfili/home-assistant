@@ -117,7 +117,7 @@ switch:
 device_tracker:
   - platform: nmap_tracker
     hosts: 192.168.0.1/24
-    home_interval: 10
+    home_interval: 300
 
 ifttt:
   key: !secret ifttt_key
