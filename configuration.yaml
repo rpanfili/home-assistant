@@ -36,7 +36,7 @@ http:
   # Uncomment this to add a password (recommended!)
   api_password: !secret http_api_password
   # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
+  base_url: !secret http_base_url
   ssl_certificate: !secret http_ssl_certificate
   ssl_key: !secret http_ssl_key
 
@@ -121,6 +121,19 @@ device_tracker:
 
 ifttt:
   key: !secret ifttt_key
+
+telegram_bot:
+  - platform: webhooks
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_rubens_chat
+      - !secret telegram_vale_chat
+
+
+notify:
+  - name: CatinghamPalaceBot
+    platform: telegram
+    chat_id: !secret telegram_rubens_chat
 
 group: !include groups.yaml
 automation: !include automations.yaml
