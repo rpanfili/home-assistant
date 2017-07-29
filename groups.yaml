@@ -9,6 +9,7 @@ living_room:
   name: Living Room
   entities:
   - media_player.samsung_led55_ue55hu7100
+  - input_slider.living_room_right_rolling_shutter
 kitchen:
   name: Kitchen
   entities:
