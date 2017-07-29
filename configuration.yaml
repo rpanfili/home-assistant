@@ -136,5 +136,24 @@ notify:
     platform: telegram
     chat_id: !secret telegram_rubens_chat
 
+input_slider:
+  kitchen_left_rolling_shutter:
+    name: Kitchen left rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 1
+    unit_of_measurement: step  
+    icon: mdi:blinds
+  green_room_rolling_shutter:
+    name: Green room rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 1
+    unit_of_measurement: step  
+    icon: mdi:blinds
+
+
 group: !include groups.yaml
 automation: !include automations.yaml

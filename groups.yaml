@@ -15,6 +15,7 @@ kitchen:
   - climate.entryway
   - sensor.entryway_thermostat_temperature
   - sensor.entryway_thermostat_humidity
+  - input_slider.kitchen_left_rolling_shutter
 environment:
   name: Environment
   entities:
@@ -23,3 +24,7 @@ environment:
   - sensor.entryway_thermostat_humidity
   - climate.entryway
   - sensor.yr_symbol
+green_room:
+  name: Green Room
+  entities:
+  - input_slider.green_room_rolling_shutter

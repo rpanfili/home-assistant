@@ -1,1 +1,50 @@
-[]
+ # This automation script runs when a value is received via MQTT on retained topic: setTemperature
+ # It sets the value slider on the GUI. This slides also had its own automation when the value is changed.
+- alias: Set shutter slider
+  hide_entity: True
+  trigger:
+    platform: mqtt
+    topic: "catingham_palace/kitchen/left_rolling_shutter/position"
+   # entity_id: input_slider.target_temp
+  action:
+     service: input_slider.select_value
+     data_template:
+      entity_id: input_slider.kitchen_left_rolling_shutter
+      value: '{{ trigger.payload }}'
+
+ # This automation script runs when the target temperature slider is moved.
+ # It publishes its value to the same MQTT topic it is also subscribed to.
+- alias: Shutter slider moved
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_slider.kitchen_left_rolling_shutter
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "catingham_palace/kitchen/left_rolling_shutter/position/set"
+      retain: true
+      payload: '{{ states.input_slider.kitchen_left_rolling_shutter.state | int }}'
+
+- alias: Set green room shutter slider
+  hide_entity: True
+  trigger:
+    platform: mqtt
+    topic: "catingham_palace/green_room/rolling_shutter/position"
+  action:
+     service: input_slider.select_value
+     data_template:
+      entity_id: input_slider.green_room_rolling_shutter
+      value: '{{ trigger.payload }}'
+
+- alias: Green room shutter slider moved
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_slider.green_room_rolling_shutter
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "catingham_palace/green_room/rolling_shutter/position/set"
+      retain: true
+      payload: '{{ states.input_slider.green_room_rolling_shutter.state | int }}'
