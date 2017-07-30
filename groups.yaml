@@ -11,6 +11,9 @@ living_room:
   - camera.living_room
   - media_player.samsung_led55_ue55hu7100
   - input_slider.living_room_right_rolling_shutter
+  - binary_sensor.living_room_camera_person_detected
+  - binary_sensor.living_room_camera_motion_detected
+  - binary_sensor.living_room_camera_sound_detected
 kitchen:
   name: Kitchen
   entities:
