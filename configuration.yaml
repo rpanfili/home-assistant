@@ -128,7 +128,8 @@ ifttt:
 notify:
   - name: CatinghamPalaceBot
     platform: telegram
-    chat_id: !secret telegram_rubens_chat
+    #chat_id: !secret telegram_rubens_chat
+    chat_id: !secret telegram_catingham_palace_group
 
 telegram_bot:
   - platform: webhooks
@@ -136,6 +137,7 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_rubens_chat
       - !secret telegram_vale_chat
+      - !secret telegram_catingham_palace_group
 
 input_slider:
   kitchen_left_rolling_shutter:
