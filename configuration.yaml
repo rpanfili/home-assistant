@@ -165,6 +165,21 @@ input_slider:
     unit_of_measurement: step  
     icon: mdi:blinds
 
+binary_sensor:
+  - platform: mqtt
+    state_topic: "catingham_palace/bedroom/bed/rubens"
+    name: "Rubens bed"
+    qos: 1
+    payload_on: "IN"
+    payload_off: "OUT"
+    device_class: "occupancy"
+  - platform: mqtt
+    state_topic: "catingham_palace/bedroom/bed/valentina"
+    name: "Valentina bed"
+    qos: 1
+    payload_on: "IN"
+    payload_off: "OUT"
+    device_class: "occupancy"
 
 
 group: !include groups.yaml

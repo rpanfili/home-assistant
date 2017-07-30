@@ -30,3 +30,8 @@ green_room:
   name: Green Room
   entities:
   - input_slider.green_room_rolling_shutter
+bedroom:
+  name: Bedroom
+  entities:
+  - binary_sensor.rubens_bed
+  - binary_sensor.valentina_bed
