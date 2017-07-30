@@ -1,4 +1,5 @@
 deps
+.uuid
 *.xml
 home-assistant.db
 home-assistant_v2.db
@@ -8,6 +9,5 @@ OZW_Log.txt
 *.sqlite
 mysensors2.json
 secrets.yaml
-grupos2.yaml
 .HA_VERSION
 known_devices.yaml
