@@ -84,3 +84,13 @@
     - service: notify.catinghampalacebot
       data:
         message: 'pong'
+
+- alias: 'Update Available Notifications'
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    - service: notify.catinghampalacebot
+      data:
+        message: 'A new update for Home Assistant is available.'
