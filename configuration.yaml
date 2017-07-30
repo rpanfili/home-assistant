@@ -123,18 +123,17 @@ device_tracker:
 ifttt:
   key: !secret ifttt_key
 
+notify:
+  - name: CatinghamPalaceBot
+    platform: telegram
+    chat_id: !secret telegram_rubens_chat
+
 telegram_bot:
   - platform: webhooks
     api_key: !secret telegram_api_key
     allowed_chat_ids:
       - !secret telegram_rubens_chat
       - !secret telegram_vale_chat
-
-
-notify:
-  - name: CatinghamPalaceBot
-    platform: telegram
-    chat_id: !secret telegram_rubens_chat
 
 input_slider:
   kitchen_left_rolling_shutter:
