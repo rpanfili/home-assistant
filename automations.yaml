@@ -26,6 +26,29 @@
       retain: true
       payload: '{{ states.input_slider.kitchen_left_rolling_shutter.state | int }}'
 
+- alias: Set kitchen right shutter slider
+  hide_entity: True
+  trigger:
+    platform: mqtt
+    topic: "catingham_palace/kitchen/right_rolling_shutter/position"
+  action:
+     service: input_slider.select_value
+     data_template:
+      entity_id: input_slider.kitchen_right_rolling_shutter
+      value: '{{ trigger.payload }}'
+
+- alias: Kitchen right shutter slider moved
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_slider.kitchen_right_rolling_shutter
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "catingham_palace/kitchen/right_rolling_shutter/position/set"
+      retain: true
+      payload: '{{ states.input_slider.kitchen_right_rolling_shutter.state | int }}'
+
 - alias: Set green room shutter slider
   hide_entity: True
   trigger:
@@ -49,6 +72,99 @@
       retain: true
       payload: '{{ states.input_slider.green_room_rolling_shutter.state | int }}'
 
+- alias: Set pink room shutter slider
+  hide_entity: True
+  trigger:
+    platform: mqtt
+    topic: "catingham_palace/pink_room/rolling_shutter/position"
+  action:
+     service: input_slider.select_value
+     data_template:
+      entity_id: input_slider.pink_room_rolling_shutter
+      value: '{{ trigger.payload }}'
+
+- alias: Pink room shutter slider moved
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_slider.pink_room_rolling_shutter
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "catingham_palace/pink_room/rolling_shutter/position/set"
+      retain: true
+      payload: '{{ states.input_slider.pink_room_rolling_shutter.state | int }}'
+
+- alias: Set bedroom shutter slider
+  hide_entity: True
+  trigger:
+    platform: mqtt
+    topic: "catingham_palace/bedroom/rolling_shutter/position"
+  action:
+     service: input_slider.select_value
+     data_template:
+      entity_id: input_slider.bedroom_rolling_shutter
+      value: '{{ trigger.payload }}'
+
+- alias: Bedroom shutter slider moved
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_slider.bedroom_rolling_shutter
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "catingham_palace/bedroom/rolling_shutter/position/set"
+      retain: true
+      payload: '{{ states.input_slider.bedroom_rolling_shutter.state | int }}'
+
+- alias: Set bathroom shutter slider
+  hide_entity: True
+  trigger:
+    platform: mqtt
+    topic: "catingham_palace/bathroom/rolling_shutter/position"
+  action:
+     service: input_slider.select_value
+     data_template:
+      entity_id: input_slider.bathroom_rolling_shutter
+      value: '{{ trigger.payload }}'
+
+- alias: Bathroom shutter slider moved
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_slider.bathroom_rolling_shutter
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "catingham_palace/bathroom/rolling_shutter/position/set"
+      retain: true
+      payload: '{{ states.input_slider.bathroom_rolling_shutter.state | int }}'
+
+- alias: Set living room left shutter slider
+  hide_entity: True
+  trigger:
+    platform: mqtt
+    topic: "catingham_palace/living_room/left_rolling_shutter/position"
+  action:
+     service: input_slider.select_value
+     data_template:
+      entity_id: input_slider.living_room_left_rolling_shutter
+      value: '{{ trigger.payload }}'
+
+- alias: Living room left shutter slider moved
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_slider.living_room_left_rolling_shutter
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "catingham_palace/living_room/left_rolling_shutter/position/set"
+      retain: true
+      payload: '{{ states.input_slider.living_room_left_rolling_shutter.state | int }}'
+
+
 - alias: Set living room right shutter slider
   hide_entity: True
   trigger:
@@ -71,6 +187,7 @@
       topic: "catingham_palace/living_room/right_rolling_shutter/position/set"
       retain: true
       payload: '{{ states.input_slider.living_room_right_rolling_shutter.state | int }}'
+
 
 
 - alias: 'Telegram bot that reply pong to ping'

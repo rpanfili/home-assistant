@@ -172,20 +172,20 @@ telegram_bot:
       - !secret telegram_catingham_palace_group
 
 input_slider:
-  kitchen_left_rolling_shutter:
-    name: Kitchen left rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 1
-    unit_of_measurement: step  
-    icon: mdi:blinds
   green_room_rolling_shutter:
     name: Green room rolling shutter
     min: 0
     max: 100
     initial: 100
-    step: 1
+    step: 5
+    unit_of_measurement: step  
+    icon: mdi:blinds
+  living_room_left_rolling_shutter:
+    name: Living room left rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 5
     unit_of_measurement: step  
     icon: mdi:blinds
   living_room_right_rolling_shutter:
@@ -193,7 +193,47 @@ input_slider:
     min: 0
     max: 100
     initial: 100
-    step: 1
+    step: 5
+    unit_of_measurement: step  
+    icon: mdi:blinds
+  kitchen_left_rolling_shutter:
+    name: Kitchen left rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 5
+    unit_of_measurement: step  
+    icon: mdi:blinds
+  kitchen_right_rolling_shutter:
+    name: Kitchen right rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 5
+    unit_of_measurement: step  
+    icon: mdi:blinds
+  pink_room_rolling_shutter:
+    name: Pink room rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 5
+    unit_of_measurement: step  
+    icon: mdi:blinds
+  bedroom_rolling_shutter:
+    name: Bedroom rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 5
+    unit_of_measurement: step  
+    icon: mdi:blinds
+  bathroom_rolling_shutter:
+    name: Bathroom rolling shutter
+    min: 0
+    max: 100
+    initial: 100
+    step: 5
     unit_of_measurement: step  
     icon: mdi:blinds
 

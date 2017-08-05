@@ -10,6 +10,7 @@ living_room:
   entities:
   - camera.living_room
   - media_player.samsung_led55_ue55hu7100
+  - input_slider.living_room_left_rolling_shutter
   - input_slider.living_room_right_rolling_shutter
   - binary_sensor.living_room_camera_person_detected
   - binary_sensor.living_room_camera_motion_detected
@@ -21,6 +22,7 @@ kitchen:
   - sensor.entryway_thermostat_temperature
   - sensor.entryway_thermostat_humidity
   - input_slider.kitchen_left_rolling_shutter
+  - input_slider.kitchen_right_rolling_shutter
 environment:
   name: Environment
   entities:
@@ -38,3 +40,13 @@ bedroom:
   entities:
   - binary_sensor.rubens_bed
   - binary_sensor.valentina_bed
+  - input_slider.bedroom_rolling_shutter
+pink_room:
+  name: Pink Room
+  entities:
+  - input_slider.pink_room_rolling_shutter
+bathroom:
+  name: Bathroom
+  entities:
+  - input_slider.bathroom_rolling_shutter
+
