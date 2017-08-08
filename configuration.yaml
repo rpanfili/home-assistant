@@ -54,6 +54,9 @@ homeassistant:
     binary_sensor.living_room_camera_sound_detected:
       icon: mdi:bullhorn
 
+    automation.leave_living_room_cat_passage:
+      icon: mdi:cat
+
 
 # Show links to resources in log and frontend
 #introduction:
