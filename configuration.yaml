@@ -256,6 +256,10 @@ binary_sensor:
     payload_off: "OUT"
     device_class: "occupancy"
 
+camera:
+  - platform: mjpeg
+    mjpeg_url: http://localhost:8081
+    name: Green room camera
 
 group: !include groups.yaml
 automation: !include automations.yaml
