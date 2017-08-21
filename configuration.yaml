@@ -255,6 +255,11 @@ binary_sensor:
     payload_on: "IN"
     payload_off: "OUT"
     device_class: "occupancy"
+  - platform: mqtt
+    state_topic: "catingham_palace/green_room/motion"
+    name: "Green room motion"
+    qos: 1
+    device_class: "motion"
 
 camera:
   - platform: mjpeg

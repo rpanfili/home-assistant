@@ -36,6 +36,7 @@ green_room:
   name: Green Room
   entities:
   - input_slider.green_room_rolling_shutter
+  - binary_sensor.green_room_motion
   - camera.green_room_camera
 bedroom:
   name: Bedroom
