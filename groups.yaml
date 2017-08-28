@@ -1,3 +1,15 @@
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+  - group.environment
+  - group.driveway
+  - group.kitchen
+  - group.living_room
+  - group.green_room
+  - group.pink_room
+  - group.bathroom
+ 
 driveway:
   name: Driveway
   entities:
@@ -10,9 +22,6 @@ living_room:
   entities:
   - camera.living_room
   - media_player.samsung_led55_ue55hu7100
-  - input_slider.living_room_left_rolling_shutter
-  - input_slider.living_room_right_rolling_shutter
-  - automation.leave_living_room_cat_passage
   - binary_sensor.living_room_camera_person_detected
   - binary_sensor.living_room_camera_motion_detected
   - binary_sensor.living_room_camera_sound_detected
@@ -22,8 +31,6 @@ kitchen:
   - climate.entryway
   - sensor.entryway_thermostat_temperature
   - sensor.entryway_thermostat_humidity
-  - input_slider.kitchen_left_rolling_shutter
-  - input_slider.kitchen_right_rolling_shutter
 environment:
   name: Environment
   entities:
@@ -35,7 +42,6 @@ environment:
 green_room:
   name: Green Room
   entities:
-  - input_slider.green_room_rolling_shutter
   - binary_sensor.green_room_motion
   - camera.green_room_camera
 bedroom:
@@ -43,13 +49,58 @@ bedroom:
   entities:
   - binary_sensor.rubens_bed
   - binary_sensor.valentina_bed
+
+#pink_room:
+#  name: Pink Room
+#  entities:
+
+#bathroom:
+#  name: Bathroom
+#  entities:
+
+roller_shutters:
+  name: Roller Shutters
+  view: yes
+  icon: mdi:blinds
+  entities:
+  - group.roller_shutter_kitchen
+  - group.roller_shutter_living_room
+  - group.roller_shutter_bedroom
+  - group.roller_shutter_green_room
+  - group.roller_shutter_pink_room
+  - group.roller_shutter_bathroom
+
+roller_shutter_living_room:
+  name: Living Room
+  entities:
+  - input_slider.living_room_left_rolling_shutter
+  - input_slider.living_room_right_rolling_shutter
+  - automation.leave_living_room_cat_passage
+
+roller_shutter_kitchen:
+  name: Kitchen
+  entities:
+  - input_slider.kitchen_left_rolling_shutter
+  - input_slider.kitchen_right_rolling_shutter
+
+roller_shutter_green_room:
+  name: Green Room
+  entities:
+  - input_slider.green_room_rolling_shutter
+
+roller_shutter_bedroom:
+  name: Bedroom
+  entities:
   - input_slider.bedroom_rolling_shutter
-pink_room:
+
+roller_shutter_pink_room:
   name: Pink Room
   entities:
   - input_slider.pink_room_rolling_shutter
-bathroom:
+
+roller_shutter_bathroom:
   name: Bathroom
   entities:
   - input_slider.bathroom_rolling_shutter
+
 
