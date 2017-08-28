@@ -92,11 +92,13 @@ roller_shutter_kitchen:
   entities:
   - input_slider.kitchen_left_rolling_shutter
   - input_slider.kitchen_right_rolling_shutter
+  - automation.leave_cat_passage_kitchen
 
 roller_shutter_green_room:
   name: Green Room
   entities:
   - input_slider.green_room_rolling_shutter
+  - automation.leave_cat_passage_green_room
 
 roller_shutter_bedroom:
   name: Bedroom
