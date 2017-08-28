@@ -54,7 +54,8 @@ homeassistant:
     binary_sensor.living_room_camera_sound_detected:
       icon: mdi:bullhorn
 
-    automation.leave_living_room_cat_passage:
+    automation.leave_cat_passage_living_room:
+      friendly_name: Leave cat passage
       icon: mdi:cat
 
 
@@ -239,6 +240,15 @@ input_slider:
     step: 5
     unit_of_measurement: step  
     icon: mdi:blinds
+  cat_passage:
+    name: Cat passage
+    min: 0
+    max: 100
+    initial: 30
+    step: 5
+    unit_of_measurement: step  
+    icon: mdi:cat
+    
 
 binary_sensor:
   - platform: mqtt

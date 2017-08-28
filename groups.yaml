@@ -17,6 +17,16 @@ driveway:
   - switch.driveway_door
   - switch.stair_front_door
   - switch.driveway_lights
+
+environment:
+  name: Environment
+  entities:
+  - sun.sun
+  - sensor.entryway_thermostat_temperature
+  - sensor.entryway_thermostat_humidity
+  - climate.entryway
+  - sensor.yr_symbol
+
 living_room:
   name: Living Room
   entities:
@@ -31,14 +41,6 @@ kitchen:
   - climate.entryway
   - sensor.entryway_thermostat_temperature
   - sensor.entryway_thermostat_humidity
-environment:
-  name: Environment
-  entities:
-  - sun.sun
-  - sensor.entryway_thermostat_temperature
-  - sensor.entryway_thermostat_humidity
-  - climate.entryway
-  - sensor.yr_symbol
 green_room:
   name: Green Room
   entities:
@@ -63,6 +65,7 @@ roller_shutters:
   view: yes
   icon: mdi:blinds
   entities:
+  - group.roller_shutter_config
   - group.roller_shutter_kitchen
   - group.roller_shutter_living_room
   - group.roller_shutter_bedroom
@@ -70,12 +73,17 @@ roller_shutters:
   - group.roller_shutter_pink_room
   - group.roller_shutter_bathroom
 
+roller_shutter_config:
+  name: Config
+  entities:
+  - input_slider.cat_passage
+
 roller_shutter_living_room:
   name: Living Room
   entities:
   - input_slider.living_room_left_rolling_shutter
   - input_slider.living_room_right_rolling_shutter
-  - automation.leave_living_room_cat_passage
+  - automation.leave_cat_passage_living_room
 
 roller_shutter_kitchen:
   name: Kitchen
