@@ -77,6 +77,8 @@ roller_shutter_config:
   name: Config
   entities:
   - input_slider.cat_passage
+  - automation.all_roller_shutter_up
+  - automation.all_roller_shutter_down
 
 roller_shutter_living_room:
   name: Living Room

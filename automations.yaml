@@ -235,3 +235,60 @@
       data:
         message: 'A new update for Home Assistant is available.'
 
+- id: 'roller_shutter_down_right_living_room'
+  alias: "Roller shutter down right living room"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_down_right_living_room
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.living_room_right_rolling_shutter
+        value: '{% if is_state("automation.leave_cat_passage_living_room","on") %}{{ (states.input_slider.cat_passage.state | int) }}{% else %}0{% endif %}'
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_down_right_living_room
+
+- id: 'roller_shutter_up_right_living_room'
+  alias: "Roller shutter up right living room"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_up_right_living_room
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.living_room_right_rolling_shutter
+        value: 100
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_up_right_living_room
+
+
+- id: 'all_roller_shutter_up'
+  alias: "All roller shutter up"
+  trigger:
+   - platform: state
+     entity_id: automation.all_roller_shutter_up
+     to: 'on'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_up_right_living_room
+    - service: automation.turn_off
+      entity_id: automation.all_roller_shutter_up
+
+
+- id: 'all_roller_shutter_down'
+  alias: "All roller shutter down"
+  trigger:
+   - platform: state
+     entity_id: automation.all_roller_shutter_down
+     to: 'on'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_down_right_living_room
+    - service: automation.turn_off
+      entity_id: automation.all_roller_shutter_down
+
+
