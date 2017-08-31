@@ -280,5 +280,18 @@ camera:
     mjpeg_url: http://localhost:8081
     name: Green room camera
 
+cover:
+  - platform: template
+    covers:
+      all_roller_shutters:
+        friendly_name: "All roller shutters"
+        close_cover:
+          service: automation.turn_on
+          entity_id: automation.all_roller_shutter_down
+        open_cover:
+          service: automation.turn_on
+          entity_id: automation.all_roller_shutter_up
+
+
 group: !include groups.yaml
 automation: !include automations.yaml
