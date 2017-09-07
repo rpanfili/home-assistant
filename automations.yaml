@@ -316,6 +316,36 @@
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_right_living_room
 
+- id: 'roller_shutter_down_left_living_room'
+  alias: "Roller shutter down left living room"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_down_left_living_room
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.living_room_left_rolling_shutter
+        value: 0
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_down_left_living_room
+
+- id: 'roller_shutter_up_left_living_room'
+  alias: "Roller shutter up left living room"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_up_left_living_room
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.living_room_left_rolling_shutter
+        value: 100
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_up_left_living_room
+
 - id: 'roller_shutter_down_right_kitchen'
   alias: "Roller shutter down right kitchen"
   hide_entity: True
@@ -345,6 +375,36 @@
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_right_kitchen
+
+- id: 'roller_shutter_down_left_kitchen'
+  alias: "Roller shutter down left kitchen"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_down_left_kitchen
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.kitchen_left_rolling_shutter
+        value: 0
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_down_left_kitchen
+
+- id: 'roller_shutter_up_left_kitchen'
+  alias: "Roller shutter up left kitchen"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_up_left_kitchen
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.kitchen_left_rolling_shutter
+        value: 100
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_up_left_kitchen
 
 - id: 'roller_shutter_down_green_room'
   alias: "Roller shutter down green room"
@@ -407,6 +467,67 @@
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_bedroom
 
+- id: 'roller_shutter_down_pink_room'
+  alias: "Roller shutter down pink room"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_down_pink_room
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.pink_room_rolling_shutter
+        value: 0
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_down_pink_room
+
+- id: 'roller_shutter_up_pink_room'
+  alias: "Roller shutter up pink room"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_up_pink_room
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.pink_room_rolling_shutter
+        value: 100
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_up_pink_room
+
+- id: 'roller_shutter_down_bathroom'
+  alias: "Roller shutter down bathroom"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_down_bathroom
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.bathroom_rolling_shutter
+        value: 0
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_down_bathroom
+
+- id: 'roller_shutter_up_bathroom'
+  alias: "Roller shutter up bathroom"
+  hide_entity: True
+  trigger:
+   - platform: state
+     entity_id: automation.roller_shutter_up_bathroom
+     to: 'on'
+  action:
+    - service: input_slider.select_value
+      data_template:
+        entity_id: input_slider.bathroom_rolling_shutter
+        value: 100
+    - service: automation.turn_off
+      entity_id: automation.roller_shutter_up_bathroom
+
+
 - id: 'all_roller_shutter_up'
   alias: "All roller shutter up"
   trigger:
@@ -415,13 +536,21 @@
      to: 'on'
   action:
     - service: automation.turn_on
+      entity_id: automation.roller_shutter_up_left_living_room
+    - service: automation.turn_on
       entity_id: automation.roller_shutter_up_right_living_room
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_up_left_kitchen
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_right_kitchen
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_green_room
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_bedroom
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_up_pink_room
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_up_bathroom
     - service: automation.turn_off
       entity_id: automation.all_roller_shutter_up
 
@@ -435,12 +564,20 @@
      to: 'on'
   action:
     - service: automation.turn_on
+      entity_id: automation.roller_shutter_down_left_living_room
+    - service: automation.turn_on
       entity_id: automation.roller_shutter_down_right_living_room
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_down_left_kitchen
     - service: automation.turn_on
       entity_id: automation.roller_shutter_down_right_kitchen
     - service: automation.turn_on
       entity_id: automation.roller_shutter_down_green_room
     - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_bedroom  
+      entity_id: automation.roller_shutter_down_bedroom
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_down_pink_room
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_down_bathroom
     - service: automation.turn_off
       entity_id: automation.all_roller_shutter_down
