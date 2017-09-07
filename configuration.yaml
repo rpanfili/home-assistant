@@ -154,7 +154,9 @@ switch:
     state_topic: "catingham_palace/driveway/lights/state"
     qos: 1
  
-#device_tracker:
+device_tracker:
+  - platform: owntracks
+
 #  - platform: nmap_tracker
 #    hosts: 192.168.0.1/24
 #    home_interval: 300
