@@ -57,6 +57,16 @@ homeassistant:
     automation.leave_cat_passage_living_room:
       friendly_name: Leave cat passage
       icon: mdi:cat
+    automation.leave_cat_passage_green_room:
+      friendly_name: Leave cat passage
+      icon: mdi:cat
+    automation.leave_cat_passage_bedroom:
+      friendly_name: Leave cat passage
+      icon: mdi:cat
+    automation.leave_cat_passage_kitchen:
+      friendly_name: Leave cat passage
+      icon: mdi:cat
+      
     automation.all_roller_shutter_down:
       friendly_name: All the way down
     automation.all_roller_shutter_up:
