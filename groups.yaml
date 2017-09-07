@@ -10,7 +10,7 @@ default_view:
   - group.green_room
   - group.pink_room
   - group.bathroom
- 
+
 family_locations:
   name: Family locations
   entities:
@@ -112,6 +112,7 @@ roller_shutter_bedroom:
   name: Bedroom
   entities:
   - input_slider.bedroom_rolling_shutter
+  - automation.leave_cat_passage_bedroom  
 
 roller_shutter_pink_room:
   name: Pink Room
@@ -122,5 +123,3 @@ roller_shutter_bathroom:
   name: Bathroom
   entities:
   - input_slider.bathroom_rolling_shutter
-
-
