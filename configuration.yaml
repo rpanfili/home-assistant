@@ -286,6 +286,13 @@ binary_sensor:
     name: "Green room motion"
     qos: 1
     device_class: "motion"
+  - platform: mqtt
+    state_topic: "catingham_palace/living_room/right_window/state"
+    name: "Living room right window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
 
 camera:
   - platform: mjpeg

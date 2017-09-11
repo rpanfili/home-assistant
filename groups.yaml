@@ -94,6 +94,7 @@ roller_shutter_living_room:
   - input_slider.living_room_left_rolling_shutter
   - input_slider.living_room_right_rolling_shutter
   - automation.leave_cat_passage_living_room
+  - binary_sensor.living_room_right_window
 
 roller_shutter_kitchen:
   name: Kitchen
@@ -112,7 +113,7 @@ roller_shutter_bedroom:
   name: Bedroom
   entities:
   - input_slider.bedroom_rolling_shutter
-  - automation.leave_cat_passage_bedroom  
+  - automation.leave_cat_passage_bedroom
 
 roller_shutter_pink_room:
   name: Pink Room
