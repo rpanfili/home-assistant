@@ -1,0 +1,19 @@
+# Rubens work
+- name: work
+  latitude: !secret zones_rubens_work_latitude
+  longitude: !secret zones_rubens_work_longitude
+  radius: 50
+  icon: mdi:city
+
+# Valentina work
+- name: work
+  latitude: !secret zones_vale_work_latitude
+  longitude: !secret zones_vale_work_longitude
+  radius: 50
+  icon: mdi:store
+
+- name: train station
+  latitude: !secret zones_train_station_latitude
+  longitude: !secret zones_train_station_longitude
+  radius: 100
+  icon: mdi:train
