@@ -293,6 +293,55 @@ binary_sensor:
     payload_on: "OPEN"
     payload_off: "CLOSED"
     device_class: "opening"
+  - platform: mqtt
+    state_topic: "catingham_palace/living_room/left_window/state"
+    name: "Living room left window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
+  - platform: mqtt
+    state_topic: "catingham_palace/kitchen/left_window/state"
+    name: "Kitchen left window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
+  - platform: mqtt
+    state_topic: "catingham_palace/kitchen/right_window/state"
+    name: "Kitchen right window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
+  - platform: mqtt
+    state_topic: "catingham_palace/green_room/window/state"
+    name: "Green room window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
+  - platform: mqtt
+    state_topic: "catingham_palace/pink_room/window/state"
+    name: "Pink room window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
+  - platform: mqtt
+    state_topic: "catingham_palace/bedroom/window/state"
+    name: "Bedroom window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
+  - platform: mqtt
+    state_topic: "catingham_palace/bathroom/window/state"
+    name: "Bathroom window"
+    qos: 1
+    payload_on: "OPEN"
+    payload_off: "CLOSED"
+    device_class: "opening"
 
 camera:
   - platform: mjpeg

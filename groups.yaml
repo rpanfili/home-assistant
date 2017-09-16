@@ -94,6 +94,7 @@ roller_shutter_living_room:
   - input_slider.living_room_left_rolling_shutter
   - input_slider.living_room_right_rolling_shutter
   - automation.leave_cat_passage_living_room
+  - binary_sensor.living_room_left_window
   - binary_sensor.living_room_right_window
 
 roller_shutter_kitchen:
@@ -102,25 +103,31 @@ roller_shutter_kitchen:
   - input_slider.kitchen_left_rolling_shutter
   - input_slider.kitchen_right_rolling_shutter
   - automation.leave_cat_passage_kitchen
+  - binary_sensor.kitchen_left_window
+  - binary_sensor.kitchen_right_window
 
 roller_shutter_green_room:
   name: Green Room
   entities:
   - input_slider.green_room_rolling_shutter
   - automation.leave_cat_passage_green_room
+  - binary_sensor.green_room_window
 
 roller_shutter_bedroom:
   name: Bedroom
   entities:
   - input_slider.bedroom_rolling_shutter
   - automation.leave_cat_passage_bedroom
+  - binary_sensor.bedroom_window
 
 roller_shutter_pink_room:
   name: Pink Room
   entities:
   - input_slider.pink_room_rolling_shutter
+  - binary_sensor.pink_room_window
 
 roller_shutter_bathroom:
   name: Bathroom
   entities:
   - input_slider.bathroom_rolling_shutter
+  - binary_sensor.bathroom_window      
