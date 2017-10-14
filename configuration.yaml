@@ -69,8 +69,17 @@ homeassistant:
       
     automation.all_roller_shutter_down:
       friendly_name: All the way down
+      icon: mdi:arrow-down-bold
     automation.all_roller_shutter_up:
+      icon: mdi:arrow-up-bold
       friendly_name: All the way up
+    automation.roller_shutter_sunrise:
+      friendly_name: Roller shutter up at sunrise
+      icon: mdi:weather-sunset-up
+    automation.roller_shutter_sunset:
+      friendly_name: Roller shutter down at sunset
+      icon: mdi:weather-sunset-down
+
 
 
 # Show links to resources in log and frontend

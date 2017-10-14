@@ -87,6 +87,8 @@ roller_shutter_config:
   - cover.all_roller_shutters
   - automation.all_roller_shutter_up
   - automation.all_roller_shutter_down
+  - automation.roller_shutter_sunrise
+  - automation.roller_shutter_sunset
 
 roller_shutter_living_room:
   name: Living Room
