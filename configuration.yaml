@@ -199,7 +199,7 @@ telegram_bot:
       - !secret telegram_vale_chat
       - !secret telegram_catingham_palace_group
 
-input_slider:
+input_number:
   green_room_rolling_shutter:
     name: Green room rolling shutter
     min: 0

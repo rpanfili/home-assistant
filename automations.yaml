@@ -5,11 +5,11 @@
   trigger:
     platform: mqtt
     topic: "catingham_palace/kitchen/left_rolling_shutter/position"
-   # entity_id: input_slider.target_temp
+   # entity_id: input_number.target_temp
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.kitchen_left_rolling_shutter
+      entity_id: input_number.kitchen_left_rolling_shutter
       value: '{{ trigger.payload }}'
 
  # This automation script runs when the target temperature slider is moved.
@@ -18,13 +18,13 @@
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.kitchen_left_rolling_shutter
+    entity_id: input_number.kitchen_left_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/kitchen/left_rolling_shutter/position/set"
       retain: true
-      payload: '{{ states.input_slider.kitchen_left_rolling_shutter.state | int }}'
+      payload: '{{ states.input_number.kitchen_left_rolling_shutter.state | int }}'
 
 - alias: Set kitchen right shutter slider
   hide_entity: True
@@ -32,23 +32,23 @@
     platform: mqtt
     topic: "catingham_palace/kitchen/right_rolling_shutter/position"
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.kitchen_right_rolling_shutter
+      entity_id: input_number.kitchen_right_rolling_shutter
       value: '{{ trigger.payload }}'
 
 - alias: Kitchen right shutter slider moved
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.kitchen_right_rolling_shutter
+    entity_id: input_number.kitchen_right_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/kitchen/right_rolling_shutter/position/set"
       retain: true
-      #payload: '{{ states.input_slider.kitchen_right_rolling_shutter.state | int }}'
-      payload: '{% if is_state("automation.leave_cat_passage_kitchen","on") %}{{ (states.input_slider.kitchen_right_rolling_shutter.state | int, states.input_slider.cat_passage.state | int) | max }}{% else %}{{ states.input_slider.kitchen_right_rolling_shutter.state | int }}{% endif %}'
+      #payload: '{{ states.input_number.kitchen_right_rolling_shutter.state | int }}'
+      payload: '{% if is_state("automation.leave_cat_passage_kitchen","on") %}{{ (states.input_number.kitchen_right_rolling_shutter.state | int, states.input_number.cat_passage.state | int) | max }}{% else %}{{ states.input_number.kitchen_right_rolling_shutter.state | int }}{% endif %}'
 
 - alias: Set green room shutter slider
   hide_entity: True
@@ -56,22 +56,22 @@
     platform: mqtt
     topic: "catingham_palace/green_room/rolling_shutter/position"
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.green_room_rolling_shutter
+      entity_id: input_number.green_room_rolling_shutter
       value: '{{ trigger.payload }}'
 
 - alias: Green room shutter slider moved
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.green_room_rolling_shutter
+    entity_id: input_number.green_room_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/green_room/rolling_shutter/position/set"
       retain: true
-      payload: '{% if is_state("automation.leave_cat_passage_green_room","on") %}{{ (states.input_slider.green_room_rolling_shutter.state | int, states.input_slider.cat_passage.state | int) | max }}{% else %}{{ states.input_slider.green_room_rolling_shutter.state | int }}{% endif %}'
+      payload: '{% if is_state("automation.leave_cat_passage_green_room","on") %}{{ (states.input_number.green_room_rolling_shutter.state | int, states.input_number.cat_passage.state | int) | max }}{% else %}{{ states.input_number.green_room_rolling_shutter.state | int }}{% endif %}'
 
 - alias: Set pink room shutter slider
   hide_entity: True
@@ -79,22 +79,22 @@
     platform: mqtt
     topic: "catingham_palace/pink_room/rolling_shutter/position"
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.pink_room_rolling_shutter
+      entity_id: input_number.pink_room_rolling_shutter
       value: '{{ trigger.payload }}'
 
 - alias: Pink room shutter slider moved
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.pink_room_rolling_shutter
+    entity_id: input_number.pink_room_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/pink_room/rolling_shutter/position/set"
       retain: true
-      payload: '{{ states.input_slider.pink_room_rolling_shutter.state | int }}'
+      payload: '{{ states.input_number.pink_room_rolling_shutter.state | int }}'
 
 - alias: Set bedroom shutter slider
   hide_entity: True
@@ -102,22 +102,22 @@
     platform: mqtt
     topic: "catingham_palace/bedroom/rolling_shutter/position"
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.bedroom_rolling_shutter
+      entity_id: input_number.bedroom_rolling_shutter
       value: '{{ trigger.payload }}'
 
 - alias: Bedroom shutter slider moved
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.bedroom_rolling_shutter
+    entity_id: input_number.bedroom_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/bedroom/rolling_shutter/position/set"
       retain: true
-      payload: '{% if is_state("automation.leave_cat_passage_bedroom","on") %}{{ (states.input_slider.bedroom_rolling_shutter.state | int, states.input_slider.cat_passage.state | int) | max }}{% else %}{{ states.input_slider.bedroom_rolling_shutter.state | int }}{% endif %}'
+      payload: '{% if is_state("automation.leave_cat_passage_bedroom","on") %}{{ (states.input_number.bedroom_rolling_shutter.state | int, states.input_number.cat_passage.state | int) | max }}{% else %}{{ states.input_number.bedroom_rolling_shutter.state | int }}{% endif %}'
 
 - alias: Set bathroom shutter slider
   hide_entity: True
@@ -125,22 +125,22 @@
     platform: mqtt
     topic: "catingham_palace/bathroom/rolling_shutter/position"
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.bathroom_rolling_shutter
+      entity_id: input_number.bathroom_rolling_shutter
       value: '{{ trigger.payload }}'
 
 - alias: Bathroom shutter slider moved
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.bathroom_rolling_shutter
+    entity_id: input_number.bathroom_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/bathroom/rolling_shutter/position/set"
       retain: true
-      payload: '{{ states.input_slider.bathroom_rolling_shutter.state | int }}'
+      payload: '{{ states.input_number.bathroom_rolling_shutter.state | int }}'
 
 - alias: Set living room left shutter slider
   hide_entity: True
@@ -148,22 +148,22 @@
     platform: mqtt
     topic: "catingham_palace/living_room/left_rolling_shutter/position"
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.living_room_left_rolling_shutter
+      entity_id: input_number.living_room_left_rolling_shutter
       value: '{{ trigger.payload }}'
 
 - alias: Living room left shutter slider moved
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.living_room_left_rolling_shutter
+    entity_id: input_number.living_room_left_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/living_room/left_rolling_shutter/position/set"
       retain: true
-      payload: '{{ states.input_slider.living_room_left_rolling_shutter.state | int }}'
+      payload: '{{ states.input_number.living_room_left_rolling_shutter.state | int }}'
 
 
 - alias: Set living room right shutter slider
@@ -172,22 +172,22 @@
     platform: mqtt
     topic: "catingham_palace/living_room/right_rolling_shutter/position"
   action:
-     service: input_slider.select_value
+     service: input_number.select_value
      data_template:
-      entity_id: input_slider.living_room_right_rolling_shutter
+      entity_id: input_number.living_room_right_rolling_shutter
       value: '{{ trigger.payload }}'
 
 - alias: Living room right shutter slider moved
   hide_entity: True
   trigger:
     platform: state
-    entity_id: input_slider.living_room_right_rolling_shutter
+    entity_id: input_number.living_room_right_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
       topic: "catingham_palace/living_room/right_rolling_shutter/position/set"
       retain: true
-      payload: '{% if is_state("automation.leave_cat_passage_living_room","on") %}{{ (states.input_slider.living_room_right_rolling_shutter.state | int, states.input_slider.cat_passage.state | int) | max }}{% else %}{{ states.input_slider.living_room_right_rolling_shutter.state | int }}{% endif %}'
+      payload: '{% if is_state("automation.leave_cat_passage_living_room","on") %}{{ (states.input_number.living_room_right_rolling_shutter.state | int, states.input_number.cat_passage.state | int) | max }}{% else %}{{ states.input_number.living_room_right_rolling_shutter.state | int }}{% endif %}'
 
 - id: 'leave_cat_passage_living_room'
   alias: 'Leave cat passage living room'
@@ -196,22 +196,22 @@
       entity_id: automation.leave_cat_passage_living_room
       to: 'on'
     #- platform: numeric_state
-    #  entity_id: input_slider.living_room_right_rolling_shutter
-    #  below: '{{ float(states.input_slider.cat_passage.state) }}'
+    #  entity_id: input_number.living_room_right_rolling_shutter
+    #  below: '{{ float(states.input_number.cat_passage.state) }}'
     - platform: template
-      value_template: "{{ float(states.input_slider.living_room_right_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+      value_template: "{{ float(states.input_number.living_room_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   condition:
     #condition: numeric_state
-    #entity_id: input_slider.living_room_right_rolling_shutter
-    #below: '{{ float(states.input_slider.cat_passage.state) }}'
+    #entity_id: input_number.living_room_right_rolling_shutter
+    #below: '{{ float(states.input_number.cat_passage.state) }}'
     condition: template
-    value_template: "{{ float(states.input_slider.living_room_right_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+    value_template: "{{ float(states.input_number.living_room_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.living_room_right_rolling_shutter
+        entity_id: input_number.living_room_right_rolling_shutter
         #value: 95
-        value: '{{ (states.input_slider.cat_passage.state | int) }}'
+        value: '{{ (states.input_number.cat_passage.state | int) }}'
 
 - id: 'leave_cat_passage_kitchen'
   alias: 'Leave cat passage kitchen'
@@ -220,15 +220,15 @@
       entity_id: automation.leave_cat_passage_kitchen
       to: 'on'
     - platform: template
-      value_template: "{{ float(states.input_slider.kitchen_right_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+      value_template: "{{ float(states.input_number.kitchen_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   condition:
     condition: template
-    value_template: "{{ float(states.input_slider.kitchen_right_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+    value_template: "{{ float(states.input_number.kitchen_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.kitchen_right_rolling_shutter
-        value: '{{ (states.input_slider.cat_passage.state | int) }}'
+        entity_id: input_number.kitchen_right_rolling_shutter
+        value: '{{ (states.input_number.cat_passage.state | int) }}'
 
 - id: 'leave_cat_passage_green_room'
   alias: 'Leave cat passage green room'
@@ -237,15 +237,15 @@
       entity_id: automation.leave_cat_passage_green_room
       to: 'on'
     - platform: template
-      value_template: "{{ float(states.input_slider.green_room_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+      value_template: "{{ float(states.input_number.green_room_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   condition:
     condition: template
-    value_template: "{{ float(states.input_slider.green_room_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+    value_template: "{{ float(states.input_number.green_room_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.green_room_rolling_shutter
-        value: '{{ (states.input_slider.cat_passage.state | int) }}'
+        entity_id: input_number.green_room_rolling_shutter
+        value: '{{ (states.input_number.cat_passage.state | int) }}'
 
 - id: 'leave_cat_passage_bedroom'
   alias: 'Leave cat passage bedroom'
@@ -254,15 +254,15 @@
       entity_id: automation.leave_cat_passage_bedroom
       to: 'on'
     - platform: template
-      value_template: "{{ float(states.input_slider.bedroom_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+      value_template: "{{ float(states.input_number.bedroom_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   condition:
     condition: template
-    value_template: "{{ float(states.input_slider.bedroom_rolling_shutter.state) < float(states.input_slider.cat_passage.state) }}"
+    value_template: "{{ float(states.input_number.bedroom_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.bedroom_rolling_shutter
-        value: '{{ (states.input_slider.cat_passage.state | int) }}'
+        entity_id: input_number.bedroom_rolling_shutter
+        value: '{{ (states.input_number.cat_passage.state | int) }}'
 
 - alias: 'Telegram bot that reply pong to ping'
   hide_entity: true
@@ -294,10 +294,10 @@
      entity_id: automation.roller_shutter_down_right_living_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.living_room_right_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_living_room","on") %}{{ (states.input_slider.cat_passage.state | int) }}{% else %}0{% endif %}'
+        entity_id: input_number.living_room_right_rolling_shutter
+        value: '{% if is_state("automation.leave_cat_passage_living_room","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_right_living_room
 
@@ -309,9 +309,9 @@
      entity_id: automation.roller_shutter_up_right_living_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.living_room_right_rolling_shutter
+        entity_id: input_number.living_room_right_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_right_living_room
@@ -324,9 +324,9 @@
      entity_id: automation.roller_shutter_down_left_living_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.living_room_left_rolling_shutter
+        entity_id: input_number.living_room_left_rolling_shutter
         value: 0
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_left_living_room
@@ -339,9 +339,9 @@
      entity_id: automation.roller_shutter_up_left_living_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.living_room_left_rolling_shutter
+        entity_id: input_number.living_room_left_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_left_living_room
@@ -354,10 +354,10 @@
      entity_id: automation.roller_shutter_down_right_kitchen
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.kitchen_right_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_kitchen","on") %}{{ (states.input_slider.cat_passage.state | int) }}{% else %}0{% endif %}'
+        entity_id: input_number.kitchen_right_rolling_shutter
+        value: '{% if is_state("automation.leave_cat_passage_kitchen","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_right_kitchen
 
@@ -369,9 +369,9 @@
      entity_id: automation.roller_shutter_up_right_kitchen
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.kitchen_right_rolling_shutter
+        entity_id: input_number.kitchen_right_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_right_kitchen
@@ -384,9 +384,9 @@
      entity_id: automation.roller_shutter_down_left_kitchen
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.kitchen_left_rolling_shutter
+        entity_id: input_number.kitchen_left_rolling_shutter
         value: 0
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_left_kitchen
@@ -399,9 +399,9 @@
      entity_id: automation.roller_shutter_up_left_kitchen
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.kitchen_left_rolling_shutter
+        entity_id: input_number.kitchen_left_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_left_kitchen
@@ -414,10 +414,10 @@
      entity_id: automation.roller_shutter_down_green_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.green_room_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_green_room","on") %}{{ (states.input_slider.cat_passage.state | int) }}{% else %}0{% endif %}'
+        entity_id: input_number.green_room_rolling_shutter
+        value: '{% if is_state("automation.leave_cat_passage_green_room","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_green_room
 
@@ -429,9 +429,9 @@
      entity_id: automation.roller_shutter_up_green_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.green_room_rolling_shutter
+        entity_id: input_number.green_room_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_green_room
@@ -445,10 +445,10 @@
      entity_id: automation.roller_shutter_down_bedroom
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.bedroom_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_bedroom","on") %}{{ (states.input_slider.cat_passage.state | int) }}{% else %}0{% endif %}'
+        entity_id: input_number.bedroom_rolling_shutter
+        value: '{% if is_state("automation.leave_cat_passage_bedroom","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_bedroom
 
@@ -460,9 +460,9 @@
      entity_id: automation.roller_shutter_up_bedroom
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.bedroom_rolling_shutter
+        entity_id: input_number.bedroom_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_bedroom
@@ -475,9 +475,9 @@
      entity_id: automation.roller_shutter_down_pink_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.pink_room_rolling_shutter
+        entity_id: input_number.pink_room_rolling_shutter
         value: 0
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_pink_room
@@ -490,9 +490,9 @@
      entity_id: automation.roller_shutter_up_pink_room
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.pink_room_rolling_shutter
+        entity_id: input_number.pink_room_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_pink_room
@@ -505,9 +505,9 @@
      entity_id: automation.roller_shutter_down_bathroom
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.bathroom_rolling_shutter
+        entity_id: input_number.bathroom_rolling_shutter
         value: 0
     - service: automation.turn_off
       entity_id: automation.roller_shutter_down_bathroom
@@ -520,9 +520,9 @@
      entity_id: automation.roller_shutter_up_bathroom
      to: 'on'
   action:
-    - service: input_slider.select_value
+    - service: input_number.select_value
       data_template:
-        entity_id: input_slider.bathroom_rolling_shutter
+        entity_id: input_number.bathroom_rolling_shutter
         value: 100
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_bathroom
