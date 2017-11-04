@@ -87,6 +87,7 @@ roller_shutter_config:
   - cover.all_roller_shutters
   - automation.all_roller_shutter_up
   - automation.all_roller_shutter_down
+  - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
   - automation.roller_shutter_sunrise
   - automation.roller_shutter_sunset
 

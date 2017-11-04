@@ -527,12 +527,11 @@
     - service: automation.turn_off
       entity_id: automation.roller_shutter_up_bathroom
 
-
-- id: 'all_roller_shutter_up'
-  alias: "All roller shutter up"
+- id: 'weekend_roller_shutter_up'
+  alias: "Weekend roller shutter up"
   trigger:
    - platform: state
-     entity_id: automation.all_roller_shutter_up
+     entity_id: automation.weekend_roller_shutter_up
      to: 'on'
   action:
     - service: automation.turn_on
@@ -546,15 +545,26 @@
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_green_room
     - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_bedroom
-    - service: automation.turn_on
       entity_id: automation.roller_shutter_up_pink_room
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_bathroom
     - service: automation.turn_off
+      entity_id: automation.weekend_roller_shutter_up
+
+- id: 'all_roller_shutter_up'
+  alias: "All roller shutter up"
+  trigger:
+   - platform: state
+     entity_id: automation.all_roller_shutter_up
+     to: 'on'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.weekend_roller_shutter_up
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_up_bedroom
+    - service: automation.turn_off
       entity_id: automation.all_roller_shutter_up
-
-
+    
 
 - id: 'all_roller_shutter_down'
   alias: "All roller shutter down"
@@ -588,8 +598,22 @@
     platform: sun
     event: sunrise
   action: 
-    service: automation.turn_on
-    entity_id: automation.all_roller_shutter_up
+    - service: automation.turn_on
+      entity_id: automation.weekend_roller_shutter_up
+    - condition: or
+      conditions:
+        - condition: time
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+        - condition: state
+          entity_id: 'input_boolean.avoid_bedroom_roller_shutter_up_during_weekend'
+          state: 'off'
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_down_bedroom
 
 - id: 'roller_shutter_sunset'
   alias: 'Roller shutter sunset'

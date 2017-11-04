@@ -81,7 +81,6 @@ homeassistant:
       icon: mdi:weather-sunset-down
 
 
-
 # Show links to resources in log and frontend
 #introduction:
 
@@ -274,6 +273,11 @@ input_slider:
     unit_of_measurement: step  
     icon: mdi:cat
     
+input_boolean:
+  avoid_bedroom_roller_shutter_up_during_weekend:
+    name: "Avoid bedroom roller shutter up during weekend"
+    initial: on
+    icon: mdi:sleep
 
 binary_sensor:
   - platform: mqtt
