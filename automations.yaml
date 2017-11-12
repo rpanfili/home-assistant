@@ -7,7 +7,7 @@
     topic: "catingham_palace/kitchen/left_rolling_shutter/position"
    # entity_id: input_number.target_temp
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.kitchen_left_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -32,7 +32,7 @@
     platform: mqtt
     topic: "catingham_palace/kitchen/right_rolling_shutter/position"
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.kitchen_right_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -56,7 +56,7 @@
     platform: mqtt
     topic: "catingham_palace/green_room/rolling_shutter/position"
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.green_room_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -79,7 +79,7 @@
     platform: mqtt
     topic: "catingham_palace/pink_room/rolling_shutter/position"
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.pink_room_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -102,7 +102,7 @@
     platform: mqtt
     topic: "catingham_palace/bedroom/rolling_shutter/position"
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.bedroom_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -125,7 +125,7 @@
     platform: mqtt
     topic: "catingham_palace/bathroom/rolling_shutter/position"
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.bathroom_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -148,7 +148,7 @@
     platform: mqtt
     topic: "catingham_palace/living_room/left_rolling_shutter/position"
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.living_room_left_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -172,7 +172,7 @@
     platform: mqtt
     topic: "catingham_palace/living_room/right_rolling_shutter/position"
   action:
-     service: input_number.select_value
+     service: input_number.set_value
      data_template:
       entity_id: input_number.living_room_right_rolling_shutter
       value: '{{ trigger.payload }}'
@@ -207,7 +207,7 @@
     condition: template
     value_template: "{{ float(states.input_number.living_room_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.living_room_right_rolling_shutter
         #value: 95
@@ -225,7 +225,7 @@
     condition: template
     value_template: "{{ float(states.input_number.kitchen_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.kitchen_right_rolling_shutter
         value: '{{ (states.input_number.cat_passage.state | int) }}'
@@ -242,7 +242,7 @@
     condition: template
     value_template: "{{ float(states.input_number.green_room_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.green_room_rolling_shutter
         value: '{{ (states.input_number.cat_passage.state | int) }}'
@@ -259,7 +259,7 @@
     condition: template
     value_template: "{{ float(states.input_number.bedroom_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.bedroom_rolling_shutter
         value: '{{ (states.input_number.cat_passage.state | int) }}'
@@ -294,7 +294,7 @@
      entity_id: automation.roller_shutter_down_right_living_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.living_room_right_rolling_shutter
         value: '{% if is_state("automation.leave_cat_passage_living_room","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
@@ -309,7 +309,7 @@
      entity_id: automation.roller_shutter_up_right_living_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.living_room_right_rolling_shutter
         value: 100
@@ -324,7 +324,7 @@
      entity_id: automation.roller_shutter_down_left_living_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.living_room_left_rolling_shutter
         value: 0
@@ -339,7 +339,7 @@
      entity_id: automation.roller_shutter_up_left_living_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.living_room_left_rolling_shutter
         value: 100
@@ -354,7 +354,7 @@
      entity_id: automation.roller_shutter_down_right_kitchen
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.kitchen_right_rolling_shutter
         value: '{% if is_state("automation.leave_cat_passage_kitchen","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
@@ -369,7 +369,7 @@
      entity_id: automation.roller_shutter_up_right_kitchen
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.kitchen_right_rolling_shutter
         value: 100
@@ -384,7 +384,7 @@
      entity_id: automation.roller_shutter_down_left_kitchen
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.kitchen_left_rolling_shutter
         value: 0
@@ -399,7 +399,7 @@
      entity_id: automation.roller_shutter_up_left_kitchen
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.kitchen_left_rolling_shutter
         value: 100
@@ -414,7 +414,7 @@
      entity_id: automation.roller_shutter_down_green_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.green_room_rolling_shutter
         value: '{% if is_state("automation.leave_cat_passage_green_room","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
@@ -429,7 +429,7 @@
      entity_id: automation.roller_shutter_up_green_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.green_room_rolling_shutter
         value: 100
@@ -445,7 +445,7 @@
      entity_id: automation.roller_shutter_down_bedroom
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.bedroom_rolling_shutter
         value: '{% if is_state("automation.leave_cat_passage_bedroom","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
@@ -460,7 +460,7 @@
      entity_id: automation.roller_shutter_up_bedroom
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.bedroom_rolling_shutter
         value: 100
@@ -475,7 +475,7 @@
      entity_id: automation.roller_shutter_down_pink_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.pink_room_rolling_shutter
         value: 0
@@ -490,7 +490,7 @@
      entity_id: automation.roller_shutter_up_pink_room
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.pink_room_rolling_shutter
         value: 100
@@ -505,7 +505,7 @@
      entity_id: automation.roller_shutter_down_bathroom
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.bathroom_rolling_shutter
         value: 0
@@ -520,7 +520,7 @@
      entity_id: automation.roller_shutter_up_bathroom
      to: 'on'
   action:
-    - service: input_number.select_value
+    - service: input_number.set_value
       data_template:
         entity_id: input_number.bathroom_rolling_shutter
         value: 100
