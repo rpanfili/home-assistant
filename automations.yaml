@@ -613,7 +613,7 @@
           entity_id: 'input_boolean.avoid_bedroom_roller_shutter_up_during_weekend'
           state: 'off'
     - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_bedroom
+      entity_id: automation.roller_shutter_up_bedroom
 
 - id: 'roller_shutter_sunset'
   alias: 'Roller shutter sunset'
