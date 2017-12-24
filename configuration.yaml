@@ -122,10 +122,14 @@ logbook:
 # Track the sun
 sun:
 
-# Weather Prediction
 sensor:
-  platform: yr
-
+  # Weather Prediction
+  - platform: yr
+  - platform: mqtt
+    state_topic: "catingham_palace/simon_says/game"
+    name: "Simon Says"
+    qos: 1
+  
 # Text to speech
 tts:
   platform: google

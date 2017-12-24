@@ -626,3 +626,29 @@
     entity_id: automation.all_roller_shutter_down
 
 
+- id: 'simon_says_win'
+  alias: "Simon says win"
+  trigger:
+    platform: state
+    entity_id: sensor.simon_says
+    from: 'NEW'
+    to: 'WIN'
+  action:
+    - service: notify.catinghampalacebot
+      data:
+        title: "Vittoria"
+        message: 'Vittoria!'
+        data:
+          photo:
+            - url: 'https://jimmcneely.files.wordpress.com/2013/06/victory-main_full.jpg'
+              caption: "Vittoria finalmente!!!"
+    - delay: '00:00:03'
+    - service: notify.catinghampalacebot
+      data:
+        title: "La tua fama si narra in tutto il mondo, anche l'orso bianco festeggia con Macondo!"
+        message: "La tua fama si narra in tutto il mondo, anche l'orso bianco festeggia con Macondo!"
+        data:
+          photo:
+            - file: '/home/homeassistant/.homeassistant/www/enigma_orso.jpg'
+              caption: "La tua fama si narra in tutto il mondo, anche l'orso bianco festeggia con Macondo!"
+    
