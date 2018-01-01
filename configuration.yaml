@@ -46,6 +46,20 @@ homeassistant:
       icon: mdi:hotel
     binary_sensor.valentina_bed:
       icon: mdi:hotel
+     
+    sensor.greenhouse_temperature:
+      icon: mdi:thermometer
+      friendly_name: "Temperature"
+    sensor.greenhouse_humidity:
+      icon: mdi:water-percent
+      friendly_name: "Humidity"
+    sensor.greenhouse_plant1_soil_moisture:
+      icon: mdi:cup-water
+      friendly_name: "Soil moisture"
+    fan.greenhouse_ventilation:
+      friendly_name: "Ventilation"
+    light.greenhouse_light:
+      friendly_name: "Light"
 
     binary_sensor.living_room_camera_person_detected:
       icon: mdi:walk
@@ -122,9 +136,25 @@ logbook:
 # Track the sun
 sun:
 
-# Weather Prediction
 sensor:
-  platform: yr
+  # Weather Prediction
+  - platform: yr
+  - platform: mqtt
+    state_topic: "catingham_palace/simon_says/game"
+    name: "Simon Says"
+    qos: 1
+  - platform: mqtt
+    state_topic: "catingham_palace/greenhouse/temperature"
+    name: "Greenhouse temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "catingham_palace/greenhouse/humidity"
+    name: "Greenhouse humidity"
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "catingham_palace/greenhouse/plant1/soil_moisture"
+    name: "Greenhouse plant1 soil_moisture"
+    unit_of_measurement: '%'
 
 # Text to speech
 tts:
@@ -181,6 +211,22 @@ device_tracker:
 #    track_new_devices: false
 #  - platform: owntracks
    
+light:
+  - platform: mqtt
+    name: "Greenhouse light"
+    qos: 1
+    optimistic: false
+    retain: true
+    command_topic: "catingham_palace/greenhouse/light/switch"
+    state_topic: "catingham_palace/greenhouse/light/status"
+fan:
+  - platform: mqtt
+    name: "Greenhouse ventilation"
+    qos: 1
+    optimistic: false
+    retain: true
+    command_topic: "catingham_palace/greenhouse/ventilation/switch"
+    state_topic: "catingham_palace/greenhouse/ventilation/status"
 
 ifttt:
   key: !secret ifttt_key
