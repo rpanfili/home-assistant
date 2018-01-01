@@ -134,3 +134,20 @@ roller_shutter_bathroom:
   entities:
   - input_number.bathroom_rolling_shutter
   - binary_sensor.bathroom_window      
+
+greenhouse:
+  name: Greenhouse
+  view: yes
+  icon: mdi:leaf
+  entities:
+  - group.greenhouse_environment
+
+greenhouse_environment:
+  name: Environment
+  entities:
+  - sensor.greenhouse_temperature
+  - sensor.greenhouse_humidity
+  - sensor.greenhouse_plant1_soil_moisture
+  - light.greenhouse_light
+  - fan.greenhouse_ventilation
+  
