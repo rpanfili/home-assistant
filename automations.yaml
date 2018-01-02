@@ -1,6 +1,6 @@
  # This automation script runs when a value is received via MQTT on retained topic: setTemperature
  # It sets the value slider on the GUI. This slides also had its own automation when the value is changed.
-- alias: Set shutter slider
+- alias: Set kitchen left shutter slider
   hide_entity: True
   trigger:
     platform: mqtt
@@ -14,7 +14,7 @@
 
  # This automation script runs when the target temperature slider is moved.
  # It publishes its value to the same MQTT topic it is also subscribed to.
-- alias: Shutter slider moved
+- alias: Kitchen left shutter slider moved
   hide_entity: True
   trigger:
     platform: state
