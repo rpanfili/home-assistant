@@ -11,3 +11,4 @@ mysensors2.json
 secrets.yaml
 .HA_VERSION
 known_devices.yaml
+.cloud
