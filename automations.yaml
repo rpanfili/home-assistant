@@ -668,4 +668,13 @@
     service: automation.turn_on
     entity_id: automation.all_roller_shutter_down
 
-
+- id: "notify_homeassistant_startup"
+  alias: "Notify HomeAssistant startup"
+  initial_state: True
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: notify.telegram2rubens
+      data: 
+        message: "HomeAssistant started"  
