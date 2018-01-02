@@ -2,6 +2,7 @@
  # It sets the value slider on the GUI. This slides also had its own automation when the value is changed.
 - alias: Set kitchen left shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/kitchen/left_rolling_shutter/position"
@@ -16,6 +17,7 @@
  # It publishes its value to the same MQTT topic it is also subscribed to.
 - alias: Kitchen left shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.kitchen_left_rolling_shutter
@@ -28,6 +30,7 @@
 
 - alias: Set kitchen right shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/kitchen/right_rolling_shutter/position"
@@ -39,6 +42,7 @@
 
 - alias: Kitchen right shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.kitchen_right_rolling_shutter
@@ -52,6 +56,7 @@
 
 - alias: Set green room shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/green_room/rolling_shutter/position"
@@ -63,6 +68,7 @@
 
 - alias: Green room shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.green_room_rolling_shutter
@@ -75,6 +81,7 @@
 
 - alias: Set pink room shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/pink_room/rolling_shutter/position"
@@ -86,6 +93,7 @@
 
 - alias: Pink room shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.pink_room_rolling_shutter
@@ -98,6 +106,7 @@
 
 - alias: Set bedroom shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/bedroom/rolling_shutter/position"
@@ -109,6 +118,7 @@
 
 - alias: Bedroom shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.bedroom_rolling_shutter
@@ -121,6 +131,7 @@
 
 - alias: Set bathroom shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/bathroom/rolling_shutter/position"
@@ -132,6 +143,7 @@
 
 - alias: Bathroom shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.bathroom_rolling_shutter
@@ -144,6 +156,7 @@
 
 - alias: Set living room left shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/living_room/left_rolling_shutter/position"
@@ -155,6 +168,7 @@
 
 - alias: Living room left shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.living_room_left_rolling_shutter
@@ -168,6 +182,7 @@
 
 - alias: Set living room right shutter slider
   hide_entity: True
+  initial_state: True
   trigger:
     platform: mqtt
     topic: "catingham_palace/living_room/right_rolling_shutter/position"
@@ -179,6 +194,7 @@
 
 - alias: Living room right shutter slider moved
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: input_number.living_room_right_rolling_shutter
@@ -191,6 +207,7 @@
 
 - id: 'leave_cat_passage_living_room'
   alias: 'Leave cat passage living room'
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_living_room
@@ -215,6 +232,7 @@
 
 - id: 'leave_cat_passage_kitchen'
   alias: 'Leave cat passage kitchen'
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_kitchen
@@ -232,6 +250,7 @@
 
 - id: 'leave_cat_passage_green_room'
   alias: 'Leave cat passage green room'
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_green_room
@@ -249,6 +268,7 @@
 
 - id: 'leave_cat_passage_bedroom'
   alias: 'Leave cat passage bedroom'
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_bedroom
@@ -266,6 +286,7 @@
 
 - alias: 'Telegram bot that reply pong to ping'
   hide_entity: true
+  initial_state: True
   trigger:
     platform: event
     event_type: telegram_command
@@ -278,6 +299,7 @@
 
 - alias: 'Update Available Notifications'
   hide_entity: True
+  initial_state: True
   trigger:
     platform: state
     entity_id: updater.updater
@@ -288,6 +310,7 @@
 
 - id: 'roller_shutter_down_right_living_room'
   alias: "Roller shutter down right living room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -303,6 +326,7 @@
 
 - id: 'roller_shutter_up_right_living_room'
   alias: "Roller shutter up right living room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -318,6 +342,7 @@
 
 - id: 'roller_shutter_down_left_living_room'
   alias: "Roller shutter down left living room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -333,6 +358,7 @@
 
 - id: 'roller_shutter_up_left_living_room'
   alias: "Roller shutter up left living room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -348,6 +374,7 @@
 
 - id: 'roller_shutter_down_right_kitchen'
   alias: "Roller shutter down right kitchen"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -363,6 +390,7 @@
 
 - id: 'roller_shutter_up_right_kitchen'
   alias: "Roller shutter up right kitchen"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -378,6 +406,7 @@
 
 - id: 'roller_shutter_down_left_kitchen'
   alias: "Roller shutter down left kitchen"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -393,6 +422,7 @@
 
 - id: 'roller_shutter_up_left_kitchen'
   alias: "Roller shutter up left kitchen"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -408,6 +438,7 @@
 
 - id: 'roller_shutter_down_green_room'
   alias: "Roller shutter down green room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -423,6 +454,7 @@
 
 - id: 'roller_shutter_up_green_room'
   alias: "Roller shutter up green room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -439,6 +471,7 @@
 
 - id: 'roller_shutter_down_bedroom'
   alias: "Roller shutter down bedroom"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -454,6 +487,7 @@
 
 - id: 'roller_shutter_up_bedroom'
   alias: "Roller shutter up bedroom"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -469,6 +503,7 @@
 
 - id: 'roller_shutter_down_pink_room'
   alias: "Roller shutter down pink room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -484,6 +519,7 @@
 
 - id: 'roller_shutter_up_pink_room'
   alias: "Roller shutter up pink room"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -499,6 +535,7 @@
 
 - id: 'roller_shutter_down_bathroom'
   alias: "Roller shutter down bathroom"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -514,6 +551,7 @@
 
 - id: 'roller_shutter_up_bathroom'
   alias: "Roller shutter up bathroom"
+  initial_state: False
   hide_entity: True
   trigger:
    - platform: state
@@ -529,6 +567,7 @@
 
 - id: 'weekend_roller_shutter_up'
   alias: "Weekend roller shutter up"
+  initial_state: False
   trigger:
    - platform: state
      entity_id: automation.weekend_roller_shutter_up
@@ -553,6 +592,7 @@
 
 - id: 'all_roller_shutter_up'
   alias: "All roller shutter up"
+  initial_state: False
   trigger:
    - platform: state
      entity_id: automation.all_roller_shutter_up
@@ -568,6 +608,7 @@
 
 - id: 'all_roller_shutter_down'
   alias: "All roller shutter down"
+  initial_state: False
   trigger:
    - platform: state
      entity_id: automation.all_roller_shutter_down
@@ -594,6 +635,7 @@
 
 - id: 'roller_shutter_sunrise'
   alias: 'Roller shutter sunrise'
+  initial_state: True
   trigger:
     platform: sun
     event: sunrise
@@ -617,6 +659,7 @@
 
 - id: 'roller_shutter_sunset'
   alias: 'Roller shutter sunset'
+  initial_state: True
   trigger:
     platform: sun
     event: sunset
@@ -628,6 +671,7 @@
 
 - id: 'simon_says_win'
   alias: "Simon says win"
+  initial_state: True
   trigger:
     platform: state
     entity_id: sensor.simon_says
