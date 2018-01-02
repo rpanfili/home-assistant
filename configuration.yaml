@@ -190,6 +190,12 @@ notify:
     platform: telegram
     #chat_id: !secret telegram_rubens_chat
     chat_id: !secret telegram_catingham_palace_group
+  - name: telegram2rubens
+    platform: telegram
+    chat_id: !secret telegram_rubens_chat
+  - name: telegram2vale
+    platform: telegram
+    chat_id: !secret telegram_vale_chat
 
 telegram_bot:
   - platform: webhooks
