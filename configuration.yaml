@@ -408,10 +408,10 @@ binary_sensor:
     payload_off: "CLOSED"
     device_class: "opening"
 
-camera:
-  - platform: mjpeg
-    mjpeg_url: http://localhost:8081
-    name: Green room camera
+#camera:
+#  - platform: mjpeg
+#    mjpeg_url: http://localhost:8081
+#    name: Green room camera
 
 cover:
   - platform: template
