@@ -141,6 +141,9 @@ greenhouse:
   icon: mdi:leaf
   entities:
   - group.greenhouse_environment
+  - history_graph.temperature
+  - history_graph.humidity
+  - history_graph.soil_moisture
 
 greenhouse_environment:
   name: Environment
