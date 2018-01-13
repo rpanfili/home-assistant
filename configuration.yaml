@@ -439,17 +439,17 @@ cover:
           entity_id: automation.all_roller_shutter_up
 
 history_graph:
-  01_greenroom_temperature:
+  greenhouse_temperature:
     name: "Temperature"
     refresh: 60
     entities:
       - sensor.greenhouse_temperature 
-  02_greenroom_humidity:
+  greenhouse_humidity:
     name: "Humidity"
     refresh: 60
     entities:
       - sensor.greenhouse_humidity 
-  03_greenroom_plant1_soil_moisture:
+  greenhouse_plant1_soil_moisture:
     name: "Soil moisture"
     refresh: 60
     entities:
