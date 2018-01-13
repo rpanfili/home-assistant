@@ -678,3 +678,96 @@
     - service: notify.telegram2rubens
       data: 
         message: "HomeAssistant started"  
+
+- id: 'living_room_auto_cat_passage_on_window_change'
+  alias: 'Living room automatic cat passage on window state'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_room_right_window
+    - platform: state
+      entity_id: switch.automatic_cat_passage
+      to: 'on'
+  condition:    
+    condition: state
+    entity_id: switch.automatic_cat_passage
+    state: 'on'
+  action:
+    - service_template: >
+        {% if is_state('binary_sensor.living_room_right_window', 'on') %}
+          automation.turn_on
+        {% else %}
+          automation.turn_off
+        {% endif %}
+      entity_id: automation.leave_cat_passage_living_room 
+
+- id: 'kitchen_auto_cat_passage_on_window_change'
+  alias: 'Kitchen automatic cat passage on window state'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_right_window
+    - platform: state
+      entity_id: switch.automatic_cat_passage
+      to: 'on'
+  condition:    
+    condition: state
+    entity_id: switch.automatic_cat_passage
+    state: 'on'
+  action:
+    - service_template: >
+        {% if is_state('binary_sensor.kitchen_right_window', 'on') %}
+          automation.turn_on
+        {% else %}
+          automation.turn_off
+        {% endif %}
+      entity_id: automation.leave_cat_passage_kitchen 
+
+- id: 'bedroom_auto_cat_passage_on_window_change'
+  alias: 'Bedroom automatic cat passage on window state'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_window
+    - platform: state
+      entity_id: switch.automatic_cat_passage
+      to: 'on'
+  condition:    
+    condition: state
+    entity_id: switch.automatic_cat_passage
+    state: 'on'
+  action:
+    - service_template: >
+        {% if is_state('binary_sensor.bedroom_window', 'on') %}
+          automation.turn_on
+        {% else %}
+          automation.turn_off
+        {% endif %}
+      entity_id: automation.leave_cat_passage_bedroom 
+
+- id: 'green_room_auto_cat_passage_on_window_change'
+  alias: 'Green room automatic cat passage on window state'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.green_room_window
+    - platform: state
+      entity_id: switch.automatic_cat_passage
+      to: 'on'
+  condition:    
+    condition: state
+    entity_id: switch.automatic_cat_passage
+    state: 'on'
+  action:
+    - service_template: >
+        {% if is_state('binary_sensor.green_room_window', 'on') %}
+          automation.turn_on
+        {% else %}
+          automation.turn_off
+        {% endif %}
+      entity_id: automation.leave_cat_passage_green_room 
+
+ 
+ 
+ 
+      

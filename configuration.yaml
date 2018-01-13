@@ -20,6 +20,8 @@ homeassistant:
       icon: mdi:lock
     switch.stair_front_door:
       icon: mdi:stairs
+    switch.automatic_cat_passage:
+      icon: mdi:auto-fix
     sensor.entryway_thermostat_humidity:
       icon: mdi:water-percent
     sensor.entryway_thermostat_hvac_state:
@@ -93,6 +95,9 @@ homeassistant:
     automation.roller_shutter_sunset:
       friendly_name: Roller shutter down at sunset
       icon: mdi:weather-sunset-down
+
+    automation.automatic_cat_passage:
+      icon: mdi:auto-fix
 
 
 # Show links to resources in log and frontend
@@ -201,7 +206,15 @@ switch:
     command_topic: "catingham_palace/driveway/lights/state"
     state_topic: "catingham_palace/driveway/lights/state"
     qos: 1
- 
+  - platform: mqtt
+    name: "Automatic cat passage"
+    command_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
+    state_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
+    optimitic: false
+    retain: true
+    qos: 1
+
+
 device_tracker:
   - platform: owntracks
 
@@ -317,7 +330,7 @@ input_number:
     unit_of_measurement: step  
     icon: mdi:blinds
   cat_passage:
-    name: Cat passage
+    name: Cat passage height
     min: 0
     max: 100
     initial: 25

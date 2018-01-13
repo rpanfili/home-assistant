@@ -72,24 +72,30 @@ roller_shutters:
   view: yes
   icon: mdi:blinds
   entities:
-  - group.roller_shutter_config
+  - group.roller_shutter_global
   - group.roller_shutter_kitchen
   - group.roller_shutter_living_room
   - group.roller_shutter_bedroom
   - group.roller_shutter_green_room
   - group.roller_shutter_pink_room
   - group.roller_shutter_bathroom
+  - group.roller_shutter_config
+
+roller_shutter_global:
+  name: Global
+  entities:
+  - automation.all_roller_shutter_up
+  - automation.all_roller_shutter_down
+  - cover.all_roller_shutters
 
 roller_shutter_config:
   name: Config
   entities:
-  - input_number.cat_passage
-  - cover.all_roller_shutters
-  - automation.all_roller_shutter_up
-  - automation.all_roller_shutter_down
-  - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
   - automation.roller_shutter_sunrise
   - automation.roller_shutter_sunset
+  - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
+  - switch.automatic_cat_passage
+  - input_number.cat_passage
 
 roller_shutter_living_room:
   name: Living Room
