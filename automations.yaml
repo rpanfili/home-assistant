@@ -639,6 +639,7 @@
   trigger:
     platform: sun
     event: sunrise
+    offset: "-00:30:00"
   action: 
     - service: automation.turn_on
       entity_id: automation.weekend_roller_shutter_up
