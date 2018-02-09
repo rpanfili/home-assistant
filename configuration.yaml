@@ -62,7 +62,17 @@ homeassistant:
       friendly_name: "Ventilation"
     light.greenhouse_light:
       friendly_name: "Light"
-
+      
+    switch.greenhouse_humidifier_power:
+      friendly_name: Power
+      icon: mdi:power
+    switch.greenhouse_humidifier_status_leds:
+      friendly_name: Status leds
+      icon: mdi:led-on
+    switch.greenhouse_humidifier_mode:
+      friendly_name: Automatic mode
+      icon: mdi:auto-fix
+      
     binary_sensor.living_room_camera_person_detected:
       icon: mdi:walk
     binary_sensor.living_room_camera_motion_detected:
@@ -213,7 +223,31 @@ switch:
     optimitic: false
     retain: true
     qos: 1
-
+    
+  - platform: mqtt
+    name: "Greenhouse humidifier power"
+    command_topic: "catingham_palace/greenhouse/humidifier/switch"
+    state_topic: "catingham_palace/greenhouse/humidifier/status"
+    optimitic: false
+    retain: true
+    qos: 1
+  - platform: mqtt
+    name: "Greenhouse humidifier status leds"
+    command_topic: "catingham_palace/greenhouse/humidifier/leds/switch"
+    state_topic: "catingham_palace/greenhouse/humidifier/leds/status"
+    optimitic: falseinput_number
+    retain: true
+    qos: 1
+  - platform: mqtt
+    name: "Greenhouse humidifier mode"
+    command_topic: "catingham_palace/greenhouse/humidifier/mode"
+    state_topic: "catingham_palace/greenhouse/humidifier/mode"
+    payload_off: "manual"
+    payload_on: "auto"
+    optimitic: false
+    retain: true
+    qos: 1
+    
 
 device_tracker:
   - platform: owntracks
@@ -337,6 +371,15 @@ input_number:
     step: 5
     unit_of_measurement: step  
     icon: mdi:cat
+  greenhouse_humidifier_target_humidity:
+    name: Target humidity
+    min: 0
+    max: 100
+    step: 5
+    initial: 50
+    unit_of_measurement: "%"
+    icon: mdi:water-percent  
+    
     
 input_boolean:
   avoid_bedroom_roller_shutter_up_during_weekend:

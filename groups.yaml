@@ -147,6 +147,7 @@ greenhouse:
   icon: mdi:leaf
   entities:
   - group.greenhouse_environment
+  - group.greenhouse_humidifier
   - history_graph.temperature
   - history_graph.humidity
   - history_graph.soil_moisture
@@ -159,4 +160,14 @@ greenhouse_environment:
   - sensor.greenhouse_plant1_soil_moisture
   - light.greenhouse_light
   - fan.greenhouse_ventilation
+  
+greenhouse_humidifier:
+  name: Humidifier
+  entities:
+  - input_number.greenhouse_humidifier_target_humidity
+  - switch.greenhouse_humidifier_mode
+  - switch.greenhouse_humidifier_power
+  - switch.greenhouse_humidifier_status_leds
+  
+    
   
