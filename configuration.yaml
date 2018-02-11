@@ -376,7 +376,7 @@ input_number:
     min: 0
     max: 100
     step: 5
-    initial: 50
+    initial: 60
     unit_of_measurement: "%"
     icon: mdi:water-percent  
     
