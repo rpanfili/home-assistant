@@ -109,6 +109,9 @@ homeassistant:
     automation.automatic_cat_passage:
       icon: mdi:auto-fix
 
+recorder:
+  purge_keep_days: 15
+  purge_interval: 1
 
 # Show links to resources in log and frontend
 #introduction:
@@ -499,8 +502,7 @@ history_graph:
       - sensor.greenhouse_plant1_soil_moisture
 
 
-
-
 group: !include groups.yaml
 automation: !include automations.yaml
 zone: !include zones.yaml
+
