@@ -305,7 +305,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   living_room_left_rolling_shutter:
     name: Living room left rolling shutter
@@ -313,7 +313,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   living_room_right_rolling_shutter:
     name: Living room right rolling shutter
@@ -321,7 +321,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   kitchen_left_rolling_shutter:
     name: Kitchen left rolling shutter
@@ -329,7 +329,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   kitchen_right_rolling_shutter:
     name: Kitchen right rolling shutter
@@ -337,7 +337,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   pink_room_rolling_shutter:
     name: Pink room rolling shutter
@@ -345,7 +345,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   bedroom_rolling_shutter:
     name: Bedroom rolling shutter
@@ -353,7 +353,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   bathroom_rolling_shutter:
     name: Bathroom rolling shutter
@@ -361,7 +361,7 @@ input_number:
     max: 100
     initial: 100
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:blinds
   cat_passage:
     name: Cat passage height
@@ -369,7 +369,7 @@ input_number:
     max: 100
     initial: 25
     step: 5
-    unit_of_measurement: step  
+    unit_of_measurement: "%"
     icon: mdi:cat
   greenhouse_humidifier_target_humidity:
     name: Target humidity
