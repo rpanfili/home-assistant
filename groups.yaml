@@ -169,5 +169,24 @@ greenhouse_humidifier:
   - switch.greenhouse_humidifier_power
   - switch.greenhouse_humidifier_status_leds
   
+energy:
+  name: energy
+  view: yes
+  icon: mdi:flash
+  entities:
+    - group.energy_summary
+    - group.energy_history  
+
+energy_summary:
+  name: Energy consumption
+  entities:
+    - sensor.emonpi_total_power
+    - sensor.emonpi_power_1
+    - sensor.emonpi_power_2
+    - sensor.emonpi_total_power_kwh
     
-  
+energy_history:
+  name: History
+  entities:
+    - history_graph.power_consumption 
+    - history_graph.power_consumption_kwh

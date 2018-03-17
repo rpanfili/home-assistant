@@ -108,6 +108,19 @@ homeassistant:
 
     automation.automatic_cat_passage:
       icon: mdi:auto-fix
+      
+    sensor.emonpi_total_power:
+      icon: mdi:power-plug
+      friendly_name: "Power now"
+    sensor.emonpi_power_1:
+      icon: mdi:numeric-1-box-outline
+      friendly_name: "Power 1"
+    sensor.emonpi_power_2:
+      icon: mdi:numeric-2-box-outline
+      friendly_name: "Power 2"
+    sensor.emonpi_total_power_kwh:
+      icon: mdi:flash
+      friendly_name: "Average consumption"
 
 recorder:
   purge_keep_days: 15
@@ -173,6 +186,23 @@ sensor:
     state_topic: "catingham_palace/greenhouse/plant1/soil_moisture"
     name: "Greenhouse plant1 soil_moisture"
     unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "catingham_palace/emonpi/power1"
+    name: "EmonPi Power 1"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    state_topic: "catingham_palace/emonpi/power2"
+    name: "EmonPi Power 2"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    state_topic: "catingham_palace/emonpi/power1pluspower2"
+    name: "EmonPi Total power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    state_topic: "catingham_palace/emonpi/total_power_kwh"
+    name: "EmonPi Total power kWh"
+    value_template: "{{ value | round(2) }}"
+    unit_of_measurement: 'kWh'
 
 # Text to speech
 tts:
@@ -500,6 +530,19 @@ history_graph:
     refresh: 60
     entities:
       - sensor.greenhouse_plant1_soil_moisture
+  emonpi_power:
+    name: "Power consumption"
+    refresh: 5
+    entities:
+      - sensor.emonpi_total_power
+      - sensor.emonpi_power_1
+      - sensor.emonpi_power_2      
+  emonpi_power_kwh:
+    name: "Power consumption kWh"
+    refresh: 60
+    entities:
+      - sensor.emonpi_total_power_kwh
+      
 
 
 group: !include groups.yaml
