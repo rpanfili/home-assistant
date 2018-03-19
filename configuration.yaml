@@ -123,8 +123,8 @@ homeassistant:
       friendly_name: "Average consumption"
 
 recorder:
+  db_url: !secret recorder_db_url
   purge_keep_days: 15
-  purge_interval: 1
 
 # Show links to resources in log and frontend
 #introduction:
