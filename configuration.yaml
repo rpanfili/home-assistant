@@ -542,8 +542,13 @@ history_graph:
     refresh: 60
     entities:
       - sensor.emonpi_total_power_kwh
-      
 
+media_player:
+  - platform: samsungtv
+    name: Living room TV
+    host: !secret living_room_tv_ip
+    mac: !secret living_room_tv_mac_address
+    port: 8001
 
 group: !include groups.yaml
 automation: !include automations.yaml
