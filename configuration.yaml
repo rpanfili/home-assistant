@@ -549,6 +549,14 @@ media_player:
     host: !secret living_room_tv_ip
     mac: !secret living_room_tv_mac_address
     port: 8001
+    
+input_select:
+  roller_shutters_scene:
+    name: Roller shutters scene
+    initial: "day"
+    options: 
+      - "day"
+      - "night"    
 
 group: !include groups.yaml
 automation: !include automations.yaml

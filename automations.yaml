@@ -602,6 +602,10 @@
       entity_id: automation.weekend_roller_shutter_up
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_bedroom
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.roller_shutters_scene
+        option: "day"
     - service: automation.turn_off
       entity_id: automation.all_roller_shutter_up
     
@@ -630,6 +634,10 @@
       entity_id: automation.roller_shutter_down_pink_room
     - service: automation.turn_on
       entity_id: automation.roller_shutter_down_bathroom
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.roller_shutters_scene
+        option: "night"      
     - service: automation.turn_off
       entity_id: automation.all_roller_shutter_down
 
@@ -796,3 +804,22 @@
   action:
     - service: switch.turn_on
       entity_id: switch.greenhouse_humidifier_power
+      
+- id: 'living_room_roller_shutter_tv_aware'
+  alias: 'Living room roller shutter TV aware'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_tv
+      to: 'on'
+    - platform: state
+      entity_id: media_player.living_room_tv
+      to: 'off'    
+  condition: 
+    condition: state
+    entity_id: input_select.roller_shutters_scene
+    state: 'day'
+  action:
+    service: automation.turn_on
+    data_template:
+      entity_id: '{% if(trigger.to_state.state == "on") %}automation.roller_shutter_down_left_living_room{% else %}automation.roller_shutter_up_left_living_room{% endif %}'
