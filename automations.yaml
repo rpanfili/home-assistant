@@ -672,7 +672,7 @@
   trigger:
     platform: sun
     event: sunset
-    offset: "00:30:00"
+#    offset: "00:30:00"
   action: 
     service: automation.turn_on
     entity_id: automation.all_roller_shutter_down
