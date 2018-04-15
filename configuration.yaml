@@ -178,7 +178,6 @@ sensor:
     state_topic: "catingham_palace/greenhouse/temperature"
     name: "Greenhouse temperature"
     unit_of_measurement: '°C'
-    value_template: "{{ ((value * 2) | round) / 2 }}"
   - platform: mqtt
     state_topic: "catingham_palace/greenhouse/humidity"
     name: "Greenhouse humidity"
