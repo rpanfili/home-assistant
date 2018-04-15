@@ -555,7 +555,6 @@ media_player:
 input_select:
   roller_shutters_scene:
     name: Roller shutters scene
-    initial: "day"
     options: 
       - "day"
       - "night"    
