@@ -587,6 +587,10 @@
       entity_id: automation.roller_shutter_up_pink_room
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_bathroom
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.roller_shutters_scene
+        option: "day"      
     - service: automation.turn_off
       entity_id: automation.weekend_roller_shutter_up
 
@@ -602,10 +606,6 @@
       entity_id: automation.weekend_roller_shutter_up
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_bedroom
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.roller_shutters_scene
-        option: "day"
     - service: automation.turn_off
       entity_id: automation.all_roller_shutter_up
     
