@@ -568,6 +568,24 @@ google_assistant:
   client_id: !secret google_assistant_client_id
   access_token: !secret google_assistant_access_token
   api_key: !secret google_assistant_api_key
+  entity_config:
+    lock.driveway_gate:
+      aliases: 
+        - cancello
+        - cancellone
+      room: Driveway
+    lock.driveway_door:
+      aliases: 
+        - cancelletto
+      room: Driveway
+    lock.stair_front_door:
+      aliases: 
+        - porta sulle scale
+    light.driveway_lights:
+      aliases:
+        - luci in giardino
+        - luci nel vialetto    
+
 
 group: !include groups.yaml
 automation: !include automations.yaml
