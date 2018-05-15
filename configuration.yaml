@@ -12,11 +12,11 @@ homeassistant:
   time_zone: Europe/Rome
   
   customize:
-    switch.driveway_gate:
+    lock.driveway_gate:
       icon: mdi:gate
-    switch.driveway_door:
+    lock.driveway_door:
       icon: mdi:lock
-    switch.stair_front_door:
+    lock.stair_front_door:
       icon: mdi:stairs
     switch.automatic_cat_passage:
       icon: mdi:auto-fix
@@ -221,28 +221,34 @@ nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
 
-switch:
+lock:
   - platform: mqtt
     name: "Driveway Gate"
     command_topic: "catingham_palace/driveway/gate/state"
     state_topic: "catingham_palace/driveway/gate/state"
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
+    payload_unlock: "OPEN"
+    payload_lock: "CLOSED"
+    optimistic: false
     qos: 1
   - platform: mqtt
     name: "Driveway Door"
     command_topic: "catingham_palace/driveway/door/state"
     state_topic: "catingham_palace/driveway/door/state"
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
+    payload_unlock: "OPEN"
+    payload_lock: "CLOSED"
+    optimistic: false
     qos: 1
   - platform: mqtt
     name: "Stair Front door"
     command_topic: "catingham_palace/stair/front_door/state"
     state_topic: "catingham_palace/stair/front_door/state"
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    qos: 1
+    payload_unlock: "OPEN"
+    payload_lock: "CLOSED"
+    optimistic: false
+    qos: 1    
+
+switch:
+
   - platform: mqtt
     name: "Automatic cat passage"
     command_topic: "catingham_palace/roller_shutters/automatic_cat_passage"

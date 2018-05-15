@@ -20,9 +20,9 @@ family_locations:
 driveway:
   name: Driveway
   entities:
-  - switch.driveway_gate
-  - switch.driveway_door
-  - switch.stair_front_door
+  - lock.driveway_gate
+  - lock.driveway_door
+  - lock.stair_front_door
   - light.driveway_lights
 
 environment:
