@@ -12,8 +12,6 @@ homeassistant:
   time_zone: Europe/Rome
   
   customize:
-    switch.driveway_lights:
-      icon: mdi:lightbulb
     switch.driveway_gate:
       icon: mdi:gate
     switch.driveway_door:
@@ -246,11 +244,6 @@ switch:
     payload_off: "CLOSED"
     qos: 1
   - platform: mqtt
-    name: "Driveway Lights"
-    command_topic: "catingham_palace/driveway/lights/state"
-    state_topic: "catingham_palace/driveway/lights/state"
-    qos: 1
-  - platform: mqtt
     name: "Automatic cat passage"
     command_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
     state_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
@@ -300,6 +293,12 @@ light:
     retain: true
     command_topic: "catingham_palace/greenhouse/light/switch"
     state_topic: "catingham_palace/greenhouse/light/status"
+  - platform: mqtt
+    name: "Driveway Lights"
+    command_topic: "catingham_palace/driveway/lights/state"
+    state_topic: "catingham_palace/driveway/lights/state"
+    qos: 1
+        
 fan:
   - platform: mqtt
     name: "Greenhouse ventilation"

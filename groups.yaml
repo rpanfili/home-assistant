@@ -23,7 +23,7 @@ driveway:
   - switch.driveway_gate
   - switch.driveway_door
   - switch.stair_front_door
-  - switch.driveway_lights
+  - light.driveway_lights
 
 environment:
   name: Environment
