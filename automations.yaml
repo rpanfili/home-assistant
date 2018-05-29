@@ -805,13 +805,40 @@
     - service: switch.turn_on
       entity_id: switch.greenhouse_humidifier_power
       
-- id: 'living_room_roller_shutter_tv_aware'
-  alias: 'Living room roller shutter TV aware'
+- id: 'living_room_roller_shutter_up_delayed'
+  alias: 'Living room roller shutter up delayed'
+  initial_state: True
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.tv_shut_down_delay
+  action:
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_up_left_living_room
+      
+- id: 'living_room_roller_shutter_tv_on_aware'
+  alias: 'Living room roller shutter TV ON aware'
   initial_state: True
   trigger:
     - platform: state
       entity_id: media_player.living_room_tv
       to: 'on'
+  condition: 
+    condition: state
+    entity_id: input_select.roller_shutters_scene
+    state: 'day'
+  action:
+    - service: timer.cancel
+      entity_id: timer.tv_shut_down_delay
+    - service: automation.turn_on
+      entity_id: automation.roller_shutter_down_left_living_room
+      
+
+- id: 'living_room_roller_shutter_tv_off_aware'
+  alias: 'Living room roller shutter TV OFF aware'
+  initial_state: True
+  trigger:
     - platform: state
       entity_id: media_player.living_room_tv
       to: 'off'    
@@ -820,6 +847,5 @@
     entity_id: input_select.roller_shutters_scene
     state: 'day'
   action:
-    service: automation.turn_on
-    data_template:
-      entity_id: '{% if(trigger.to_state.state == "on") %}automation.roller_shutter_down_left_living_room{% else %}automation.roller_shutter_up_left_living_room{% endif %}'
+    - service: timer.start
+      entity_id: timer.tv_shut_down_delay

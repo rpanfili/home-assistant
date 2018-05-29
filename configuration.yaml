@@ -586,6 +586,10 @@ google_assistant:
         - luci in giardino
         - luci nel vialetto    
 
+timer:
+  tv_shut_down_delay:
+    duration: 30
+    
 
 group: !include groups.yaml
 automation: !include automations.yaml
