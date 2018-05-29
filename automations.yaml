@@ -207,7 +207,7 @@
 
 - id: 'leave_cat_passage_living_room'
   alias: 'Leave cat passage living room'
-  initial_state: True
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_living_room
@@ -232,7 +232,7 @@
 
 - id: 'leave_cat_passage_kitchen'
   alias: 'Leave cat passage kitchen'
-  initial_state: True
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_kitchen
@@ -250,7 +250,7 @@
 
 - id: 'leave_cat_passage_green_room'
   alias: 'Leave cat passage green room'
-  initial_state: True
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_green_room
@@ -268,7 +268,7 @@
 
 - id: 'leave_cat_passage_bedroom'
   alias: 'Leave cat passage bedroom'
-  initial_state: True
+  initial_state: False
   trigger:
     - platform: state
       entity_id: automation.leave_cat_passage_bedroom
@@ -697,6 +697,8 @@
     - platform: state
       entity_id: switch.automatic_cat_passage
       to: 'on'
+    - platform: homeassistant
+      event: start  
   condition:    
     condition: state
     entity_id: switch.automatic_cat_passage
@@ -719,6 +721,8 @@
     - platform: state
       entity_id: switch.automatic_cat_passage
       to: 'on'
+    - platform: homeassistant
+      event: start        
   condition:    
     condition: state
     entity_id: switch.automatic_cat_passage
@@ -741,6 +745,8 @@
     - platform: state
       entity_id: switch.automatic_cat_passage
       to: 'on'
+    - platform: homeassistant
+      event: start        
   condition:    
     condition: state
     entity_id: switch.automatic_cat_passage
@@ -763,6 +769,8 @@
     - platform: state
       entity_id: switch.automatic_cat_passage
       to: 'on'
+    - platform: homeassistant
+      event: start        
   condition:    
     condition: state
     entity_id: switch.automatic_cat_passage
