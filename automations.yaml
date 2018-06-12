@@ -645,9 +645,19 @@
   alias: 'Roller shutter sunrise'
   initial_state: True
   trigger:
-    platform: sun
-    event: sunrise
-    offset: "-00:30:00"
+    - platform: sun
+      event: sunrise
+      offset: "-00:30:00"
+    - platform: time
+      at: "06:00:00"
+  condition:  
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunrise
+        after_offset: "-00:30:00"
+      - condition: time
+        after: "06:00:00"    
   action: 
     - service: automation.turn_on
       entity_id: automation.weekend_roller_shutter_up
