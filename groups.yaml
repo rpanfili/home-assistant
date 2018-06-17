@@ -141,6 +141,15 @@ roller_shutter_bathroom:
   - input_number.bathroom_rolling_shutter
   - binary_sensor.bathroom_window      
 
+roller_shutters_with_balcony:
+  name: Roller shutters with balcony
+  entities:
+  - input_number.green_room_rolling_shutter
+  - input_number.living_room_right_rolling_shutter
+  #- input_number.kitchen_left_rolling_shutter
+  - input_number.kitchen_right_rolling_shutter
+  - input_number.bedroom_rolling_shutter
+
 greenhouse:
   name: Greenhouse
   view: yes
