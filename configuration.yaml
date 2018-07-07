@@ -61,6 +61,13 @@ homeassistant:
     light.greenhouse_light:
       friendly_name: "Light"
       
+    sensor.entryway_temperature:
+      icon: mdi:thermometer
+      friendly_name: "Temperature"
+    sensor.entryway_humidity:
+      icon: mdi:water-percent
+      friendly_name: "Humidity"
+      
     switch.greenhouse_humidifier_power:
       friendly_name: Power
       icon: mdi:power
@@ -186,6 +193,15 @@ sensor:
     name: "Greenhouse plant1 soil_moisture"
     unit_of_measurement: '%'
   - platform: mqtt
+    state_topic: "catingham_palace/entryway/temperature"
+    name: "Entryway temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "catingham_palace/entryway/humidity"
+    name: "Entryway humidity"
+    unit_of_measurement: '%'
+    value_template: "{{ value | round }}"
+  - platform: mqtt
     state_topic: "catingham_palace/emonpi/power1"
     name: "EmonPi Power 1"
     unit_of_measurement: 'W'
@@ -280,7 +296,13 @@ switch:
     optimitic: false
     retain: true
     qos: 1
-    
+  - platform: mqtt
+    name: "Roller shutters away mode"
+    command_topic: "catingham_palace/roller_shutters/away_mode"
+    state_topic: "catingham_palace/roller_shutters/away_mode"
+    optimitic: false
+    retain: true
+    qos: 1    
 
 device_tracker:
   - platform: owntracks
@@ -447,6 +469,11 @@ binary_sensor:
     qos: 1
     device_class: "motion"
   - platform: mqtt
+    state_topic: "catingham_palace/entryway/motion"
+    name: "Entryway motion"
+    qos: 1
+    device_class: "motion"
+  - platform: mqtt
     state_topic: "catingham_palace/living_room/right_window/state"
     name: "Living room right window"
     qos: 1
@@ -594,4 +621,3 @@ timer:
 group: !include groups.yaml
 automation: !include automations.yaml
 zone: !include zones.yaml
-

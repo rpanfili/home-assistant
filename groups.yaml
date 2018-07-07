@@ -58,6 +58,13 @@ bedroom:
   entities:
   - binary_sensor.rubens_bed
   - binary_sensor.valentina_bed
+entryway:
+  name: Entryway
+  entities:
+  - sensor.entryway_temperature
+  - sensor.entryway_humidity
+  - binary_sensor.entryway_motion
+
 
 #pink_room:
 #  name: Pink Room
