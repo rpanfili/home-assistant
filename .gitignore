@@ -13,3 +13,4 @@ secrets.yaml
 known_devices.yaml
 .cloud
 entity_registry.yaml
+.storage
