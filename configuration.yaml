@@ -619,6 +619,12 @@ timer:
   tv_shut_down_delay:
     duration: 30
     
+vacuum:
+  - platform: roomba
+    name: Roomba
+    host: !secret roomba_ip_address
+    username: !secret roomba_username
+    password: !secret roomba_password    
 
 group: !include groups.yaml
 automation: !include automations.yaml
