@@ -12,3 +12,4 @@ secrets.yaml
 .HA_VERSION
 known_devices.yaml
 .cloud
+entity_registry.yaml
