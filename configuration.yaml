@@ -613,6 +613,8 @@ google_assistant:
         - luci in giardino
         - luci nel vialetto    
 
+cast:
+
 timer:
   tv_shut_down_delay:
     duration: 30
