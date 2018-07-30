@@ -575,12 +575,12 @@
   action:
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_left_living_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_right_living_room
+#    - service: automation.turn_on
+#      entity_id: automation.roller_shutter_up_right_living_room
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_left_kitchen
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_right_kitchen
+#    - service: automation.turn_on
+#      entity_id: automation.roller_shutter_up_right_kitchen
     - service: automation.turn_on
       entity_id: automation.roller_shutter_up_green_room
     - service: automation.turn_on
@@ -661,20 +661,20 @@
   action: 
     - service: automation.turn_on
       entity_id: automation.weekend_roller_shutter_up
-    - condition: or
-      conditions:
-        - condition: time
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
-        - condition: state
-          entity_id: 'input_boolean.avoid_bedroom_roller_shutter_up_during_weekend'
-          state: 'off'
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_bedroom
+  #  - condition: or
+  #    conditions:
+  #      - condition: time
+  #        weekday:
+  #          - mon
+  #          - tue
+  #          - wed
+  #          - thu
+  #          - fri
+  #      - condition: state
+  #        entity_id: 'input_boolean.avoid_bedroom_roller_shutter_up_during_weekend'
+  #        state: 'off'
+  #  - service: automation.turn_on
+  #    entity_id: automation.roller_shutter_up_bedroom
 
 - id: 'roller_shutter_sunset'
   alias: 'Roller shutter sunset'
