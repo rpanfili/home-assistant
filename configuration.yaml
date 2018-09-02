@@ -326,6 +326,17 @@ light:
     command_topic: "catingham_palace/driveway/lights/state"
     state_topic: "catingham_palace/driveway/lights/state"
     qos: 1
+  - platform: mqtt
+    name: "Entryway"
+    state_topic: "stat/entryway/POWER"
+    command_topic: "cmnd/entryway/POWER"
+    availability_topic: "tele/entryway/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false 
         
 fan:
   - platform: mqtt

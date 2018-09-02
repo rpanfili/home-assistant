@@ -65,6 +65,7 @@ entryway:
   - sensor.entryway_temperature
   - sensor.entryway_humidity
   - binary_sensor.entryway_motion
+  - light.entryway
 
 
 #pink_room:
