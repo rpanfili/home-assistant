@@ -15,18 +15,6 @@
 
  # This automation script runs when the target temperature slider is moved.
  # It publishes its value to the same MQTT topic it is also subscribed to.
-- alias: Kitchen left shutter slider moved
-  hide_entity: True
-  initial_state: True
-  trigger:
-    platform: state
-    entity_id: input_number.kitchen_left_rolling_shutter
-  action:
-    service: mqtt.publish
-    data_template:
-      topic: "catingham_palace/kitchen/left_rolling_shutter/position/set"
-      retain: true
-      payload: '{{ states.input_number.kitchen_left_rolling_shutter.state | int }}'
 
 - alias: Set kitchen right shutter slider
   hide_entity: True
@@ -41,18 +29,26 @@
       value: '{{ trigger.payload }}'
 
 
-- alias: Roller shutters with balcony slider moved
+- alias: Roller shutters slider moved
   hide_entity: True
   initial_state: True
   trigger:
     - platform: state
+      entity_id: input_number.kitchen_left_rolling_shutter      
+    - platform: state
       entity_id: input_number.kitchen_right_rolling_shutter
-    - platform: state  
-      entity_id: input_number.green_room_rolling_shutter
+    - platform: state
+      entity_id: input_number.living_room_left_rolling_shutter
     - platform: state
       entity_id: input_number.living_room_right_rolling_shutter
     - platform: state  
       entity_id: input_number.bedroom_rolling_shutter  
+    - platform: state
+      entity_id: input_number.pink_room_rolling_shutter
+    - platform: state  
+      entity_id: input_number.green_room_rolling_shutter
+    - platform: state
+      entity_id: input_number.bathroom_rolling_shutter
   action:
     service: mqtt.publish
     data_template:
@@ -96,19 +92,6 @@
       entity_id: input_number.pink_room_rolling_shutter
       value: '{{ trigger.payload }}'
 
-- alias: Pink room shutter slider moved
-  hide_entity: True
-  initial_state: True
-  trigger:
-    platform: state
-    entity_id: input_number.pink_room_rolling_shutter
-  action:
-    service: mqtt.publish
-    data_template:
-      topic: "catingham_palace/pink_room/rolling_shutter/position/set"
-      retain: true
-      payload: '{{ states.input_number.pink_room_rolling_shutter.state | int }}'
-
 - alias: Set bedroom shutter slider
   hide_entity: True
   initial_state: True
@@ -134,18 +117,6 @@
       entity_id: input_number.bathroom_rolling_shutter
       value: '{{ trigger.payload }}'
 
-- alias: Bathroom shutter slider moved
-  hide_entity: True
-  initial_state: True
-  trigger:
-    platform: state
-    entity_id: input_number.bathroom_rolling_shutter
-  action:
-    service: mqtt.publish
-    data_template:
-      topic: "catingham_palace/bathroom/rolling_shutter/position/set"
-      retain: true
-      payload: '{{ states.input_number.bathroom_rolling_shutter.state | int }}'
 
 - alias: Set living room left shutter slider
   hide_entity: True
@@ -159,18 +130,6 @@
       entity_id: input_number.living_room_left_rolling_shutter
       value: '{{ trigger.payload }}'
 
-- alias: Living room left shutter slider moved
-  hide_entity: True
-  initial_state: True
-  trigger:
-    platform: state
-    entity_id: input_number.living_room_left_rolling_shutter
-  action:
-    service: mqtt.publish
-    data_template:
-      topic: "catingham_palace/living_room/left_rolling_shutter/position/set"
-      retain: true
-      payload: '{{ states.input_number.living_room_left_rolling_shutter.state | int }}'
 
 
 - alias: Set living room right shutter slider
