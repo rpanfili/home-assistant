@@ -557,6 +557,17 @@ cover:
         open_cover:
           service: automation.turn_on
           entity_id: automation.all_roller_shutter_up
+  - platform: mqtt
+    name: "Living room right roller shutter"
+    command_topic: "catingham_palace/living_room/right_rolling_shutter/position/set"
+    state_topic: "catingham_palace/living_room/right_rolling_shutter/position"
+    set_position_topic: "catingham_palace/living_room/right_rolling_shutter/position/set"
+    qos: 1
+    retain: true
+    payload_open: "100"
+    payload_close: "0"
+    optimistic: false
+    
 
 history_graph:
   greenhouse_temperature:
