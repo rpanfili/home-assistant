@@ -126,6 +126,10 @@ homeassistant:
     sensor.emonpi_total_power_kwh:
       icon: mdi:flash
       friendly_name: "Average consumption"
+      
+    light.entryway:
+      friendly_name: "Light"
+      
 
 recorder:
   db_url: !secret recorder_db_url
@@ -634,6 +638,11 @@ google_assistant:
       aliases:
         - luci in giardino
         - luci nel vialetto    
+    light.entryway:
+      aliases:
+        - luce dell'ingresso
+        - luce in ingresso
+      room: Entryway
 
 cast:
 
