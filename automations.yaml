@@ -737,10 +737,9 @@
   trigger:
   - platform: mqtt
     topic: catingham_palace/stair/rfid_reader
-    payload: 'Rubens'
-  - platform: mqtt
-    topic: catingham_palace/stair/rfid_reader
-    payload: 'Valentina'
+  condition:
+      condition: template
+      value_template: '{{ trigger.payload_json.username in ("Rubens", "Valentina") }}'
   action:
   - service: lock.unlock
     data:
