@@ -618,8 +618,6 @@ input_select:
 
 google_assistant:
   project_id: catingham-palace
-  client_id: !secret google_assistant_client_id
-  access_token: !secret google_assistant_access_token
   api_key: !secret google_assistant_api_key
   entity_config:
     lock.driveway_gate:
