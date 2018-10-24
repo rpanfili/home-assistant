@@ -16,10 +16,7 @@ views:
         show_header_toggle: true
         entities:
           - sun.sun
-          - sensor.entryway_thermostat_temperature
-          - sensor.entryway_thermostat_humidity
           - climate.entryway
-          - sensor.yr_symbol
       - type: entities
         title: Driveway
         show_header_toggle: true
@@ -35,19 +32,17 @@ views:
           - climate.entryway
           - sensor.entryway_thermostat_temperature
           - sensor.entryway_thermostat_humidity
-      - type: entities
-        title: Living Room
-        show_header_toggle: true
+      
+      - type: picture-glance
+        title: Living room
+        camera_image: camera.living_room
+        tap_action: dialog
         entities:
+          - camera.living_room
           - binary_sensor.living_room_camera_person_detected
           - binary_sensor.living_room_camera_motion_detected
-          - binary_sensor.living_room_camera_sound_detected
-      - type: picture-entity
-        title: Living Room
-        entity: camera.living_room
-        camera_image: camera.living_room
-        show_info: true
-        tap_action: dialog
+          - binary_sensor.living_room_camera_sound_detected   
+        
       - type: media-control
         entity: media_player.living_room_tv
       - type: entities
@@ -63,6 +58,8 @@ views:
           - sensor.entryway_humidity
           - binary_sensor.entryway_motion
           - light.entryway
+          
+          
   - title: Roller Shutters
     icon: mdi:blinds
     cards:
