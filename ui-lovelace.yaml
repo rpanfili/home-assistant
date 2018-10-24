@@ -9,6 +9,8 @@ views:
         entities:
           - device_tracker.rubens_phone
           - device_tracker.valentina_phone
+      - type: weather-forecast
+        entity: weather.home
       - type: entities
         title: Environment
         show_header_toggle: true

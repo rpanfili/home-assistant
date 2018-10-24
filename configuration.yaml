@@ -655,6 +655,12 @@ vacuum:
     username: !secret roomba_username
     password: !secret roomba_password    
 
+weather:
+  - platform: yweather
+    name: Home
+  
+
+
 group: !include groups.yaml
 automation: !include automations.yaml
 zone: !include zones.yaml
