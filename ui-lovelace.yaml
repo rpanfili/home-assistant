@@ -1,6 +1,7 @@
 title: Home
 views:
   - title: default_view
+    id: home
     icon: mdi:home
     cards:
       - type: entities
@@ -70,8 +71,8 @@ views:
           - entity: light.entryway
             tap_action: toggle
           
-          
   - title: Roller Shutters
+    id: roller-shutters
     icon: mdi:blinds
     cards:
       - type: entities
@@ -135,7 +136,9 @@ views:
           - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
           - switch.automatic_cat_passage
           - input_number.cat_passage
+          
   - title: Greenhouse
+    id: greenhouse
     icon: mdi:leaf
     cards:
       - type: entities
@@ -173,7 +176,9 @@ views:
         refresh_interval: 60
         entities:
           - sensor.greenhouse_plant1_soil_moisture
+          
   - title: energy
+    id: energy
     icon: mdi:flash
     cards:
       - type: entities
@@ -200,6 +205,7 @@ views:
           - sensor.emonpi_total_power_kwh
 
   - title: people
+    id: people
     icon: mdi:account-multiple
     cards:          
     - type: entities
