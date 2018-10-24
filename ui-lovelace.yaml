@@ -5,7 +5,7 @@ views:
     cards:
       - type: entities
         title: Family locations
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - device_tracker.rubens_phone
           - device_tracker.valentina_phone
