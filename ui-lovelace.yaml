@@ -17,14 +17,23 @@ views:
         entities:
           - sun.sun
           - climate.entryway
-      - type: entities
+      - type: glance
         title: Driveway
         show_header_toggle: true
+        show_state: false
         entities:
-          - lock.driveway_gate
-          - lock.driveway_door
-          - lock.stair_front_door
-          - light.driveway_lights
+          - entity: lock.driveway_gate
+            name: Gate
+            tap_action: toggle
+          - entity: lock.driveway_door
+            name: Door
+            tap_action: toggle
+          - entity: lock.stair_front_door
+            name: Stair
+            tap_action: toggle
+          - entity: light.driveway_lights
+            name: Lights
+            tap_action: toggle
       - type: entities
         title: Kitchen
         show_header_toggle: true
