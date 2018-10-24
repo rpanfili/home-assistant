@@ -188,3 +188,17 @@ views:
         refresh_interval: 60
         entities:
           - sensor.emonpi_total_power_kwh
+
+  - title: people
+    icon: mdi:account-multiple
+    cards:          
+    - type: entities
+      title: Family locations
+      show_header_toggle: true
+      entities:
+        - device_tracker.rubens_phone
+        - device_tracker.valentina_phone
+    - type: map
+      entities:
+        - device_tracker.rubens_phone
+        - device_tracker.valentina_phone          
