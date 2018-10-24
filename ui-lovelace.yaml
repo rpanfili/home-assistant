@@ -1,0 +1,190 @@
+title: Home
+views:
+  - title: default_view
+    icon: mdi:home
+    cards:
+      - type: entities
+        title: Family locations
+        show_header_toggle: true
+        entities:
+          - device_tracker.rubens_phone
+          - device_tracker.valentina_phone
+      - type: entities
+        title: Environment
+        show_header_toggle: true
+        entities:
+          - sun.sun
+          - sensor.entryway_thermostat_temperature
+          - sensor.entryway_thermostat_humidity
+          - climate.entryway
+          - sensor.yr_symbol
+      - type: entities
+        title: Driveway
+        show_header_toggle: true
+        entities:
+          - lock.driveway_gate
+          - lock.driveway_door
+          - lock.stair_front_door
+          - light.driveway_lights
+      - type: entities
+        title: Kitchen
+        show_header_toggle: true
+        entities:
+          - climate.entryway
+          - sensor.entryway_thermostat_temperature
+          - sensor.entryway_thermostat_humidity
+      - type: entities
+        title: Living Room
+        show_header_toggle: true
+        entities:
+          - binary_sensor.living_room_camera_person_detected
+          - binary_sensor.living_room_camera_motion_detected
+          - binary_sensor.living_room_camera_sound_detected
+      - type: picture-entity
+        title: Living Room
+        entity: camera.living_room
+        camera_image: camera.living_room
+        show_info: true
+        tap_action: dialog
+      - type: media-control
+        entity: media_player.living_room_tv
+      - type: entities
+        title: Green Room
+        show_header_toggle: true
+        entities:
+          - binary_sensor.green_room_motion
+      - type: entities
+        title: Entryway
+        show_header_toggle: true
+        entities:
+          - sensor.entryway_temperature
+          - sensor.entryway_humidity
+          - binary_sensor.entryway_motion
+          - light.entryway
+  - title: Roller Shutters
+    icon: mdi:blinds
+    cards:
+      - type: entities
+        title: Global
+        show_header_toggle: true
+        entities:
+          - automation.all_roller_shutter_up
+          - automation.all_roller_shutter_down
+          - cover.all_roller_shutters
+      - type: entities
+        title: Kitchen
+        show_header_toggle: true
+        entities:
+          - input_number.kitchen_left_rolling_shutter
+          - input_number.kitchen_right_rolling_shutter
+          - automation.leave_cat_passage_kitchen
+          - binary_sensor.kitchen_left_window
+          - binary_sensor.kitchen_right_window
+      - type: entities
+        title: Living Room
+        show_header_toggle: true
+        entities:
+          - input_number.living_room_left_rolling_shutter
+          - input_number.living_room_right_rolling_shutter
+          - cover.living_room_right_roller_shutter
+          - automation.leave_cat_passage_living_room
+          - binary_sensor.living_room_left_window
+          - binary_sensor.living_room_right_window
+      - type: entities
+        title: Bedroom
+        show_header_toggle: true
+        entities:
+          - input_number.bedroom_rolling_shutter
+          - automation.leave_cat_passage_bedroom
+          - binary_sensor.bedroom_window
+      - type: entities
+        title: Green Room
+        show_header_toggle: true
+        entities:
+          - input_number.green_room_rolling_shutter
+          - automation.leave_cat_passage_green_room
+          - binary_sensor.green_room_window
+      - type: entities
+        title: Pink Room
+        show_header_toggle: true
+        entities:
+          - input_number.pink_room_rolling_shutter
+          - binary_sensor.pink_room_window
+      - type: entities
+        title: Bathroom
+        show_header_toggle: true
+        entities:
+          - input_number.bathroom_rolling_shutter
+          - binary_sensor.bathroom_window
+      - type: entities
+        title: Config
+        show_header_toggle: true
+        entities:
+          - automation.roller_shutter_sunrise
+          - automation.roller_shutter_sunset
+          - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
+          - switch.automatic_cat_passage
+          - input_number.cat_passage
+  - title: Greenhouse
+    icon: mdi:leaf
+    cards:
+      - type: entities
+        title: Environment
+        show_header_toggle: true
+        entities:
+          - sensor.greenhouse_temperature
+          - sensor.greenhouse_humidity
+          - sensor.greenhouse_plant1_soil_moisture
+          - light.greenhouse_light
+          - fan.greenhouse_ventilation
+      - type: entities
+        title: Humidifier
+        show_header_toggle: true
+        entities:
+          - input_number.greenhouse_humidifier_target_humidity
+          - switch.greenhouse_humidifier_mode
+          - switch.greenhouse_humidifier_power
+          - switch.greenhouse_humidifier_status_leds
+      - type: history-graph
+        title: Temperature
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - sensor.greenhouse_temperature
+      - type: history-graph
+        title: Humidity
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - sensor.greenhouse_humidity
+      - type: history-graph
+        title: Soil moisture
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - sensor.greenhouse_plant1_soil_moisture
+  - title: energy
+    icon: mdi:flash
+    cards:
+      - type: entities
+        title: Energy consumption
+        show_header_toggle: true
+        entities:
+          - sensor.emonpi_total_power
+          - sensor.emonpi_power_1
+          - sensor.emonpi_power_2
+          - sensor.emonpi_total_power_kwh
+      - type: history-graph
+        title: Power consumption
+        hours_to_show: 24
+        refresh_interval: 5
+        entities:
+          - sensor.emonpi_total_power
+          - sensor.emonpi_power_1
+          - sensor.emonpi_power_2
+      - type: history-graph
+        title: Power consumption kWh
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - sensor.emonpi_total_power_kwh
