@@ -50,14 +50,16 @@ views:
         show_header_toggle: true
         entities:
           - binary_sensor.green_room_motion
-      - type: entities
+      - type: glance
         title: Entryway
-        show_header_toggle: true
+        show_header_toggle: false
+        show_name: false
         entities:
           - sensor.entryway_temperature
           - sensor.entryway_humidity
           - binary_sensor.entryway_motion
-          - light.entryway
+          - entity: light.entryway
+            tap_action: toggle
           
           
   - title: Roller Shutters
