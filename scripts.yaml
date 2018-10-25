@@ -1,0 +1,13 @@
+roller_shutter_set_position:
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: "{{ entity_id }}"
+        value: >-
+          {%- set domain, device = trigger.entity_id.split('.') -%}
+          {%- set location = (device | regex_replace("_((left|right)_)?rolling_shutter$",'')) -%}
+          {%- if is_state(("automation.leave_cat_passage_" ~ location),"on") -%}
+          {{ (position | int, states.input_number.cat_passage.state | int) | max }}
+          {%- else -%}
+          {{ position | int }}
+          {%- endif -%}

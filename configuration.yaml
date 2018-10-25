@@ -664,3 +664,5 @@ weather:
 group: !include groups.yaml
 automation: !include automations.yaml
 zone: !include zones.yaml
+
+script: !include scripts.yaml
