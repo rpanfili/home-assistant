@@ -84,19 +84,6 @@ homeassistant:
       icon: mdi:cat
     binary_sensor.living_room_camera_sound_detected:
       icon: mdi:bullhorn
-
-    automation.leave_cat_passage_living_room:
-      friendly_name: Leave cat passage
-      icon: mdi:cat
-    automation.leave_cat_passage_green_room:
-      friendly_name: Leave cat passage
-      icon: mdi:cat
-    automation.leave_cat_passage_bedroom:
-      friendly_name: Leave cat passage
-      icon: mdi:cat
-    automation.leave_cat_passage_kitchen:
-      friendly_name: Leave cat passage
-      icon: mdi:cat
       
     automation.all_roller_shutter_down:
       friendly_name: All the way down
@@ -462,6 +449,22 @@ input_boolean:
     name: "Avoid bedroom roller shutter up during weekend"
     initial: on
     icon: mdi:sleep
+  cat_passage_living_room:
+    name: Leave cat passage
+    initial: off
+    icon: mdi:cat
+  cat_passage_green_room:
+    name: Leave cat passage
+    initial: off    
+    icon: mdi:cat
+  cat_passage_bedroom:
+    name: Leave cat passage
+    initial: off    
+    icon: mdi:cat
+  cat_passage_kitchen:
+    name: Leave cat passage
+    initial: off    
+    icon: mdi:cat
 
 binary_sensor:
   - platform: mqtt

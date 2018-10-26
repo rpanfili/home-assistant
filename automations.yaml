@@ -62,7 +62,7 @@
       payload: >-
         {%- set domain, device = trigger.entity_id.split('.') -%}
         {%- set location = (device | regex_replace("_((left|right)_)?rolling_shutter$",'')) -%}
-        {%- if is_state(("automation.leave_cat_passage_" ~ location),"on") -%}
+        {%- if is_state(("input_boolean.cat_passage_" ~ location),"on") -%}
         {{ (trigger.to_state.state | int, states.input_number.cat_passage.state | int) | max }}
         {%- else -%}
         {{ trigger.to_state.state | int }}
@@ -70,41 +70,45 @@
 
 - id: 'leave_cat_passage_living_room'
   alias: 'Leave cat passage living room'
-  initial_state: False
+  initial_state: True
   trigger:
     - platform: state
-      entity_id: automation.leave_cat_passage_living_room
+      entity_id: input_boolean.cat_passage_living_room
       to: 'on'
-    #- platform: numeric_state
-    #  entity_id: input_number.living_room_right_rolling_shutter
-    #  below: '{{ float(states.input_number.cat_passage.state) }}'
-    - platform: template
-      value_template: "{{ float(states.input_number.living_room_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    - platform: state
+      entity_id: input_number.living_room_right_rolling_shutter
   condition:
-    #condition: numeric_state
-    #entity_id: input_number.living_room_right_rolling_shutter
-    #below: '{{ float(states.input_number.cat_passage.state) }}'
-    condition: template
-    value_template: "{{ float(states.input_number.living_room_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.cat_passage_living_room
+        state: 'on' 
+      - condition: template
+        value_template: "{{ float(states.input_number.living_room_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
     - service: input_number.set_value
       data_template:
         entity_id: input_number.living_room_right_rolling_shutter
-        #value: 95
         value: '{{ (states.input_number.cat_passage.state | int) }}'
+                        
 
 - id: 'leave_cat_passage_kitchen'
   alias: 'Leave cat passage kitchen'
   initial_state: False
   trigger:
     - platform: state
-      entity_id: automation.leave_cat_passage_kitchen
+      entity_id: input_boolean.cat_passage_kitchen
       to: 'on'
-    - platform: template
-      value_template: "{{ float(states.input_number.kitchen_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    - platform: state
+      entity_id: input_number.kitchen_right_rolling_shutter
   condition:
-    condition: template
-    value_template: "{{ float(states.input_number.kitchen_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.cat_passage_kitchen
+        state: 'on' 
+      - condition: template
+        value_template: "{{ float(states.input_number.kitchen_right_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
     - service: input_number.set_value
       data_template:
@@ -116,13 +120,18 @@
   initial_state: False
   trigger:
     - platform: state
-      entity_id: automation.leave_cat_passage_green_room
+      entity_id: input_boolean.cat_passage_green_room
       to: 'on'
-    - platform: template
-      value_template: "{{ float(states.input_number.green_room_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    - platform: state
+      entity_id: input_number.green_room_rolling_shutter
   condition:
-    condition: template
-    value_template: "{{ float(states.input_number.green_room_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.cat_passage_green_room
+        state: 'on' 
+      - condition: template
+        value_template: "{{ float(states.input_number.green_room_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
     - service: input_number.set_value
       data_template:
@@ -134,13 +143,18 @@
   initial_state: False
   trigger:
     - platform: state
-      entity_id: automation.leave_cat_passage_bedroom
+      entity_id: input_boolean.cat_passage_bedroom
       to: 'on'
-    - platform: template
-      value_template: "{{ float(states.input_number.bedroom_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    - platform: state
+      entity_id: input_number.bedroom_rolling_shutter
   condition:
-    condition: template
-    value_template: "{{ float(states.input_number.bedroom_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.cat_passage_bedroom
+        state: 'on' 
+      - condition: template
+        value_template: "{{ float(states.input_number.bedroom_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"      
   action:
     - service: input_number.set_value
       data_template:
@@ -358,11 +372,11 @@
   action:
     - service_template: >
         {% if is_state('binary_sensor.living_room_right_window', 'on') %}
-          automation.turn_on
+          input_boolean.turn_on
         {% else %}
-          automation.turn_off
+          input_boolean.turn_off
         {% endif %}
-      entity_id: automation.leave_cat_passage_living_room 
+      entity_id: input_boolean.cat_passage_living_room 
 
 - id: 'kitchen_auto_cat_passage_on_window_change'
   alias: 'Kitchen automatic cat passage on window state'
@@ -382,11 +396,11 @@
   action:
     - service_template: >
         {% if is_state('binary_sensor.kitchen_right_window', 'on') %}
-          automation.turn_on
+          input_boolean.turn_on
         {% else %}
-          automation.turn_off
+          input_boolean.turn_off
         {% endif %}
-      entity_id: automation.leave_cat_passage_kitchen 
+      entity_id: input_boolean.cat_passage_kitchen 
 
 - id: 'bedroom_auto_cat_passage_on_window_change'
   alias: 'Bedroom automatic cat passage on window state'
@@ -406,11 +420,11 @@
   action:
     - service_template: >
         {% if is_state('binary_sensor.bedroom_window', 'on') %}
-          automation.turn_on
+          input_boolean.turn_on
         {% else %}
-          automation.turn_off
+          input_boolean.turn_off
         {% endif %}
-      entity_id: automation.leave_cat_passage_bedroom 
+      entity_id: input_boolean.cat_passage_bedroom 
 
 - id: 'green_room_auto_cat_passage_on_window_change'
   alias: 'Green room automatic cat passage on window state'
@@ -430,11 +444,11 @@
   action:
     - service_template: >
         {% if is_state('binary_sensor.green_room_window', 'on') %}
-          automation.turn_on
+          input_boolean.turn_on
         {% else %}
-          automation.turn_off
+          input_boolean.turn_off
         {% endif %}
-      entity_id: automation.leave_cat_passage_green_room 
+      entity_id: input_boolean.cat_passage_green_room 
 
 
 - id: 'greenhouse_auto_humidity_power_off'
