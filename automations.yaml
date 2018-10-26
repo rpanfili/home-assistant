@@ -171,263 +171,6 @@
       data:
         message: 'A new update for Home Assistant is available.'
 
-- id: 'roller_shutter_down_right_living_room'
-  alias: "Roller shutter down right living room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_right_living_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.living_room_right_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_living_room","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_right_living_room
-
-- id: 'roller_shutter_up_right_living_room'
-  alias: "Roller shutter up right living room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_right_living_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.living_room_right_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_right_living_room
-
-- id: 'roller_shutter_down_left_living_room'
-  alias: "Roller shutter down left living room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_left_living_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.living_room_left_rolling_shutter
-        value: 0
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_left_living_room
-
-- id: 'roller_shutter_up_left_living_room'
-  alias: "Roller shutter up left living room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_left_living_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.living_room_left_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_left_living_room
-
-- id: 'roller_shutter_down_right_kitchen'
-  alias: "Roller shutter down right kitchen"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_right_kitchen
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.kitchen_right_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_kitchen","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_right_kitchen
-
-- id: 'roller_shutter_up_right_kitchen'
-  alias: "Roller shutter up right kitchen"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_right_kitchen
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.kitchen_right_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_right_kitchen
-
-- id: 'roller_shutter_down_left_kitchen'
-  alias: "Roller shutter down left kitchen"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_left_kitchen
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.kitchen_left_rolling_shutter
-        value: 0
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_left_kitchen
-
-- id: 'roller_shutter_up_left_kitchen'
-  alias: "Roller shutter up left kitchen"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_left_kitchen
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.kitchen_left_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_left_kitchen
-
-- id: 'roller_shutter_down_green_room'
-  alias: "Roller shutter down green room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_green_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.green_room_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_green_room","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_green_room
-
-- id: 'roller_shutter_up_green_room'
-  alias: "Roller shutter up green room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_green_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.green_room_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_green_room
-
-
-- id: 'roller_shutter_down_bedroom'
-  alias: "Roller shutter down bedroom"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_bedroom
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.bedroom_rolling_shutter
-        value: '{% if is_state("automation.leave_cat_passage_bedroom","on") %}{{ (states.input_number.cat_passage.state | int) }}{% else %}0{% endif %}'
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_bedroom
-
-- id: 'roller_shutter_up_bedroom'
-  alias: "Roller shutter up bedroom"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_bedroom
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.bedroom_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_bedroom
-
-- id: 'roller_shutter_down_pink_room'
-  alias: "Roller shutter down pink room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_pink_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.pink_room_rolling_shutter
-        value: 0
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_pink_room
-
-- id: 'roller_shutter_up_pink_room'
-  alias: "Roller shutter up pink room"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_pink_room
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.pink_room_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_pink_room
-
-- id: 'roller_shutter_down_bathroom'
-  alias: "Roller shutter down bathroom"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_down_bathroom
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.bathroom_rolling_shutter
-        value: 0
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_down_bathroom
-
-- id: 'roller_shutter_up_bathroom'
-  alias: "Roller shutter up bathroom"
-  initial_state: False
-  hide_entity: True
-  trigger:
-   - platform: state
-     entity_id: automation.roller_shutter_up_bathroom
-     to: 'on'
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.bathroom_rolling_shutter
-        value: 100
-    - service: automation.turn_off
-      entity_id: automation.roller_shutter_up_bathroom
-
 - id: 'weekend_roller_shutter_up'
   alias: "Weekend roller shutter up"
   initial_state: False
@@ -436,20 +179,35 @@
      entity_id: automation.weekend_roller_shutter_up
      to: 'on'
   action:
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_left_living_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_right_living_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_left_kitchen
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_right_kitchen
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_green_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_pink_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_bathroom
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.living_room_left_rolling_shutter
+        position: 100
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.living_room_right_rolling_shutter
+        position: 100        
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.kitchen_left_rolling_shutter
+        position: 100
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.kitchen_right_rolling_shutter
+        position: 100
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.green_room_rolling_shutter
+        position: 100
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.pink_room_rolling_shutter
+        position: 100
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.bathroom_rolling_shutter
+        position: 100
+                
     - service: input_select.select_option
       data:
         entity_id: input_select.roller_shutters_scene
@@ -465,10 +223,12 @@
      entity_id: automation.all_roller_shutter_up
      to: 'on'
   action:
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.bedroom_rolling_shutter
+        position: 100        
     - service: automation.turn_on
       entity_id: automation.weekend_roller_shutter_up
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_bedroom
     - service: automation.turn_off
       entity_id: automation.all_roller_shutter_up
     
@@ -481,22 +241,39 @@
      entity_id: automation.all_roller_shutter_down
      to: 'on'
   action:
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_left_living_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_right_living_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_left_kitchen
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_right_kitchen
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_green_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_bedroom
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_pink_room
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_bathroom
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.living_room_left_rolling_shutter
+        position: 0
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.living_room_right_rolling_shutter
+        position: 0        
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.kitchen_left_rolling_shutter
+        position: 0
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.kitchen_right_rolling_shutter
+        position: 0
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.green_room_rolling_shutter
+        position: 0
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.pink_room_rolling_shutter
+        position: 0
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.bathroom_rolling_shutter
+        position: 0
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.bedroom_rolling_shutter
+        position: 0          
+      
     - service: input_select.select_option
       data:
         entity_id: input_select.roller_shutters_scene
@@ -536,8 +313,10 @@
         - condition: state
           entity_id: 'input_boolean.avoid_bedroom_roller_shutter_up_during_weekend'
           state: 'off'
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_bedroom
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.bedroom_rolling_shutter
+        position: 100
 
 - id: 'roller_shutter_sunset'
   alias: 'Roller shutter sunset'
@@ -695,8 +474,10 @@
       event_data:
         entity_id: timer.tv_shut_down_delay
   action:
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_up_left_living_room
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.living_room_left_rolling_shutter
+        position: 100
       
 - id: 'living_room_roller_shutter_tv_on_aware'
   alias: 'Living room roller shutter TV ON aware'
@@ -712,9 +493,10 @@
   action:
     - service: timer.cancel
       entity_id: timer.tv_shut_down_delay
-    - service: automation.turn_on
-      entity_id: automation.roller_shutter_down_left_living_room
-      
+    - service: script.roller_shutter_set_position
+      data:
+        entity_id: input_number.living_room_left_rolling_shutter
+        position: 0
 
 - id: 'living_room_roller_shutter_tv_off_aware'
   alias: 'Living room roller shutter TV OFF aware'
