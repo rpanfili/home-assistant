@@ -18,6 +18,7 @@ views:
         entities:
           - sun.sun
           - climate.entryway
+          - cover.test_cover
       - type: glance
         title: Driveway
         show_header_toggle: true

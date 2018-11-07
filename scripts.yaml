@@ -11,3 +11,13 @@ roller_shutter_set_position:
           {%- else -%}
             {{ position | int }}
           {%- endif -%}
+
+test_cover:
+  sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: catingham_palace/mqtt_cover_test
+        payload: "{{ position }}"
+    - service: notify.telegram2rubens
+      data_template:
+        message: "Pizza connection! Posizione: {{ position }}"

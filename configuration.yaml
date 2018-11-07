@@ -210,6 +210,11 @@ sensor:
     value_template: "{{ value | round(2) }}"
     unit_of_measurement: 'kWh'
 
+  - platform: mqtt
+    state_topic: "catingham_palace/mqtt_cover_test"
+    name: "mqtt_cover_test"
+    unit_of_measurement: '%'
+
 # Text to speech
 tts:
   platform: google
@@ -574,6 +579,23 @@ cover:
     payload_open: "100"
     payload_close: "0"
     optimistic: false
+  - platform: template
+    covers:
+      test_cover:
+        friendly_name: Test cover
+        position_template: "{{ states('sensor.mqtt_cover_test') }}"
+        open_cover: 
+          service: script.test_cover
+          data:
+            position: 100
+        close_cover: 
+          service: script.test_cover
+          data:
+            position: 0      
+        set_cover_position: 
+          service: script.test_cover
+          data_template:
+            position: "{{position}}"              
     
 
 history_graph:
