@@ -259,10 +259,10 @@
       data:
         entity_id: input_number.living_room_left_rolling_shutter
         position: 0
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_right_rolling_shutter
-        position: 0        
+    #- service: script.roller_shutter_set_position
+    #  data:
+    #    entity_id: input_number.living_room_right_rolling_shutter
+    #    position: 0        
     - service: script.roller_shutter_set_position
       data:
         entity_id: input_number.kitchen_left_rolling_shutter
