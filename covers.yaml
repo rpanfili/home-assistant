@@ -1,0 +1,27 @@
+- platform: template
+  covers:
+    all_roller_shutters:
+      friendly_name: "All roller shutters"
+      close_cover:
+        service: automation.turn_on
+        entity_id: automation.all_roller_shutter_down
+      open_cover:
+        service: automation.turn_on
+        entity_id: automation.all_roller_shutter_up
+- platform: template
+  covers: 
+    test_cover:
+      friendly_name: Test cover
+      position_template: "{{ states('sensor.mqtt_cover_test') }}"
+      open_cover: 
+        service: script.test_cover
+        data:
+          position: 100
+      close_cover: 
+        service: script.test_cover
+        data:
+          position: 0      
+      set_cover_position: 
+        service: script.test_cover
+        data_template:
+          position: "{{position}}"
