@@ -111,7 +111,6 @@ roller_shutter_living_room:
   entities:
   - input_number.living_room_left_rolling_shutter
   - input_number.living_room_right_rolling_shutter
-  - cover.living_room_right_roller_shutter
   - input_boolean.cat_passage_living_room
   - binary_sensor.living_room_left_window
   - binary_sensor.living_room_right_window
