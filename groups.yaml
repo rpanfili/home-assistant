@@ -127,7 +127,7 @@ roller_shutter_kitchen:
 roller_shutter_green_room:
   name: Green Room
   entities:
-  - input_number.green_room_rolling_shutter
+  - cover.green_room
   - input_boolean.cat_passage_green_room
   - binary_sensor.green_room_window
 
@@ -153,7 +153,7 @@ roller_shutter_bathroom:
 roller_shutters_with_balcony:
   name: Roller shutters with balcony
   entities:
-  - input_number.green_room_rolling_shutter
+  - cover.green_room
   - input_number.living_room_right_rolling_shutter
   #- input_number.kitchen_left_rolling_shutter
   - input_number.kitchen_right_rolling_shutter

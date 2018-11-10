@@ -214,6 +214,12 @@ sensor:
     state_topic: "catingham_palace/mqtt_cover_test"
     name: "mqtt_cover_test"
     unit_of_measurement: '%'
+    
+  - platform: mqtt
+    state_topic: "catingham_palace/green_room/rolling_shutter/position"
+    name: "cover_position_green_room"
+    unit_of_measurement: '%'    
+    
 
 # Text to speech
 tts:
@@ -367,14 +373,6 @@ telegram_bot:
       - !secret telegram_catingham_palace_group
 
 input_number:
-  green_room_rolling_shutter:
-    name: Green room rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
   living_room_left_rolling_shutter:
     name: Living room left rolling shutter
     min: 0

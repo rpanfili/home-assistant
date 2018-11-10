@@ -12,6 +12,18 @@ roller_shutter_set_position:
             {{ position | int }}
           {%- endif -%}
 
+set_cover_position:
+  sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: "catingham_palace/{{location}}/{{sensor_name}}/position/set"
+        payload: >-
+          {%- if is_state(("input_boolean.cat_passage_" ~ location),"on") -%}
+            {{ (position | int, states.input_number.cat_passage.state | int) | max }}
+          {%- else -%}
+            {{ position | int }}
+          {%- endif -%}
+
 test_cover:
   sequence:
     - service: mqtt.publish

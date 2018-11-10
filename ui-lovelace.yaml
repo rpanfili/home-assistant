@@ -112,7 +112,7 @@ views:
         title: Green Room
         show_header_toggle: true
         entities:
-          - input_number.green_room_rolling_shutter
+          - cover.green_room
           - input_boolean.cat_passage_green_room
           - binary_sensor.green_room_window
       - type: entities

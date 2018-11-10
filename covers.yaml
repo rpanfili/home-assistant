@@ -25,3 +25,26 @@
         service: script.test_cover
         data_template:
           position: "{{position}}"
+          
+    green_room:
+      friendly_name: Green room
+      position_template: "{{ states('sensor.cover_position_green_room') }}"
+      open_cover: 
+        service: script.set_cover_position
+        data:
+          location: green_room
+          sensor_name: rolling_shutter
+          position: 100
+      close_cover: 
+        service: script.set_cover_position
+        data:
+          location: green_room
+          sensor_name: rolling_shutter
+          position: 0      
+      set_cover_position: 
+        service: script.set_cover_position
+        data_template:
+          location: green_room
+          sensor_name: rolling_shutter
+          position: "{{position}}"          
+          

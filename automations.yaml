@@ -11,9 +11,7 @@
     - platform: mqtt
       topic: "catingham_palace/living_room/left_rolling_shutter/position"       
     - platform: mqtt
-      topic: "catingham_palace/living_room/right_rolling_shutter/position"       
-    - platform: mqtt
-      topic: "catingham_palace/green_room/rolling_shutter/position"
+      topic: "catingham_palace/living_room/right_rolling_shutter/position"
     - platform: mqtt
       topic: "catingham_palace/pink_room/rolling_shutter/position"      
     - platform: mqtt
@@ -46,8 +44,6 @@
       entity_id: input_number.bedroom_rolling_shutter  
     - platform: state
       entity_id: input_number.pink_room_rolling_shutter
-    - platform: state  
-      entity_id: input_number.green_room_rolling_shutter
     - platform: state
       entity_id: input_number.bathroom_rolling_shutter
   action:
@@ -122,21 +118,11 @@
     - platform: state
       entity_id: input_boolean.cat_passage_green_room
       to: 'on'
-    - platform: state
-      entity_id: input_number.green_room_rolling_shutter
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.cat_passage_green_room
-        state: 'on' 
-      - condition: template
-        value_template: "{{ float(states.input_number.green_room_rolling_shutter.state) < float(states.input_number.cat_passage.state) }}"
   action:
-    - service: input_number.set_value
+    - service: cover.set_cover_position
       data_template:
-        entity_id: input_number.green_room_rolling_shutter
-        value: '{{ (states.input_number.cat_passage.state | int) }}'
+        entity_id: cover.green_room
+        value: '{{ (states(sensor.cover_position_green_room) | int) }}'
 
 - id: 'leave_cat_passage_bedroom'
   alias: 'Leave cat passage bedroom'
@@ -209,10 +195,9 @@
       data:
         entity_id: input_number.kitchen_right_rolling_shutter
         position: 100
-    - service: script.roller_shutter_set_position
+    - service: cover.open_cover
       data:
-        entity_id: input_number.green_room_rolling_shutter
-        position: 100
+        entity_id: cover.green_room
     - service: script.roller_shutter_set_position
       data:
         entity_id: input_number.pink_room_rolling_shutter
@@ -271,10 +256,9 @@
       data:
         entity_id: input_number.kitchen_right_rolling_shutter
         position: 0
-    - service: script.roller_shutter_set_position
+    - service: cover.close_cover
       data:
-        entity_id: input_number.green_room_rolling_shutter
-        position: 0
+        entity_id: cover.green_room
     - service: script.roller_shutter_set_position
       data:
         entity_id: input_number.pink_room_rolling_shutter
