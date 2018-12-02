@@ -217,4 +217,66 @@ views:
     - type: map
       entities:
         - device_tracker.rubens_phone
-        - device_tracker.valentina_phone          
+        - device_tracker.valentina_phone
+                  
+  - title: Air quality
+    id: air-quality
+    icon: mdi:speedometer
+    cards:
+    - type: glance
+      title: Concentration Units (standard)
+      show_header_toggle: false
+      entities:
+        - sensor.air_quality_pm10
+        - sensor.air_quality_pm25
+        - sensor.air_quality_pm100
+    - type: glance
+      title: Concentration Units (environmental)
+      show_header_toggle: false
+      entities:
+        - name: PM1.0
+          entity: sensor.air_quality_pm10_env
+        - name: PM2.5
+          entity: sensor.air_quality_pm25_env
+        - name: PM10
+          entity: sensor.air_quality_pm100_env
+    - type: glance
+      title: Number of particles
+      show_header_toggle: false
+      columns: 6
+      entities:
+        - name: "> 0.3μg"
+          entity: sensor.air_quality_pt03
+        - name: "> 0.5μg"
+          entity: sensor.air_quality_pt05
+        - name: "> 1.0μg"
+          entity: sensor.air_quality_pt10 
+        - name: "> 2.5μg"
+          entity: sensor.air_quality_pt25
+        - name: "> 5.0μg"
+          entity: sensor.air_quality_pt50 
+        - name: "> 10.0μg"
+          entity: sensor.air_quality_pt100           
+        
+    - type: entities
+      title: Others
+      show_header_toggle: false
+      entities:
+        - sensor.air_quality_formaldehyde
+        - sensor.air_quality_temperature
+        - entity: sensor.air_quality_humidity
+          icon: mdi:water-percent
+     
+    - type: history-graph
+      title: 'Concentration Units (standard)'
+      entities:
+        - sensor.air_quality_pm10
+        - sensor.air_quality_pm25
+        - sensor.air_quality_pm100  
+        
+    - type: history-graph
+      title: 'Concentration Units (environmental)'
+      entities:
+        - sensor.air_quality_pm10
+        - sensor.air_quality_pm25
+        - sensor.air_quality_pm100  
