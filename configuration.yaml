@@ -395,8 +395,8 @@ switch:
 
 owntracks:
 
-device_tracker:
-  - platform: owntracks
+# device_tracker:
+#   - platform: owntracks
 
 #  - platform: nmap_tracker
 #    hosts: 192.168.0.1/24
