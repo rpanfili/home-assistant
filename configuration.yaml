@@ -393,6 +393,8 @@ switch:
     retain: true
     qos: 1    
 
+owntracks:
+
 device_tracker:
   - platform: owntracks
 
