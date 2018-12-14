@@ -165,7 +165,7 @@ logbook:
 logger:
   default: info
   logs:
-    homeassistant.components.roomba: warning
+    roomba: warning
 
 # Track the sun
 sun:
