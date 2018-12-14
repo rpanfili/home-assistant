@@ -160,6 +160,11 @@ history:
 # View all events in a logbook
 logbook:
 
+logger:
+  default: info
+  logs:
+    homeassistant.components.roomba: warning
+
 # Track the sun
 sun:
 
