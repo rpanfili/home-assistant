@@ -734,7 +734,8 @@ weather:
   - platform: yweather
     name: Home
   
-
+lovelace:
+  mode: yaml
 
 group: !include groups.yaml
 automation: !include automations.yaml
