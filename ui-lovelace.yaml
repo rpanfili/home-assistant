@@ -26,16 +26,20 @@ views:
         entities:
           - entity: lock.driveway_gate
             name: Gate
-            tap_action: toggle
+            tap_action: 
+              action: toggle
           - entity: lock.driveway_door
             name: Door
-            tap_action: toggle
+            tap_action: 
+              action: toggle
           - entity: lock.stair_front_door
             name: Stair
-            tap_action: toggle
+            tap_action: 
+              action: toggle
           - entity: light.driveway_lights
             name: Lights
-            tap_action: toggle
+            tap_action: 
+              action: toggle
       - type: entities
         title: Kitchen
         show_header_toggle: true
@@ -70,7 +74,8 @@ views:
           - sensor.entryway_humidity
           - binary_sensor.entryway_motion
           - entity: light.entryway
-            tap_action: toggle
+            tap_action: 
+              action: toggle
           
   - title: Roller Shutters
     id: roller-shutters
