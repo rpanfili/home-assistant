@@ -309,7 +309,7 @@
             - thu
             - fri
         - condition: state
-          entity_id: 'input_boolean.avoid_bedroom_roller_shutter_up_during_weekend'
+          entity_id: input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
           state: 'off'
     - service: script.roller_shutter_set_position
       data:
