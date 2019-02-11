@@ -358,7 +358,7 @@ switch:
     name: "Automatic cat passage"
     command_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
     state_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
-    optimitic: false
+    optimistic: false
     retain: true
     qos: 1
     
@@ -366,14 +366,14 @@ switch:
     name: "Greenhouse humidifier power"
     command_topic: "catingham_palace/greenhouse/humidifier/switch"
     state_topic: "catingham_palace/greenhouse/humidifier/status"
-    optimitic: false
+    optimistic: false
     retain: true
     qos: 1
   - platform: mqtt
     name: "Greenhouse humidifier status leds"
     command_topic: "catingham_palace/greenhouse/humidifier/leds/switch"
     state_topic: "catingham_palace/greenhouse/humidifier/leds/status"
-    optimitic: falseinput_number
+    optimistic: false
     retain: true
     qos: 1
   - platform: mqtt
@@ -382,14 +382,14 @@ switch:
     state_topic: "catingham_palace/greenhouse/humidifier/mode"
     payload_off: "manual"
     payload_on: "auto"
-    optimitic: false
+    optimistic: false
     retain: true
     qos: 1
   - platform: mqtt
     name: "Roller shutters away mode"
     command_topic: "catingham_palace/roller_shutters/away_mode"
     state_topic: "catingham_palace/roller_shutters/away_mode"
-    optimitic: false
+    optimistic: false
     retain: true
     qos: 1    
 
