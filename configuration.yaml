@@ -731,8 +731,9 @@ vacuum:
     password: !secret roomba_password    
 
 weather:
-  - platform: yweather
-    name: Home
+  - platform: darksky
+    api_key: !secret darksky_api_key
+
   
 lovelace:
   mode: yaml
