@@ -738,6 +738,8 @@ weather:
   
 lovelace:
   mode: yaml
+  
+system_health:
 
 group: !include groups.yaml
 automation: !include automations.yaml
