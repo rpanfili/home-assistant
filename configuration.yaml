@@ -310,7 +310,7 @@ sensor:
               
 # Text to speech
 tts:
-  platform: google
+  platform: google_translate
 
 
 
