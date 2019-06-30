@@ -106,8 +106,8 @@
     all_roller_shutters:
       friendly_name: "All roller shutters"
       close_cover:
-        service: cover.close_cover
-        entity_id: all
+        service: automation.turn_on
+        entity_id: automation.all_roller_shutter_down
       open_cover:
-        service: cover.open_cover
-        entity_id: all
+        service: automation.turn_on
+        entity_id: automation.all_roller_shutter_up
