@@ -462,64 +462,8 @@ telegram_bot:
       - !secret telegram_catingham_palace_group
 
 input_number:
-  living_room_left_rolling_shutter:
-    name: Living room left rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
-  living_room_right_rolling_shutter:
-    name: Living room right rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
-  kitchen_left_rolling_shutter:
-    name: Kitchen left rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
-  kitchen_right_rolling_shutter:
-    name: Kitchen right rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
-  pink_room_rolling_shutter:
-    name: Pink room rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
-  bedroom_rolling_shutter:
-    name: Bedroom rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
-  bathroom_rolling_shutter:
-    name: Bathroom rolling shutter
-    min: 0
-    max: 100
-    initial: 100
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:blinds
-  cat_passage:
-    name: Cat passage height
+  covers_min_position:
+    name: Covers min position
     min: 0
     max: 100
     initial: 25
@@ -535,110 +479,13 @@ input_number:
     unit_of_measurement: "%"
     icon: mdi:water-percent  
     
-    
 input_boolean:
   avoid_bedroom_roller_shutter_up_during_weekend:
     name: "Avoid bedroom roller shutter up during weekend"
     initial: on
     icon: mdi:sleep
-  cat_passage_living_room:
-    name: Leave cat passage
-    initial: off
-    icon: mdi:cat
-  cat_passage_green_room:
-    name: Leave cat passage
-    initial: off    
-    icon: mdi:cat
-  cat_passage_bedroom:
-    name: Leave cat passage
-    initial: off    
-    icon: mdi:cat
-  cat_passage_kitchen:
-    name: Leave cat passage
-    initial: off    
-    icon: mdi:cat
 
-binary_sensor:
-  - platform: mqtt
-    state_topic: "catingham_palace/bedroom/bed/rubens"
-    name: "Rubens bed"
-    qos: 1
-    payload_on: "IN"
-    payload_off: "OUT"
-    device_class: "occupancy"
-  - platform: mqtt
-    state_topic: "catingham_palace/bedroom/bed/valentina"
-    name: "Valentina bed"
-    qos: 1
-    payload_on: "IN"
-    payload_off: "OUT"
-    device_class: "occupancy"
-  - platform: mqtt
-    state_topic: "catingham_palace/green_room/motion"
-    name: "Green room motion"
-    qos: 1
-    device_class: "motion"
-  - platform: mqtt
-    state_topic: "catingham_palace/entryway/motion"
-    name: "Entryway motion"
-    qos: 1
-    device_class: "motion"
-  - platform: mqtt
-    state_topic: "catingham_palace/living_room/right_window/state"
-    name: "Living room right window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
-  - platform: mqtt
-    state_topic: "catingham_palace/living_room/left_window/state"
-    name: "Living room left window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
-  - platform: mqtt
-    state_topic: "catingham_palace/kitchen/left_window/state"
-    name: "Kitchen left window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
-  - platform: mqtt
-    state_topic: "catingham_palace/kitchen/right_window/state"
-    name: "Kitchen right window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
-  - platform: mqtt
-    state_topic: "catingham_palace/green_room/window/state"
-    name: "Green room window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
-  - platform: mqtt
-    state_topic: "catingham_palace/pink_room/window/state"
-    name: "Pink room window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
-  - platform: mqtt
-    state_topic: "catingham_palace/bedroom/window/state"
-    name: "Bedroom window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
-  - platform: mqtt
-    state_topic: "catingham_palace/bathroom/window/state"
-    name: "Bathroom window"
-    qos: 1
-    payload_on: "OPEN"
-    payload_off: "CLOSED"
-    device_class: "opening"
+binary_sensor: !include_dir_merge_list binary_sensor/
 
 #camera:
 #  - platform: mjpeg
@@ -647,7 +494,6 @@ binary_sensor:
 
 cover: !include covers.yaml          
     
-
 history_graph:
   greenhouse_temperature:
     name: "Temperature"

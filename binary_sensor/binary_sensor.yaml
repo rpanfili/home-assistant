@@ -1,0 +1,24 @@
+- platform: mqtt
+  state_topic: "catingham_palace/bedroom/bed/rubens"
+  name: "Rubens bed"
+  qos: 1
+  payload_on: "IN"
+  payload_off: "OUT"
+  device_class: "occupancy"
+- platform: mqtt
+  state_topic: "catingham_palace/bedroom/bed/valentina"
+  name: "Valentina bed"
+  qos: 1
+  payload_on: "IN"
+  payload_off: "OUT"
+  device_class: "occupancy"
+- platform: mqtt
+  state_topic: "catingham_palace/green_room/motion"
+  name: "Green room motion"
+  qos: 1
+  device_class: "motion"
+- platform: mqtt
+  state_topic: "catingham_palace/entryway/motion"
+  name: "Entryway motion"
+  qos: 1
+  device_class: "motion"
