@@ -64,7 +64,7 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             if position_min_id:
                 limit = self.hass.states.get(position_min_id)
                 if limit is None:
-                    _LOGGER.error(
+                    _LOGGER.warning(
                         f"Entity is missing: {position_min_id} - (option: {CONF_POSITION_MIN}). Feature disabled")
                 else:
                     position_min = limit.state
