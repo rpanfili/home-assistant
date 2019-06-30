@@ -18,7 +18,6 @@ views:
         entities:
           - sun.sun
           - climate.entryway
-          - cover.test_cover
       - type: glance
         title: Driveway
         show_header_toggle: true
@@ -92,45 +91,41 @@ views:
         title: Kitchen
         show_header_toggle: true
         entities:
-          - input_number.kitchen_left_rolling_shutter
-          - input_number.kitchen_right_rolling_shutter
-          - input_boolean.cat_passage_kitchen
+          - cover.kitchen_left
+          - cover.kitchen_right
           - binary_sensor.kitchen_left_window
           - binary_sensor.kitchen_right_window
       - type: entities
         title: Living Room
         show_header_toggle: true
         entities:
-          - input_number.living_room_left_rolling_shutter
-          - input_number.living_room_right_rolling_shutter
-          - input_boolean.cat_passage_living_room
+          - cover.living_room_left
+          - cover.living_room_right
           - binary_sensor.living_room_left_window
           - binary_sensor.living_room_right_window
       - type: entities
         title: Bedroom
         show_header_toggle: true
         entities:
-          - input_number.bedroom_rolling_shutter
-          - input_boolean.cat_passage_bedroom
+          - cover.bedroom
           - binary_sensor.bedroom_window
       - type: entities
         title: Green Room
         show_header_toggle: true
         entities:
           - cover.green_room
-          - input_boolean.cat_passage_green_room
           - binary_sensor.green_room_window
       - type: entities
         title: Pink Room
         show_header_toggle: true
         entities:
-          - input_number.pink_room_rolling_shutter
+          - cover.pink_room
           - binary_sensor.pink_room_window
       - type: entities
         title: Bathroom
         show_header_toggle: true
         entities:
-          - input_number.bathroom_rolling_shutter
+          - cover.bathroom
           - binary_sensor.bathroom_window
       - type: entities
         title: Config
@@ -140,7 +135,7 @@ views:
           - automation.roller_shutter_sunset
           - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
           - switch.automatic_cat_passage
-          - input_number.cat_passage
+          - input_number.covers_min_position
           
   - title: Greenhouse
     id: greenhouse
