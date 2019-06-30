@@ -39,9 +39,9 @@
 
 - platform: rollershutteriot
   name: "Kitchen right"
-  command_topic: "catingham_palace/kitchen/right_rolling_shutter/position"
+  command_topic: "catingham_palace/kitchen/right_rolling_shutter/position/set"
   position_topic: "catingham_palace/kitchen/right_rolling_shutter/position"
-  set_position_topic: "catingham_palace/kitchen/right_rolling_shutter/position"
+  set_position_topic: "catingham_palace/kitchen/right_rolling_shutter/position/set"
   qos: 1
   retain: false
   optimistic: true
