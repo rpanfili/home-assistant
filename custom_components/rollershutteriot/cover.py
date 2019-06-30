@@ -77,7 +77,7 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
         if enabler_id is not None:
             enabler = self.hass.states.get(enabler_id)
             if enabler is None:
-                _LOGGER.error(
+                _LOGGER.warning(
                     f"Entity is missing: {enabler_id} - (option: {CONF_POSITION_MIN_ENABLE}). Feature disabled")
             else:
                 limit_enabled = enabler.state == STATE_ON
@@ -93,9 +93,9 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
     async def async_added_to_hass(self):
         """Subscribe MQTT events."""
         await super().async_added_to_hass()
-        await self.async_init_listeners()
+        await self._async_init_listeners()
 
-    async def async_init_listeners(self):
+    async def _async_init_listeners(self):
         def register_listerner(config_field: str) -> bool:
             entity_id = self._config.get(config_field)
             if entity_id:
@@ -109,15 +109,21 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             register_listerner(CONF_POSITION_MIN)
             register_listerner(CONF_WINDOW_SENSOR)
 
-    async def _handle_position_changed(self, entity_id, old_state, new_state):
-        """Handle position_min_enable sensor changes."""
-        _LOGGER.debug(f"POSITION_MIN_TOGGLE from {old_state} to {new_state}")
-        if new_state is None:
-            return
+        # subscribe self state changes (for example on mqtt msg received)
+        async_track_state_change(
+            self.hass, self.entity_id, self._handle_position_changed)
+
+    async def _check_min_position(self):
         current_position = self.current_cover_position
         if current_position is not None:
             await self.async_set_cover_position(
                 **{ATTR_POSITION: current_position})
+
+    async def _handle_position_changed(self, entity_id, old_state, new_state):
+        """Handle position_min_enable sensor changes."""
+        if new_state is None:
+            return
+        await self._check_min_position()
 
     async def async_close_cover(self, **kwargs):
         await self.async_set_cover_position(**{ATTR_POSITION: self.position_min})
