@@ -110,8 +110,8 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             register_listerner(CONF_WINDOW_SENSOR)
 
         # subscribe self state changes (for example on mqtt msg received)
-        async_track_state_change(
-            self.hass, self.entity_id, self._handle_position_changed)
+        # async_track_state_change(
+        #     self.hass, self.entity_id, self._handle_position_changed)
 
     async def _check_min_position(self):
         current_position = self.current_cover_position
