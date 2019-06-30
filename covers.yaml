@@ -107,5 +107,7 @@
       friendly_name: "All roller shutters"
       close_cover:
         service: cover.close_cover
+        entity_id: all
       open_cover:
         service: cover.open_cover
+        entity_id: all

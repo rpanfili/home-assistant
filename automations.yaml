@@ -41,6 +41,7 @@
         after: "08:00:00"    
   action: 
     - service: cover.open_cover
+      entity_id: all
     # - condition: or
     #   conditions:
     #     - condition: time
@@ -67,6 +68,7 @@
 #    offset: "00:30:00"
   action: 
     service: cover.close_cover
+    entity_id: all
 
 - id: "notify_homeassistant_startup"
   alias: "Notify HomeAssistant startup"
