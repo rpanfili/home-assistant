@@ -104,23 +104,21 @@ roller_shutter_config:
   - automation.roller_shutter_sunset
   - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
   - switch.automatic_cat_passage
-  - input_number.cat_passage
+  - input_number.covers_min_position
 
 roller_shutter_living_room:
   name: Living Room
   entities:
-  - input_number.living_room_left_rolling_shutter
-  - input_number.living_room_right_rolling_shutter
-  - input_boolean.cat_passage_living_room
+  - cover.living_room_left
+  - cover.living_room_right
   - binary_sensor.living_room_left_window
   - binary_sensor.living_room_right_window
 
 roller_shutter_kitchen:
   name: Kitchen
   entities:
-  - input_number.kitchen_left_rolling_shutter
-  - input_number.kitchen_right_rolling_shutter
-  - input_boolean.cat_passage_kitchen
+  - cover.kitchen_left
+  - cover.kitchen_right
   - binary_sensor.kitchen_left_window
   - binary_sensor.kitchen_right_window
 
@@ -128,36 +126,25 @@ roller_shutter_green_room:
   name: Green Room
   entities:
   - cover.green_room
-  - input_boolean.cat_passage_green_room
   - binary_sensor.green_room_window
 
 roller_shutter_bedroom:
   name: Bedroom
   entities:
-  - input_number.bedroom_rolling_shutter
-  - input_boolean.cat_passage_bedroom
+  - cover.bedroom
   - binary_sensor.bedroom_window
 
 roller_shutter_pink_room:
   name: Pink Room
   entities:
-  - input_number.pink_room_rolling_shutter
+  - cover.pink_room  
   - binary_sensor.pink_room_window
 
 roller_shutter_bathroom:
   name: Bathroom
   entities:
-  - input_number.bathroom_rolling_shutter
+  - cover.bathroom
   - binary_sensor.bathroom_window      
-
-roller_shutters_with_balcony:
-  name: Roller shutters with balcony
-  entities:
-  - cover.green_room
-  - input_number.living_room_right_rolling_shutter
-  #- input_number.kitchen_left_rolling_shutter
-  - input_number.kitchen_right_rolling_shutter
-  - input_number.bedroom_rolling_shutter
 
 greenhouse:
   name: Greenhouse
