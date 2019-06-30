@@ -84,8 +84,6 @@ views:
         title: Global
         show_header_toggle: true
         entities:
-          - automation.all_roller_shutter_up
-          - automation.all_roller_shutter_down
           - cover.all_roller_shutters
       - type: entities
         title: Kitchen

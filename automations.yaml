@@ -22,114 +22,6 @@
       data:
         message: 'A new update for Home Assistant is available.'
 
-- id: 'weekend_roller_shutter_up'
-  alias: "Weekend roller shutter up"
-  initial_state: False
-  trigger:
-   - platform: state
-     entity_id: automation.weekend_roller_shutter_up
-     to: 'on'
-  action:
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_left_rolling_shutter
-        position: 100
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_right_rolling_shutter
-        position: 100        
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.kitchen_left_rolling_shutter
-        position: 100
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.kitchen_right_rolling_shutter
-        position: 100
-    - service: cover.open_cover
-      data:
-        entity_id: cover.green_room
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.pink_room_rolling_shutter
-        position: 100
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.bathroom_rolling_shutter
-        position: 100
-                
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.roller_shutters_scene
-        option: "day"      
-    - service: automation.turn_off
-      entity_id: automation.weekend_roller_shutter_up
-
-- id: 'all_roller_shutter_up'
-  alias: "All roller shutter up"
-  initial_state: False
-  trigger:
-   - platform: state
-     entity_id: automation.all_roller_shutter_up
-     to: 'on'
-  action:
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.bedroom_rolling_shutter
-        position: 100        
-    - service: automation.turn_on
-      entity_id: automation.weekend_roller_shutter_up
-    - service: automation.turn_off
-      entity_id: automation.all_roller_shutter_up
-    
-
-- id: 'all_roller_shutter_down'
-  alias: "All roller shutter down"
-  initial_state: False
-  trigger:
-   - platform: state
-     entity_id: automation.all_roller_shutter_down
-     to: 'on'
-  action:
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_left_rolling_shutter
-        position: 0
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_right_rolling_shutter
-        position: 0        
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.kitchen_left_rolling_shutter
-        position: 0
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.kitchen_right_rolling_shutter
-        position: 0
-    - service: cover.close_cover
-      data:
-        entity_id: cover.green_room
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.pink_room_rolling_shutter
-        position: 0
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.bathroom_rolling_shutter
-        position: 0
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.bedroom_rolling_shutter
-        position: 0          
-      
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.roller_shutters_scene
-        option: "night"      
-    - service: automation.turn_off
-      entity_id: automation.all_roller_shutter_down
-
 - id: 'roller_shutter_sunrise'
   alias: 'Roller shutter sunrise'
   initial_state: True
@@ -138,7 +30,7 @@
       event: sunrise
       offset: "-00:30:00"
     - platform: time
-      at: "06:00:00"
+      at: "08:00:00"
   condition:  
     condition: and
     conditions:
@@ -146,26 +38,25 @@
         after: sunrise
         after_offset: "-00:30:00"
       - condition: time
-        after: "06:00:00"    
+        after: "08:00:00"    
   action: 
-    - service: automation.turn_on
-      entity_id: automation.weekend_roller_shutter_up
-    - condition: or
-      conditions:
-        - condition: time
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
-        - condition: state
-          entity_id: input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
-          state: 'off'
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.bedroom_rolling_shutter
-        position: 100
+    - service: cover.open_cover
+    # - condition: or
+    #   conditions:
+    #     - condition: time
+    #       weekday:
+    #         - mon
+    #         - tue
+    #         - wed
+    #         - thu
+    #         - fri
+    #     - condition: state
+    #       entity_id: input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
+    #       state: 'off'
+    # - service: script.roller_shutter_set_position
+    #   data:
+    #     entity_id: input_number.bedroom_rolling_shutter
+    #     position: 100
 
 - id: 'roller_shutter_sunset'
   alias: 'Roller shutter sunset'
@@ -175,8 +66,7 @@
     event: sunset
 #    offset: "00:30:00"
   action: 
-    service: automation.turn_on
-    entity_id: automation.all_roller_shutter_down
+    service: cover.close_cover
 
 - id: "notify_homeassistant_startup"
   alias: "Notify HomeAssistant startup"
@@ -226,10 +116,8 @@
       event_data:
         entity_id: timer.tv_shut_down_delay
   action:
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_left_rolling_shutter
-        position: 100
+    - service: cover.open_cover
+      entity_id: cover.living_room_left
       
 - id: 'living_room_roller_shutter_tv_on_aware'
   alias: 'Living room roller shutter TV ON aware'
@@ -240,15 +128,13 @@
       to: 'on'
   condition: 
     condition: state
-    entity_id: input_select.roller_shutters_scene
-    state: 'day'
+    entity_id: sun.sun
+    state: 'above_horizon'
   action:
     - service: timer.cancel
       entity_id: timer.tv_shut_down_delay
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_left_rolling_shutter
-        position: 0
+    - service: cover.close_cover
+      entity_id: cover.living_room_left
 
 - id: 'living_room_roller_shutter_tv_off_aware'
   alias: 'Living room roller shutter TV OFF aware'
@@ -259,8 +145,8 @@
       to: 'off'    
   condition: 
     condition: state
-    entity_id: input_select.roller_shutters_scene
-    state: 'day'
+    entity_id: sun.sun
+    state: 'above_horizon'
   action:
     - service: timer.start
       entity_id: timer.tv_shut_down_delay

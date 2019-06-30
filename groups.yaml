@@ -93,8 +93,6 @@ roller_shutters:
 roller_shutter_global:
   name: Global
   entities:
-  - automation.all_roller_shutter_up
-  - automation.all_roller_shutter_down
   - cover.all_roller_shutters
 
 roller_shutter_config:
