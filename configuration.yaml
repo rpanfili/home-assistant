@@ -596,3 +596,5 @@ automation: !include automations.yaml
 zone: !include zones.yaml
 
 script: !include scripts.yaml
+
+python_script:
