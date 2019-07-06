@@ -38,9 +38,9 @@ roller_shutters_up:
   alias: "Shutters up"
   sequence:
     - service: cover.open_cover
-      entity_id: cover.all
+      entity_id: all
 roller_shutters_down:
   alias: "Shutters down"
   sequence:
     - service: cover.close_cover
-      entity_id: cover.all
+      entity_id: all
