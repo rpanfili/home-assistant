@@ -33,3 +33,14 @@ test_cover:
     - service: notify.telegram2rubens
       data_template:
         message: "Pizza connection! Posizione: {{ position }}"
+
+roller_shutters_up:
+  alias: "Shutters up"
+  sequence:
+    - service: cover.open_cover
+      entity_id: cover.all
+roller_shutters_down:
+  alias: "Shutters down"
+  sequence:
+    - service: cover.close_cover
+      entity_id: cover.all

@@ -119,6 +119,13 @@ homeassistant:
 
     cover.all:
       device_class: "shutter"
+
+    script.roller_shutters_up:
+      icon: mdi:arrow-up-bold
+      friendly_name: "Up"
+    script.roller_shutters_down:
+      icon: mdi:arrow-down-bold
+      friendly_name: "Down"
       
 
 recorder:

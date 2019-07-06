@@ -100,14 +100,3 @@
   position_min: input_number.covers_min_position
   position_min_enable: switch.automatic_cat_passage
   window_sensor: binary_sensor.bedroom_room_window
-
-- platform: template
-  covers:
-    all_roller_shutters:
-      friendly_name: "All roller shutters"
-      close_cover:
-        service: automation.turn_on
-        entity_id: automation.all_roller_shutter_down
-      open_cover:
-        service: automation.turn_on
-        entity_id: automation.all_roller_shutter_up
