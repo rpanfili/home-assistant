@@ -116,6 +116,9 @@ homeassistant:
       
     light.entryway:
       friendly_name: "Light"
+
+    cover.all:
+      device_class: "shutter"
       
 
 recorder:
