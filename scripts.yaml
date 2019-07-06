@@ -1,39 +1,3 @@
-roller_shutter_set_position:
-  sequence:
-    - service: input_number.set_value
-      data_template:
-        entity_id: "{{ entity_id }}"
-        value: >-
-          {%- set domain, device = entity_id.split('.') -%}
-          {%- set location = (device | regex_replace("_((left|right)_)?rolling_shutter$",'')) -%}
-          {%- if is_state(("input_boolean.cat_passage_" ~ location),"on") -%}
-            {{ (position | int, states.input_number.cat_passage.state | int) | max }}
-          {%- else -%}
-            {{ position | int }}
-          {%- endif -%}
-
-set_cover_position:
-  sequence:
-    - service: mqtt.publish
-      data_template:
-        topic: "catingham_palace/{{location}}/{{sensor_name}}/position/set"
-        payload: >-
-          {%- if is_state(("input_boolean.cat_passage_" ~ location),"on") -%}
-            {{ (position | int, states.input_number.cat_passage.state | int) | max }}
-          {%- else -%}
-            {{ position | int }}
-          {%- endif -%}
-
-test_cover:
-  sequence:
-    - service: mqtt.publish
-      data_template:
-        topic: catingham_palace/mqtt_cover_test
-        payload: "{{ position }}"
-    - service: notify.telegram2rubens
-      data_template:
-        message: "Pizza connection! Posizione: {{ position }}"
-
 roller_shutters_up:
   alias: "Shutters up"
   sequence:
