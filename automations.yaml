@@ -40,8 +40,8 @@
       - condition: time
         after: "08:00:00"    
   action: 
-      service: automation.turn_on
-      entity_id: automation.all_roller_shutter_up
+    - service: cover.open_cover
+      entity_id: all
     # - condition: or
     #   conditions:
     #     - condition: time
@@ -67,8 +67,8 @@
     event: sunset
 #    offset: "00:30:00"
   action: 
-    service: automation.turn_on
-    entity_id: automation.all_roller_shutter_down
+    service: cover.close_cover
+    entity_id: all
 
 - id: "notify_homeassistant_startup"
   alias: "Notify HomeAssistant startup"
@@ -178,101 +178,3 @@
     service_template: '{{ trigger.event.data.service }}'
     data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
-
-- id: 'weekend_roller_shutter_up'
-  alias: "Weekend roller shutter up"
-  initial_state: False
-  trigger:
-   - platform: state
-     entity_id: automation.weekend_roller_shutter_up
-     to: 'on'
-  action:
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_left_rolling_shutter
-        position: 100
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.living_room_right_rolling_shutter
-        position: 100        
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.kitchen_left_rolling_shutter
-        position: 100
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.kitchen_right_rolling_shutter
-        position: 100
-    - service: cover.open_cover
-      data:
-        entity_id: cover.green_room
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.pink_room_rolling_shutter
-        position: 100
-    - service: script.roller_shutter_set_position
-      data:
-        entity_id: input_number.bathroom_rolling_shutter
-        position: 100
-                
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.roller_shutters_scene
-        option: "day"      
-    - service: automation.turn_off
-      entity_id: automation.weekend_roller_shutter_up
-
-- id: 'all_roller_shutter_up'
-  alias: "All roller shutter up"
-  initial_state: False
-  trigger:
-   - platform: state
-     entity_id: automation.all_roller_shutter_up
-     to: 'on'
-  action:
-    - service: cover.open_cover
-      entity_id: cover.bedroom
-    - service: cover.open_cover
-      entity_id: cover.bathroom
-    - service: cover.open_cover
-      entity_id: cover.living_room_left
-    - service: cover.open_cover
-      entity_id: cover.living_room_right
-    - service: cover.open_cover
-      entity_id: cover.kitchen_left
-    - service: cover.open_cover
-      entity_id: cover.kitchen_right
-    - service: cover.open_cover
-      entity_id: cover.pink_room
-    - service: cover.open_cover
-      entity_id: cover.green_room
-    - service: automation.turn_off
-      entity_id: automation.all_roller_shutter_up
-    
-
-- id: 'all_roller_shutter_down'
-  alias: "All roller shutter down"
-  initial_state: False
-  trigger:
-   - platform: state
-     entity_id: automation.all_roller_shutter_down
-     to: 'on'
-  action:
-    - service: cover.close_cover
-      entity_id: cover.bedroom
-    - service: cover.close_cover
-      entity_id: cover.bathroom
-    - service: cover.close_cover
-      entity_id: cover.living_room_left
-    - service: cover.close_cover
-      entity_id: cover.living_room_right
-    - service: cover.close_cover
-      entity_id: cover.kitchen_left
-    - service: cover.close_cover
-      entity_id: cover.kitchen_right
-    - service: cover.close_cover
-      entity_id: cover.pink_room
-    - service: cover.close_cover
-      entity_id: cover.green_room
-    - service: automation.turn_off
-      entity_id: automation.all_roller_shutter_down

@@ -487,13 +487,7 @@ input_number:
     step: 5
     initial: 60
     unit_of_measurement: "%"
-    icon: mdi:water-percent  
-    
-input_boolean:
-  avoid_bedroom_roller_shutter_up_during_weekend:
-    name: "Avoid bedroom roller shutter up during weekend"
-    initial: on
-    icon: mdi:sleep
+    icon: mdi:water-percent
 
 binary_sensor: !include_dir_merge_list binary_sensor/
 

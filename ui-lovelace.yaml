@@ -133,7 +133,6 @@ views:
         entities:
           - automation.roller_shutter_sunrise
           - automation.roller_shutter_sunset
-          - input_boolean.avoid_bedroom_roller_shutter_up_during_weekend
           - switch.automatic_cat_passage
           - input_number.covers_min_position
           
