@@ -17,7 +17,8 @@ views:
         show_header_toggle: true
         entities:
           - sun.sun
-          - climate.entryway
+      - type: thermostat
+        entity: climate.entryway
       - type: glance
         title: Driveway
         show_header_toggle: true
