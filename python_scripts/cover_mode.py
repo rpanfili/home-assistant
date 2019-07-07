@@ -13,7 +13,7 @@ elif mode == 'sera':
         'cover.bedroom':           40,
         'cover.green_room':        25,
         'cover.kitchen_left':      50,
-        'cover.kitchen_right':     70,
+        'cover.kitchen_right':     75,
         'cover.living_room_left':  25,
         'cover.living_room_right': 70,
         'cover.pink_room':         25,
@@ -31,10 +31,10 @@ elif mode in ['afa', 'caldo']:
         'cover.pink_room':         40,
     }
 
-elif mode in ['notte estiva', 'notte', 'sera']:
+elif mode in ['notte estiva', 'notte']:
     cover_conf = {
         'cover.bathroom':          25,
-        'cover.bedroom':           60,
+        'cover.bedroom':           75,
         'cover.green_room':        25,
         'cover.kitchen_left':      25,
         'cover.kitchen_right':     25,
