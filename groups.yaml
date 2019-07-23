@@ -12,6 +12,12 @@ default_view:
   - group.bathroom
   - group.entryway
 
+family:
+  name : Family
+  entities: 
+  - person.rubens
+  - person.valentina
+
 family_locations:
   name: Family locations
   entities:

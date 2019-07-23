@@ -406,7 +406,7 @@ switch:
 owntracks:
   # max_gps_accuracy: 200
 
-  
+
 # device_tracker:
 #   - platform: owntracks
 
@@ -499,7 +499,17 @@ binary_sensor: !include_dir_merge_list binary_sensor/
 #    name: Green room camera
 
 cover: !include covers.yaml          
-    
+
+person:
+  - name: Rubens
+    id: rubens
+    device_trackers:
+      - device_tracker.rubens_phone
+  - name: Valentina
+    id: valentina
+    device_trackers:
+      - device_tracker.valentina_phone
+
 history_graph:
   greenhouse_temperature:
     name: "Temperature"
