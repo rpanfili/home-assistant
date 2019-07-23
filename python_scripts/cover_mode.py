@@ -44,6 +44,13 @@ elif mode in ['notte estiva', 'notte']:
     }
 else:
     logger.warning("Unknown mode \"{}\"".format(mode))
+    hass.services.call(domain="tts",
+                       service="google_translate_say",
+                       service_data={
+                           'entity_id': 'media_player.kitchen_speaker',
+                           "message": "Siamo spiacenti ma la signora {} non è in casa! La preghiamo di riprovare più tardi".format(mode),
+                           "language": "it"
+                       })
 
 
 if cover_conf:
