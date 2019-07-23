@@ -67,7 +67,7 @@
     event: sunset
 #    offset: "00:30:00"
   action: 
-    service: cover.close_cover
+    service: python_script.cover_sunset
     entity_id: all
 
 - id: "notify_homeassistant_startup"
