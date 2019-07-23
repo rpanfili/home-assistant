@@ -86,6 +86,19 @@
       data: 
         message: "Tutti i componenti della famiglia sono fuori casa"
 
+- id: "valentina_left_work"
+  alias: "Valentina left work"
+  initial_state: True
+  trigger:
+    - platform: zone
+      entity_id: person.valentina
+      zone: zone.work_2
+      event: leave
+  action:
+    - service: notify.telegram2rubens
+      data: 
+        message: "Valentina sta tornando a casa"  
+  
 - id: "notify_homeassistant_startup"
   alias: "Notify HomeAssistant startup"
   initial_state: True
