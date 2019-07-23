@@ -404,7 +404,9 @@ switch:
     qos: 1    
 
 owntracks:
+  # max_gps_accuracy: 200
 
+  
 # device_tracker:
 #   - platform: owntracks
 
