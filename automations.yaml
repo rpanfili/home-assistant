@@ -70,6 +70,22 @@
     service: python_script.cover_sunset
     entity_id: all
 
+- id: 'roller_shutter_away_mode'
+  alias: 'Roller shutter away mode'
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: "home"
+    to: "not_home"
+  action:
+    - service: python_script.cover_mode
+      data_template:
+        mode: "fuori casa"
+    - service: notify.telegram2rubens
+      data: 
+        message: "Tutti i componenti della famiglia sono fuori casa"
+
 - id: "notify_homeassistant_startup"
   alias: "Notify HomeAssistant startup"
   initial_state: True
@@ -127,6 +143,7 @@
   trigger:
     - platform: state
       entity_id: media_player.living_room_tv
+      from: 'off'
       to: 'on'
   condition: 
     condition: state
