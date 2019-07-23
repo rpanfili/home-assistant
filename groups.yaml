@@ -2,7 +2,7 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-  - group.family_locations
+  - group.family
   - group.environment
   - group.driveway
   - group.kitchen
@@ -17,12 +17,6 @@ family:
   entities: 
   - person.rubens
   - person.valentina
-
-family_locations:
-  name: Family locations
-  entities:
-  - device_tracker.rubens_phone
-  - device_tracker.valentina_phone
 
 driveway:
   name: Driveway

@@ -8,8 +8,8 @@ views:
         title: Family locations
         show_header_toggle: false
         entities:
-          - device_tracker.rubens_phone
-          - device_tracker.valentina_phone
+          - person.rubens
+          - person.valentina
       - type: weather-forecast
         entity: weather.home
       - type: entities
@@ -211,12 +211,12 @@ views:
       title: Family locations
       show_header_toggle: true
       entities:
-        - device_tracker.rubens_phone
-        - device_tracker.valentina_phone
+        - person.rubens
+        - person.valentina
     - type: map
       entities:
-        - device_tracker.rubens_phone
-        - device_tracker.valentina_phone
+        - person.rubens
+        - person.valentina
                   
   - title: Air quality
     id: air-quality
