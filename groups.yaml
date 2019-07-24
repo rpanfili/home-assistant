@@ -76,19 +76,25 @@ entryway:
 #  name: Bathroom
 #  entities:
 
+
+
 roller_shutters:
   name: Roller Shutters
-  view: yes
-  icon: mdi:blinds
   entities:
-  - group.roller_shutter_global
-  - group.roller_shutter_kitchen
-  - group.roller_shutter_living_room
-  - group.roller_shutter_bedroom
-  - group.roller_shutter_green_room
-  - group.roller_shutter_pink_room
-  - group.roller_shutter_bathroom
-  - group.roller_shutter_config
+  - cover.living_room_left
+  - cover.living_room_right
+  - cover.kitchen_left
+  - cover.kitchen_right
+  - cover.green_room
+  - cover.pink_room
+  - cover.bedroom
+  - cover.bathroom
+
+roller_shutters_with_balcony:
+  - cover.living_room_right
+  - cover.kitchen_right
+  - cover.green_room
+  - cover.bedroom
 
 roller_shutter_global:
   name: Global
