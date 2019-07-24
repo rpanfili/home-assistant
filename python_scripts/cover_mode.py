@@ -1,5 +1,22 @@
 """Manages covers scene"""
 
+
+def get_window_id_by_cover_id(entity_id):
+    return entity_id.replace("cover", "binary_sensor") + "_window"
+
+
+def is_window_opened(entity_id, hass, logger):
+    opened = True
+    window = hass.states.get(entity_id)
+    if window is not None:
+        opened = window.state is 'on'
+    else:
+        logger.warning("Window \"{}\" does not exists. Assume default state: {}".format(
+            window_id,
+            'opened' if opened else 'not opened'))
+    return opened
+
+
 mode = data.get('mode', None)
 
 cover_conf = {}
@@ -42,6 +59,19 @@ elif mode in ['notte estiva', 'notte']:
         'cover.living_room_right': 25,
         'cover.pink_room':         25,
     }
+elif mode in ['fuori casa']:
+    balcony = hass.states.get('group.roller_shutters_with_balcony')
+    if balcony is not None:
+        for entity_id in balcony.attributes.get('entity_id'):
+            window_id = get_window_id_by_cover_id(entity_id)
+            if is_window_opened(window_id, hass, logger):
+                logger.debug(
+                    "{} window is opened, close its cover".format(window_id))
+                hass.services.call(domain="cover",
+                                   service="close_cover",
+                                   service_data={"entity_id": entity_id})
+
+
 else:
     logger.warning("Unknown mode \"{}\"".format(mode))
     hass.services.call(domain="tts",
