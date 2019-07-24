@@ -13,7 +13,7 @@ elif mode == 'sera':
         'cover.bedroom':           40,
         'cover.green_room':        25,
         'cover.kitchen_left':      50,
-        'cover.kitchen_right':     75,
+        'cover.kitchen_right':     85,
         'cover.living_room_left':  25,
         'cover.living_room_right': 70,
         'cover.pink_room':         25,
