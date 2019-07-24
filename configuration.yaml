@@ -176,6 +176,7 @@ logger:
   default: info
   logs:
     roomba: warning
+    homeassistant.components.vacuum: warning
 
 # Track the sun
 sun:
