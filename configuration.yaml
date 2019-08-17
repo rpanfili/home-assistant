@@ -499,6 +499,12 @@ binary_sensor: !include_dir_merge_list binary_sensor/
 #    mjpeg_url: http://localhost:8081
 #    name: Green room camera
 
+camera:
+  - platform: mjpeg
+    name: octopi S200
+    still_image_url: !secret octoprint_camera_url_snapshot
+    mjpeg_url: !secret octoprint_camera_url_stream
+
 cover: !include covers.yaml          
 
 person:
@@ -581,6 +587,13 @@ google_assistant:
       room: Entryway
 
 cast:
+
+octoprint:
+  host: !secret octoprint_host
+  api_key: !secret octoprint_api_key
+  name: S200
+  bed: true
+  number_of_tools: 1
 
 timer:
   tv_shut_down_delay:
