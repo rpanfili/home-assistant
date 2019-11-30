@@ -492,16 +492,7 @@ input_number:
 
 binary_sensor: !include_dir_merge_list binary_sensor/
 
-#camera:
-#  - platform: mjpeg
-#    mjpeg_url: http://localhost:8081
-#    name: Green room camera
-
-camera:
-  - platform: mjpeg
-    name: octopi S200
-    still_image_url: !secret octoprint_camera_url_snapshot
-    mjpeg_url: !secret octoprint_camera_url_stream
+camera: !include camera.yaml
 
 cover: !include covers.yaml          
 
