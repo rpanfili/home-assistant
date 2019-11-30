@@ -48,7 +48,7 @@ elif mode in ['afa', 'caldo']:
         'cover.pink_room':         40,
     }
 
-elif mode in ['notte estiva', 'notte']:
+elif mode in ['notte estiva']:
     cover_conf = {
         'cover.bathroom':          25,
         'cover.bedroom':           75,
@@ -58,6 +58,17 @@ elif mode in ['notte estiva', 'notte']:
         'cover.living_room_left':  0,
         'cover.living_room_right': 25,
         'cover.pink_room':         25,
+    }
+elif mode in ['notte invernale', 'notte']:
+    cover_conf = {
+        'cover.bathroom':          0,
+        'cover.bedroom':           10,
+        'cover.green_room':        0,
+        'cover.kitchen_left':      0,
+        'cover.kitchen_right':     0,
+        'cover.living_room_left':  0,
+        'cover.living_room_right': 0,
+        'cover.pink_room':         0,
     }
 elif mode in ['fuori casa']:
     balcony = hass.states.get('group.roller_shutters_with_balcony')
