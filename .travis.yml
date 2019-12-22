@@ -6,6 +6,7 @@ before_install:
   - mv travis_secrets.yaml secrets.yaml
   # comment out the camera module to avoid issues with ubuntu av==6.1.2 requirement 
   - sed -i 's/^\(camera:\)/#\1/g' configuration.yaml
+  - pip3 install netdisco
 install:
   - pip3 install homeassistant
 script:
