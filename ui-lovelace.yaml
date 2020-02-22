@@ -17,8 +17,13 @@ views:
         show_header_toggle: true
         entities:
           - sun.sun
-      - type: thermostat
-        entity: climate.entryway
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.entryway_thermostat_online
+            state_not: "unavailable"
+        card:
+          type: thermostat
+          entity: climate.entryway
       - type: glance
         title: Driveway
         show_state: false
@@ -57,19 +62,30 @@ views:
           - sensor.entryway_thermostat_temperature
           - sensor.entryway_thermostat_humidity
       
-      - type: picture-glance
-        title: Living room
-        camera_image: camera.living_room
-        tap_action:
-          action: more-info
-        entities:
-          - camera.living_room
-          - binary_sensor.living_room_camera_person_detected
-          - binary_sensor.living_room_camera_motion_detected
-          - binary_sensor.living_room_camera_sound_detected   
-        
-      - type: media-control
-        entity: media_player.living_room_tv
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.living_room_camera_online
+            state_not: "unavailable"
+        card:
+          type: picture-glance
+          title: Living room
+          camera_image: camera.living_room
+          tap_action:
+            action: more-info
+          entities:
+            - camera.living_room
+            - binary_sensor.living_room_camera_person_detected
+            - binary_sensor.living_room_camera_motion_detected
+            - binary_sensor.living_room_camera_sound_detected
+      
+      - type: conditional
+        conditions:
+          - entity: media_player.living_room_tv
+            state: "on"
+        card:
+          type: media-control
+          entity: media_player.living_room_tv
+
       - type: entities
         title: Green Room
         show_header_toggle: true
