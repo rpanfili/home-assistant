@@ -241,22 +241,7 @@ sensor:
     name: "air_quality_meter"
     value_template: '{{ value_json }}'
     #availability_topic: "catingham_palace/green_room/air_quality_meter/availability"
-    json_attributes:
-      - pm10
-      - pm25
-      - pm100
-      - pe10
-      - pe25
-      - pe100
-      - pt03
-      - pt05
-      - pt10
-      - pt25
-      - pt50
-      - pt100
-      - hcho
-      - tem
-      - hum
+    json_attributes_topic: "catingham_palace/green_room/air_quality_meter"
     
   - platform: template
     sensors:
