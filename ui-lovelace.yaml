@@ -21,21 +21,29 @@ views:
         entity: climate.entryway
       - type: glance
         title: Driveway
-        show_header_toggle: true
         show_state: false
         entities:
           - entity: lock.driveway_gate
             name: Gate
-            tap_action: 
-              action: toggle
+            tap_action:
+              action: call-service
+              service: lock.unlock
+              service_data:
+                entity_id: lock.driveway_gate
           - entity: lock.driveway_door
             name: Door
-            tap_action: 
-              action: toggle
+            tap_action:
+              action: call-service
+              service: lock.unlock
+              service_data:
+                entity_id: lock.driveway_door
           - entity: lock.stair_front_door
             name: Stair
-            tap_action: 
-              action: toggle
+            tap_action:
+              action: call-service
+              service: lock.unlock
+              service_data:
+                entity_id: lock.stair_front_door
           - entity: light.driveway_lights
             name: Lights
             tap_action: 
@@ -52,7 +60,8 @@ views:
       - type: picture-glance
         title: Living room
         camera_image: camera.living_room
-        tap_action: dialog
+        tap_action:
+          action: more-info
         entities:
           - camera.living_room
           - binary_sensor.living_room_camera_person_detected
@@ -68,7 +77,6 @@ views:
           - binary_sensor.green_room_motion
       - type: glance
         title: Entryway
-        show_header_toggle: false
         show_name: false
         entities:
           - sensor.entryway_temperature
