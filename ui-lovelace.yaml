@@ -10,20 +10,6 @@ views:
         entities:
           - person.rubens
           - person.valentina
-      - type: weather-forecast
-        entity: weather.home
-      - type: entities
-        title: Environment
-        show_header_toggle: true
-        entities:
-          - sun.sun
-      - type: conditional
-        conditions:
-          - entity: binary_sensor.entryway_thermostat_online
-            state_not: "unavailable"
-        card:
-          type: thermostat
-          entity: climate.entryway
       - type: glance
         title: Driveway
         show_state: false
@@ -51,17 +37,40 @@ views:
                 entity_id: lock.stair_front_door
           - entity: light.driveway_lights
             name: Lights
-            tap_action: 
+            tap_action:
               action: toggle
+      - type: weather-forecast
+        entity: weather.home
+      - type: entities
+        title: Environment
+        show_header_toggle: false
+        entities:
+          - sun.sun
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.entryway_thermostat_online
+            state_not: "unavailable"
+        card:
+          type: thermostat
+          entity: climate.entryway
       - type: entities
         title: Kitchen
         show_header_toggle: true
         entities:
           - light.kitchen_countertop_light
-          - climate.entryway
-          - sensor.entryway_thermostat_temperature
-          - sensor.entryway_thermostat_humidity
-      
+          # - climate.entryway
+          # - sensor.entryway_thermostat_temperature
+          # - sensor.entryway_thermostat_humidity
+
+      - type: entities
+        title: Entryway
+        show_header_toggle: false
+        entities:
+          - light.entryway
+          # - climate.entryway
+          # - sensor.entryway_thermostat_temperature
+          # - sensor.entryway_thermostat_humidity
+
       - type: conditional
         conditions:
           - entity: binary_sensor.living_room_camera_online
@@ -77,7 +86,7 @@ views:
             - binary_sensor.living_room_camera_person_detected
             - binary_sensor.living_room_camera_motion_detected
             - binary_sensor.living_room_camera_sound_detected
-      
+
       - type: conditional
         conditions:
           - entity: media_player.living_room_tv
@@ -86,22 +95,13 @@ views:
           type: media-control
           entity: media_player.living_room_tv
 
-      - type: entities
-        title: Green Room
-        show_header_toggle: true
-        entities:
-          - binary_sensor.green_room_motion
-      - type: glance
-        title: Entryway
-        show_name: false
-        entities:
-          - sensor.entryway_temperature
-          - sensor.entryway_humidity
-          - binary_sensor.entryway_motion
-          - entity: light.entryway
-            tap_action: 
-              action: toggle
-          
+      # - type: entities
+      #   title: Green Room
+      #   show_header_toggle: true
+      #   entities:
+      #     - binary_sensor.green_room_motion
+
+
   - title: Roller Shutters
     id: roller-shutters
     icon: mdi:blinds
@@ -160,7 +160,7 @@ views:
           - automation.roller_shutter_sunset
           - switch.automatic_cat_passage
           - input_number.covers_min_position
-          
+
   - title: Greenhouse
     id: greenhouse
     icon: mdi:leaf
@@ -200,7 +200,7 @@ views:
         refresh_interval: 60
         entities:
           - sensor.greenhouse_plant1_soil_moisture
-          
+
   - title: energy
     id: energy
     icon: mdi:flash
@@ -231,86 +231,86 @@ views:
   - title: people
     id: people
     icon: mdi:account-multiple
-    cards:          
-    - type: entities
-      title: Family locations
-      show_header_toggle: true
-      entities:
-        - person.rubens
-        - person.valentina
-    - type: map
-      entities:
-        - person.rubens
-        - person.valentina
-                  
+    cards:
+      - type: entities
+        title: Family locations
+        show_header_toggle: true
+        entities:
+          - person.rubens
+          - person.valentina
+      - type: map
+        entities:
+          - person.rubens
+          - person.valentina
+
   - title: Air quality
     id: air-quality
     icon: mdi:speedometer
     cards:
-    - type: glance
-      title: Concentration Units (standard)
-      show_header_toggle: false
-      entities:
-        - sensor.air_quality_pm10
-        - sensor.air_quality_pm25
-        - sensor.air_quality_pm100
-    - type: glance
-      title: Concentration Units (environmental)
-      show_header_toggle: false
-      entities:
-        - name: PM1.0
-          entity: sensor.air_quality_pm10_env
-        - name: PM2.5
-          entity: sensor.air_quality_pm25_env
-        - name: PM10
-          entity: sensor.air_quality_pm100_env
-    - type: glance
-      title: Number of particles
-      show_header_toggle: false
-      columns: 6
-      entities:
-        - name: "> 0.3μg"
-          entity: sensor.air_quality_pt03
-        - name: "> 0.5μg"
-          entity: sensor.air_quality_pt05
-        - name: "> 1.0μg"
-          entity: sensor.air_quality_pt10 
-        - name: "> 2.5μg"
-          entity: sensor.air_quality_pt25
-        - name: "> 5.0μg"
-          entity: sensor.air_quality_pt50 
-        - name: "> 10.0μg"
-          entity: sensor.air_quality_pt100           
-        
-    - type: entities
-      title: Others
-      show_header_toggle: false
-      entities:
-        - sensor.air_quality_formaldehyde
-        - sensor.air_quality_temperature
-        - entity: sensor.air_quality_humidity
-          icon: mdi:water-percent
-     
-    - type: history-graph
-      title: 'Concentration Units (standard)'
-      entities:
-        - sensor.air_quality_pm10
-        - sensor.air_quality_pm25
-        - sensor.air_quality_pm100  
-        
-    - type: history-graph
-      title: 'Concentration Units (environmental)'
-      entities:
-        - sensor.air_quality_pm10
-        - sensor.air_quality_pm25
-        - sensor.air_quality_pm100  
+      - type: glance
+        title: Concentration Units (standard)
+        show_header_toggle: false
+        entities:
+          - sensor.air_quality_pm10
+          - sensor.air_quality_pm25
+          - sensor.air_quality_pm100
+      - type: glance
+        title: Concentration Units (environmental)
+        show_header_toggle: false
+        entities:
+          - name: PM1.0
+            entity: sensor.air_quality_pm10_env
+          - name: PM2.5
+            entity: sensor.air_quality_pm25_env
+          - name: PM10
+            entity: sensor.air_quality_pm100_env
+      - type: glance
+        title: Number of particles
+        show_header_toggle: false
+        columns: 6
+        entities:
+          - name: "> 0.3μg"
+            entity: sensor.air_quality_pt03
+          - name: "> 0.5μg"
+            entity: sensor.air_quality_pt05
+          - name: "> 1.0μg"
+            entity: sensor.air_quality_pt10
+          - name: "> 2.5μg"
+            entity: sensor.air_quality_pt25
+          - name: "> 5.0μg"
+            entity: sensor.air_quality_pt50
+          - name: "> 10.0μg"
+            entity: sensor.air_quality_pt100
+
+      - type: entities
+        title: Others
+        show_header_toggle: false
+        entities:
+          - sensor.air_quality_formaldehyde
+          - sensor.air_quality_temperature
+          - entity: sensor.air_quality_humidity
+            icon: mdi:water-percent
+
+      - type: history-graph
+        title: "Concentration Units (standard)"
+        entities:
+          - sensor.air_quality_pm10
+          - sensor.air_quality_pm25
+          - sensor.air_quality_pm100
+
+      - type: history-graph
+        title: "Concentration Units (environmental)"
+        entities:
+          - sensor.air_quality_pm10
+          - sensor.air_quality_pm25
+          - sensor.air_quality_pm100
 
   - title: Printers
     id: printers
     icon: mdi:printer-3d-nozzle
-    cards:          
-    - type: picture-glance
-      title: S200
-      entities: []
-      camera_image: camera.octopi_s200
-      camera_view: live
+    cards:
+      - type: picture-glance
+        title: S200
+        entities: []
+        camera_image: camera.octopi_s200
+        camera_view: live
