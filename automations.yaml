@@ -1,5 +1,4 @@
 - alias: 'Telegram bot that reply pong to ping'
-  hide_entity: true
   initial_state: True
   trigger:
     platform: event
@@ -12,7 +11,6 @@
         message: 'pong'
 
 - alias: 'Update Available Notifications'
-  hide_entity: True
   initial_state: True
   trigger:
     platform: state
@@ -185,7 +183,6 @@
       entity_id: timer.tv_shut_down_delay
 
 - alias: RFID Stair lock
-  hide_entity: true
   initial_state: 'on'
   trigger:
   - platform: mqtt
