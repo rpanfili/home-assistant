@@ -35,7 +35,7 @@ views:
               service: lock.unlock
               service_data:
                 entity_id: lock.stair_front_door
-          - entity: light.driveway_lights
+          - entity: light.driveway
             name: Lights
             tap_action:
               action: toggle
@@ -57,7 +57,10 @@ views:
         title: Kitchen
         show_header_toggle: true
         entities:
-          - light.kitchen_countertop_light
+          - light.kitchen_main
+          - light.kitchen_countertop
+          - light.kitchen_hood
+
           # - climate.entryway
           # - sensor.entryway_thermostat_temperature
           # - sensor.entryway_thermostat_humidity
@@ -70,6 +73,11 @@ views:
           # - climate.entryway
           # - sensor.entryway_thermostat_temperature
           # - sensor.entryway_thermostat_humidity
+      - type: entities
+        title: Living room
+        show_header_toggle: false
+        entities:
+          - light.living_room_main
 
       - type: conditional
         conditions:
@@ -172,7 +180,7 @@ views:
           - sensor.greenhouse_temperature
           - sensor.greenhouse_humidity
           - sensor.greenhouse_plant1_soil_moisture
-          - light.greenhouse_light
+          - light.greenhouse
           - fan.greenhouse_ventilation
       - type: entities
         title: Humidifier

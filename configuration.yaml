@@ -402,14 +402,14 @@ owntracks:
    
 light:
   - platform: mqtt
-    name: "Greenhouse light"
+    name: "Greenhouse"
     qos: 1
     optimistic: false
     retain: true
     command_topic: "catingham_palace/greenhouse/light/switch"
     state_topic: "catingham_palace/greenhouse/light/status"
   - platform: mqtt
-    name: "Driveway Lights"
+    name: "Driveway"
     command_topic: "catingham_palace/driveway/lights/state"
     state_topic: "catingham_palace/driveway/lights/state"
     qos: 1
@@ -425,7 +425,7 @@ light:
     payload_not_available: "Offline"
     retain: false 
   - platform: mqtt
-    name: "Kitchen countertop light"
+    name: "Kitchen countertop"
     state_topic: "catingham_palace/kitchen/countertop_light/stat/POWER"
     command_topic: "catingham_palace/kitchen/countertop_light/cmnd/POWER"
     availability_topic: "catingham_palace/kitchen/countertop_light/tele/LWT"
@@ -435,7 +435,43 @@ light:
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: false 
-        
+  - platform: mqtt
+    name: "Kitchen hood"
+    state_topic: "catingham_palace/kitchen/hood_light/stat/POWER"
+    command_topic: "catingham_palace/kitchen/hood_light/cmnd/POWER"
+    availability_topic: "catingham_palace/kitchen/hood_light/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false 
+
+  - platform: mqtt
+    name: "Living room main"
+    state_topic: "catingham_palace/living_room/light/stat/RESULT"  
+    value_template: "{{ value_json.POWER3 }}"
+    command_topic: "catingham_palace/living_room/light/cmnd/POWER3"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "catingham_palace/living_room/light/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+  - platform: mqtt
+    name: "Kitchen main"
+    state_topic: "catingham_palace/living_room/light/stat/RESULT"  
+    value_template: "{{ value_json.POWER1 }}"
+    command_topic: "catingham_palace/living_room/light/cmnd/POWER1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "catingham_palace/living_room/light/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
 fan:
   - platform: mqtt
     name: "Greenhouse ventilation"
