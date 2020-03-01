@@ -235,3 +235,18 @@
     data_template:
       entity_id: "{{ trigger.event.data.entity_id }}"
       mode: "{{ trigger.event.data.mode }}"
+
+- alias: "Sync kitchen auxiliary lights"
+  trigger:
+  - platform: state
+    entity_id: light.kitchen_hood, light.kitchen_countertop
+    from: 'on'
+    to: 'off'
+  - platform: state
+    entity_id: light.kitchen_hood, light.kitchen_countertop
+    from: 'off'
+    to: 'on'
+  action:
+    service_template: 'light.turn_{{ trigger.to_state.state }}'
+    data_template:
+      entity_id: 'light.kitchen_{% if trigger.from_state.entity_id == "light.kitchen_hood" %}countertop{% else %}hood{% endif %}'
