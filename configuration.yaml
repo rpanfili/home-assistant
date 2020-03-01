@@ -10,9 +10,9 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Rome
-  
+
   customize: !include customize.yaml
-    
+
 recorder:
   db_url: !secret recorder_db_url
   purge_keep_days: 15
@@ -74,125 +74,122 @@ sensor:
   - platform: mqtt
     state_topic: "catingham_palace/greenhouse/temperature"
     name: "Greenhouse temperature"
-    unit_of_measurement: '°C'
+    unit_of_measurement: "°C"
   - platform: mqtt
     state_topic: "catingham_palace/greenhouse/humidity"
     name: "Greenhouse humidity"
-    unit_of_measurement: '%'
+    unit_of_measurement: "%"
     value_template: "{{ value | round }}"
   - platform: mqtt
     state_topic: "catingham_palace/greenhouse/plant1/soil_moisture"
     name: "Greenhouse plant1 soil_moisture"
-    unit_of_measurement: '%'
+    unit_of_measurement: "%"
   - platform: mqtt
     state_topic: "catingham_palace/entryway/temperature"
     name: "Entryway temperature"
-    unit_of_measurement: '°C'
+    unit_of_measurement: "°C"
   - platform: mqtt
     state_topic: "catingham_palace/entryway/humidity"
     name: "Entryway humidity"
-    unit_of_measurement: '%'
+    unit_of_measurement: "%"
     value_template: "{{ value | round }}"
   - platform: mqtt
     state_topic: "catingham_palace/emonpi/power1"
     name: "EmonPi Power 1"
-    unit_of_measurement: 'W'
+    unit_of_measurement: "W"
   - platform: mqtt
     state_topic: "catingham_palace/emonpi/power2"
     name: "EmonPi Power 2"
-    unit_of_measurement: 'W'
+    unit_of_measurement: "W"
   - platform: mqtt
     state_topic: "catingham_palace/emonpi/power1pluspower2"
     name: "EmonPi Total power"
-    unit_of_measurement: 'W'
+    unit_of_measurement: "W"
   - platform: mqtt
     state_topic: "catingham_palace/emonpi/total_power_kwh"
     name: "EmonPi Total power kWh"
     value_template: "{{ value | round(2) }}"
-    unit_of_measurement: 'kWh'
+    unit_of_measurement: "kWh"
 
   - platform: mqtt
     state_topic: "catingham_palace/mqtt_cover_test"
     name: "mqtt_cover_test"
-    unit_of_measurement: '%'
-    
+    unit_of_measurement: "%"
+
   - platform: mqtt
     state_topic: "catingham_palace/green_room/rolling_shutter/position"
     name: "cover_position_green_room"
-    unit_of_measurement: '%'    
-    
+    unit_of_measurement: "%"
+
   - platform: mqtt
     state_topic: "catingham_palace/green_room/air_quality_meter"
     name: "air_quality_meter"
-    value_template: '{{ value_json }}'
+    value_template: "{{ value_json }}"
     #availability_topic: "catingham_palace/green_room/air_quality_meter/availability"
     json_attributes_topic: "catingham_palace/green_room/air_quality_meter"
-    
+
   - platform: template
     sensors:
       air_quality_pm10:
         friendly_name: PM1.0
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pm10 }}'
-        unit_of_measurement: 'μg/m3'
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pm10 }}"
+        unit_of_measurement: "μg/m3"
       air_quality_pm25:
         friendly_name: PM2.5
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pm25 }}'
-        unit_of_measurement: 'μg/m3'
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pm25 }}"
+        unit_of_measurement: "μg/m3"
       air_quality_pm100:
         friendly_name: PM10
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pm100 }}'
-        unit_of_measurement: 'μg/m3'        
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pm100 }}"
+        unit_of_measurement: "μg/m3"
       air_quality_pm10_env:
         friendly_name: PM1.0 (atmospheric environment)
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pe10 }}'
-        unit_of_measurement: 'μg/m3'
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pe10 }}"
+        unit_of_measurement: "μg/m3"
       air_quality_pm25_env:
         friendly_name: PM2.5 (atmospheric environment)
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pe25 }}'
-        unit_of_measurement: 'μg/m3' 
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pe25 }}"
+        unit_of_measurement: "μg/m3"
       air_quality_pm100_env:
         friendly_name: PM10 (atmospheric environment)
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pe100 }}'
-        unit_of_measurement: 'μg/m3'
-        
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pe100 }}"
+        unit_of_measurement: "μg/m3"
+
       air_quality_pt03:
         friendly_name: Particles > 0.3um / 0.1L air
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pt03 }}'
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pt03 }}"
       air_quality_pt05:
         friendly_name: Particles > 0.5um / 0.1L air
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pt05 }}'        
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pt05 }}"
       air_quality_pt10:
         friendly_name: Particles > 1.0um / 0.1L air
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pt10 }}'
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pt10 }}"
       air_quality_pt25:
         friendly_name: Particles > 2.5um / 0.1L air
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pt25 }}'        
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pt25 }}"
       air_quality_pt50:
         friendly_name: Particles > 5.0um / 0.1L air
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pt50 }}'
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pt50 }}"
       air_quality_pt100:
         friendly_name: Particles > 10.0um / 0.1L air
-        value_template: '{{ states.sensor.air_quality_meter.attributes.pt100 }}'        
-        
+        value_template: "{{ states.sensor.air_quality_meter.attributes.pt100 }}"
+
       air_quality_temperature:
         friendly_name: Temperature
-        value_template: '{{ states.sensor.air_quality_meter.attributes.tem }}'
-        unit_of_measurement: '°C'  
+        value_template: "{{ states.sensor.air_quality_meter.attributes.tem }}"
+        unit_of_measurement: "°C"
       air_quality_humidity:
         friendly_name: Humidity
-        value_template: '{{ states.sensor.air_quality_meter.attributes.hum }}'
-        unit_of_measurement: '%'       
+        value_template: "{{ states.sensor.air_quality_meter.attributes.hum }}"
+        unit_of_measurement: "%"
       air_quality_formaldehyde:
         friendly_name: Formaldehyde
-        value_template: '{{ states.sensor.air_quality_meter.attributes.hcho }}'
-        unit_of_measurement: 'mg/m3'
-              
+        value_template: "{{ states.sensor.air_quality_meter.attributes.hcho }}"
+        unit_of_measurement: "mg/m3"
+
 # Text to speech
 tts:
   platform: google_translate
-
-
-
 
 mqtt:
   broker: !secret mqtt_broker
@@ -229,10 +226,9 @@ lock:
     payload_unlock: "OPEN"
     payload_lock: "CLOSED"
     optimistic: false
-    qos: 1    
+    qos: 1
 
 switch:
-
   - platform: mqtt
     name: "Automatic cat passage"
     command_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
@@ -240,7 +236,7 @@ switch:
     optimistic: false
     retain: true
     qos: 1
-    
+
   - platform: mqtt
     name: "Greenhouse humidifier power"
     command_topic: "catingham_palace/greenhouse/humidifier/switch"
@@ -270,11 +266,10 @@ switch:
     state_topic: "catingham_palace/roller_shutters/away_mode"
     optimistic: false
     retain: true
-    qos: 1    
+    qos: 1
 
 owntracks:
   # max_gps_accuracy: 200
-
 
 # device_tracker:
 #   - platform: owntracks
@@ -284,7 +279,7 @@ owntracks:
 #    home_interval: 300
 #    track_new_devices: false
 #  - platform: owntracks
-   
+
 light:
   - platform: mqtt
     name: "Greenhouse"
@@ -308,7 +303,7 @@ light:
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
-    retain: false 
+    retain: false
   - platform: mqtt
     name: "Kitchen countertop"
     state_topic: "catingham_palace/kitchen/countertop_light/stat/POWER"
@@ -319,7 +314,7 @@ light:
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
-    retain: false 
+    retain: false
   - platform: mqtt
     name: "Kitchen hood"
     state_topic: "catingham_palace/kitchen/hood_light/stat/POWER"
@@ -330,11 +325,11 @@ light:
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
-    retain: false 
+    retain: false
 
   - platform: mqtt
     name: "Living room main"
-    state_topic: "catingham_palace/living_room/light/stat/RESULT"  
+    state_topic: "catingham_palace/living_room/light/stat/RESULT"
     value_template: "{{ value_json.POWER3 }}"
     command_topic: "catingham_palace/living_room/light/cmnd/POWER3"
     payload_on: "ON"
@@ -346,7 +341,7 @@ light:
     retain: false
   - platform: mqtt
     name: "Kitchen main"
-    state_topic: "catingham_palace/living_room/light/stat/RESULT"  
+    state_topic: "catingham_palace/living_room/light/stat/RESULT"
     value_template: "{{ value_json.POWER1 }}"
     command_topic: "catingham_palace/living_room/light/cmnd/POWER1"
     payload_on: "ON"
@@ -411,7 +406,7 @@ binary_sensor: !include_dir_merge_list binary_sensor/
 
 camera: !include camera.yaml
 
-cover: !include covers.yaml          
+cover: !include covers.yaml
 
 person:
   - name: Rubens
@@ -428,12 +423,12 @@ history_graph:
     name: "Temperature"
     refresh: 60
     entities:
-      - sensor.greenhouse_temperature 
+      - sensor.greenhouse_temperature
   greenhouse_humidity:
     name: "Humidity"
     refresh: 60
     entities:
-      - sensor.greenhouse_humidity 
+      - sensor.greenhouse_humidity
   greenhouse_plant1_soil_moisture:
     name: "Soil moisture"
     refresh: 60
@@ -445,7 +440,7 @@ history_graph:
     entities:
       - sensor.emonpi_total_power
       - sensor.emonpi_power_1
-      - sensor.emonpi_power_2      
+      - sensor.emonpi_power_2
   emonpi_power_kwh:
     name: "Power consumption kWh"
     refresh: 60
@@ -458,34 +453,34 @@ media_player:
     host: !secret living_room_tv_ip
     mac: !secret living_room_tv_mac_address
     port: 8001
-    
+
 input_select:
   roller_shutters_scene:
     name: Roller shutters scene
-    options: 
+    options:
       - "day"
-      - "night"    
+      - "night"
 
 google_assistant:
   project_id: catingham-palace
   service_account: !secret google_assistant_service_account
   entity_config:
     lock.driveway_gate:
-      aliases: 
+      aliases:
         - cancello
         - cancellone
       room: Driveway
     lock.driveway_door:
-      aliases: 
+      aliases:
         - cancelletto
       room: Driveway
     lock.stair_front_door:
-      aliases: 
+      aliases:
         - porta sulle scale
     light.driveway_lights:
       aliases:
         - luci in giardino
-        - luci nel vialetto    
+        - luci nel vialetto
       room: Driveway
     light.entryway:
       aliases:
@@ -517,23 +512,22 @@ octoprint:
 timer:
   tv_shut_down_delay:
     duration: 30
-    
+
 vacuum:
   - platform: roomba
     name: Roomba
     host: !secret roomba_ip_address
     username: !secret roomba_username
-    password: !secret roomba_password    
+    password: !secret roomba_password
 
 weather:
   - platform: darksky
     api_key: !secret darksky_api_key
     name: home
 
-  
 lovelace:
   mode: yaml
-  
+
 system_health:
 
 group: !include groups.yaml
@@ -545,3 +539,10 @@ script: !include scripts.yaml
 python_script:
 
 mobile_app:
+
+alexa:
+  smart_home:
+    locale: it-IT
+    endpoint: https://api.eu.amazonalexa.com/v3/events
+    client_id: !secret alexa_client_id
+    client_secret: !secret alexa_client_secret
