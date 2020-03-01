@@ -106,7 +106,18 @@
   action:
     - service: notify.telegram2rubens
       data: 
-        message: "HomeAssistant started"  
+        message: "HomeAssistant started 🏡"  
+
+- id: "notify_homeassistant_startup"
+  alias: "Notify HomeAssistant shutdown"
+  initial_state: True
+  trigger:
+    - platform: homeassistant
+      event: shutdown
+  action:
+    - service: notify.telegram2rubens
+      data: 
+        message: "HomeAssistant is shutting down 👋"  
 
 - id: 'greenhouse_auto_humidity_power_off'
   alias: 'Greenhouse auto humidity power off'
