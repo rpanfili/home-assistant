@@ -486,11 +486,24 @@ google_assistant:
       aliases:
         - luci in giardino
         - luci nel vialetto    
+      room: Driveway
     light.entryway:
       aliases:
         - luce dell'ingresso
         - luce in ingresso
       room: Entryway
+    light.living_room_main:
+      room: Living room
+    light.kitchen_main:
+      room: Kitchen
+    light.kitchen_hood:
+      room: Kitchen
+      aliases:
+        - luci della cappa
+    light.kitchen_countertop:
+      room: Kitchen
+      aliases:
+        - luci piano cucina
 
 cast:
 
