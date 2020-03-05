@@ -250,3 +250,17 @@
     service_template: 'light.turn_{{ trigger.to_state.state }}'
     data_template:
       entity_id: 'light.kitchen_{% if trigger.from_state.entity_id == "light.kitchen_hood" %}countertop{% else %}hood{% endif %}'
+
+
+- alias: "Emulate entryhome switch"
+  trigger:
+  - platform: state
+    entity_id: light.entryway
+  action:
+    service_template: 'mqtt.publish'
+    data_template:
+      topic: 'catingham_palace/living_room/light/cmnd/POWER2'
+      payload: '{{trigger.to_state.state | upper }}'
+      qos: 1
+      retain: false
+
