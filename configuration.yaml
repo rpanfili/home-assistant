@@ -539,10 +539,9 @@ script: !include scripts.yaml
 python_script:
 
 mobile_app:
-
-alexa:
-  smart_home:
-    locale: it-IT
-    endpoint: https://api.eu.amazonalexa.com/v3/events
-    client_id: !secret alexa_client_id
-    client_secret: !secret alexa_client_secret
+# alexa:
+#   smart_home:
+#     locale: it-IT
+#     endpoint: https://api.eu.amazonalexa.com/v3/events
+#     client_id: !secret alexa_client_id
+#     client_secret: !secret alexa_client_secret
