@@ -39,20 +39,6 @@ views:
             name: Lights
             tap_action:
               action: toggle
-      - type: weather-forecast
-        entity: weather.home
-      - type: entities
-        title: Environment
-        show_header_toggle: false
-        entities:
-          - sun.sun
-      - type: conditional
-        conditions:
-          - entity: binary_sensor.entryway_thermostat_online
-            state_not: "unavailable"
-        card:
-          type: thermostat
-          entity: climate.entryway
       - type: entities
         title: Kitchen
         show_header_toggle: true
@@ -60,6 +46,7 @@ views:
           - light.kitchen_main
           - light.kitchen_countertop
           - light.kitchen_hood
+          - automation.sync_kitchen_auxiliary_lights
 
           # - climate.entryway
           # - sensor.entryway_thermostat_temperature
@@ -103,12 +90,26 @@ views:
           type: media-control
           entity: media_player.living_room_tv
 
+      - type: weather-forecast
+        entity: weather.home
+      - type: entities
+        title: Environment
+        show_header_toggle: false
+        entities:
+          - sun.sun
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.entryway_thermostat_online
+            state_not: "unavailable"
+        card:
+          type: thermostat
+          entity: climate.entryway
+
       # - type: entities
       #   title: Green Room
       #   show_header_toggle: true
       #   entities:
       #     - binary_sensor.green_room_motion
-
 
   - title: Roller Shutters
     id: roller-shutters
