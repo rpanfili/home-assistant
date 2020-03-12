@@ -476,29 +476,34 @@ google_assistant:
       room: Driveway
     lock.stair_front_door:
       aliases:
-        - porta sulle scale
+        - porta
+      room: Scale
     light.driveway_lights:
       aliases:
         - luci in giardino
         - luci nel vialetto
       room: Driveway
     light.entryway:
-      aliases:
-        - luce dell'ingresso
-        - luce in ingresso
-      room: Entryway
+      room: Ingresso
     light.living_room_main:
-      room: Living room
+      room: Sala
+      aliases:
+        - luce grande
+        - luce principale
     light.kitchen_main:
-      room: Kitchen
+      room: Cucina
+      aliases:
+        - luce grande
+        - luce principale
     light.kitchen_hood:
-      room: Kitchen
+      room: Cucina
       aliases:
-        - luci della cappa
+        - luce della cappa
     light.kitchen_countertop:
-      room: Kitchen
+      room: Cucina
       aliases:
-        - luci piano cucina
+        - luce piano cucina
+        - luce sotto lavello
 
 cast:
 
