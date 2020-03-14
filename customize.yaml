@@ -63,6 +63,8 @@ switch.greenhouse_humidifier_status_leds:
 switch.greenhouse_humidifier_mode:
     friendly_name: Automatic mode
     icon: mdi:auto-fix
+switch.pallone:
+    icon: mdi:balloon
 
 binary_sensor.living_room_camera_person_detected:
     icon: mdi:walk
