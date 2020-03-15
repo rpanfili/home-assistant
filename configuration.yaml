@@ -362,6 +362,17 @@ light:
     payload_not_available: "Offline"
     qos: 1
     retain: false
+  - platform: mqtt
+    name: "Green room desktop light"
+    state_topic: "catingham_palace/green_room/desktop_light/stat/POWER"
+    command_topic: "catingham_palace/green_room/desktop_light/cmnd/POWER"
+    availability_topic: "catingham_palace/green_room/desktop_light/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
 fan:
   - platform: mqtt
@@ -498,23 +509,25 @@ google_assistant:
       room: Ingresso
     light.living_room_main:
       room: Sala
+      name: Luce grande
       aliases:
-        - luce grande
         - luce principale
     light.kitchen_main:
       room: Cucina
+      name: Luce grande
       aliases:
-        - luce grande
         - luce principale
     light.kitchen_hood:
       room: Cucina
-      aliases:
-        - luce della cappa
+      name: Luce della cappa
     light.kitchen_countertop:
       room: Cucina
+      name: Luce piano cucina
       aliases:
-        - luce piano cucina
         - luce sotto lavello
+    light.green_room_desktop_light:
+      room: Ufficio
+      name: Luce scrivania
 
 cast:
 

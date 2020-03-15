@@ -115,6 +115,8 @@ light.kitchen_countertop:
     friendly_name: "Countertop light"
 light.kitchen_hood:
     friendly_name: "Hood light"
+light.green_room_desktop_light:
+    friendly_name: "Desktop light"
 
 cover.all:
     device_class: "shutter"
