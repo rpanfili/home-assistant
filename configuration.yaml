@@ -8,9 +8,7 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Rome
 
-  customize: !include ./customize.yaml
-  # customize folder: !include_dir_merge_named ../customizations/entities
-
+  customize: !include_dir_merge_named ./customizations/entities
   customize_domain: !include_dir_merge_named ./customizations/domains
   customize_glob: !include_dir_merge_named ./customizations/globs
 
