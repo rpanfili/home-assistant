@@ -190,8 +190,6 @@ google_assistant:
       name: Luce scrivania
 
 cast:
-
-timer:
   tv_shut_down_delay:
     duration: 30
 
