@@ -1,0 +1,11 @@
+---
+name: "Roller Shutters"
+entities:
+  - cover.living_room_left
+  - cover.living_room_right
+  - cover.kitchen_left
+  - cover.kitchen_right
+  - cover.green_room
+  - cover.pink_room
+  - cover.bedroom
+  - cover.bathroom

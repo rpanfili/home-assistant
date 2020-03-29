@@ -530,9 +530,12 @@ lovelace:
 
 system_health:
 
-group: !include groups.yaml
-automation: !include automations.yaml
-automation folder: !include_dir_list automations
+group: !include ./groups.yaml
+group folder: !include_dir_merge_named ./groups
+
+automation: !include ./automations.yaml
+automation folder: !include_dir_list ./automations
+
 zone: !include zones.yaml
 
 script: !include scripts.yaml

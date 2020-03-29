@@ -1,0 +1,7 @@
+---
+name: "Roller Shutters with balcony"
+entities:
+  - cover.living_room_right
+  - cover.kitchen_right
+  - cover.green_room
+  - cover.bedroom
