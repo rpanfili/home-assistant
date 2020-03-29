@@ -1,0 +1,12 @@
+---
+platform: mqtt
+name: "Green room desktop light"
+state_topic: "catingham_palace/green_room/desktop_light/stat/POWER"
+command_topic: "catingham_palace/green_room/desktop_light/cmnd/POWER"
+availability_topic: "catingham_palace/green_room/desktop_light/tele/LWT"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+retain: false

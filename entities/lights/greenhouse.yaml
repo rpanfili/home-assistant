@@ -1,0 +1,8 @@
+---
+platform: mqtt
+name: "Greenhouse"
+qos: 1
+optimistic: false
+retain: true
+command_topic: "catingham_palace/greenhouse/light/switch"
+state_topic: "catingham_palace/greenhouse/light/status"

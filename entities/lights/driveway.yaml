@@ -1,0 +1,6 @@
+---
+platform: mqtt
+name: "Driveway"
+command_topic: "catingham_palace/driveway/lights/state"
+state_topic: "catingham_palace/driveway/lights/state"
+qos: 1

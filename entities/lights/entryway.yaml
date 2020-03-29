@@ -1,0 +1,12 @@
+---
+platform: mqtt
+name: "Entryway"
+state_topic: "catingham_palace/entryway/light/stat/POWER"
+command_topic: "catingham_palace/entryway/light/cmnd/POWER"
+availability_topic: "catingham_palace/entryway/light/tele/LWT"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+retain: false
