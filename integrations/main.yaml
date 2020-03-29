@@ -191,13 +191,6 @@ google_assistant:
 
 cast:
 
-octoprint:
-  host: !secret octoprint_host
-  api_key: !secret octoprint_api_key
-  name: S200
-  bed: true
-  number_of_tools: 1
-
 timer:
   tv_shut_down_delay:
     duration: 30
