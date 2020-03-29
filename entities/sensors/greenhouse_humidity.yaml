@@ -1,0 +1,6 @@
+---
+platform: mqtt
+state_topic: "catingham_palace/greenhouse/humidity"
+name: "Greenhouse humidity"
+unit_of_measurement: "%"
+value_template: "{{ value | round }}"

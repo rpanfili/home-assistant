@@ -1,0 +1,5 @@
+---
+platform: mqtt
+state_topic: "catingham_palace/simon_says/game"
+name: "Simon Says"
+qos: 1

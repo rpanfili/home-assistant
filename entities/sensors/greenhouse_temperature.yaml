@@ -1,0 +1,5 @@
+---
+platform: mqtt
+state_topic: "catingham_palace/greenhouse/temperature"
+name: "Greenhouse temperature"
+unit_of_measurement: "°C"

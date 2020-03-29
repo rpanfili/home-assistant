@@ -1,0 +1,5 @@
+---
+platform: mqtt
+state_topic: "catingham_palace/emonpi/power1"
+name: "EmonPi Power 1"
+unit_of_measurement: "W"
