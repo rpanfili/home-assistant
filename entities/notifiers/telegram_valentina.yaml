@@ -1,0 +1,4 @@
+---
+name: telegram2vale
+platform: telegram
+chat_id: !secret telegram_vale_chat

@@ -1,0 +1,4 @@
+---
+name: CatinghamPalaceBot
+platform: telegram
+chat_id: !secret telegram_catingham_palace_group
