@@ -1,0 +1,362 @@
+---
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: !secret http_base_url
+  ssl_certificate: !secret http_ssl_certificate
+  ssl_key: !secret http_ssl_key
+  use_x_forwarded_for: true
+  trusted_proxies: !secret trusted_proxies
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - apple_tv
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+logger:
+  default: info
+  logs:
+    roomba: warning
+    homeassistant.components.vacuum: warning
+
+# Track the sun
+sun:
+
+sensor: !include_dir_list ../entities/sensors
+
+# Text to speech
+tts:
+  platform: google_translate
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  client_id: lamp1
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
+lock:
+  - platform: mqtt
+    name: "Driveway Gate"
+    command_topic: "catingham_palace/driveway/gate/state"
+    state_topic: "catingham_palace/driveway/gate/state"
+    payload_unlock: "OPEN"
+    payload_lock: "CLOSED"
+    optimistic: false
+    qos: 1
+  - platform: mqtt
+    name: "Driveway Door"
+    command_topic: "catingham_palace/driveway/door/state"
+    state_topic: "catingham_palace/driveway/door/state"
+    payload_unlock: "OPEN"
+    payload_lock: "CLOSED"
+    optimistic: false
+    qos: 1
+  - platform: mqtt
+    name: "Stair Front door"
+    command_topic: "catingham_palace/stair/front_door/state"
+    state_topic: "catingham_palace/stair/front_door/state"
+    payload_unlock: "OPEN"
+    payload_lock: "CLOSED"
+    optimistic: false
+    qos: 1
+
+switch: !include_dir_list ../entities/switches
+
+owntracks:
+  # max_gps_accuracy: 200
+
+# device_tracker:
+#   - platform: owntracks
+
+#  - platform: nmap_tracker
+#    hosts: 192.168.0.1/24
+#    home_interval: 300
+#    track_new_devices: false
+#  - platform: owntracks
+
+light:
+  - platform: mqtt
+    name: "Greenhouse"
+    qos: 1
+    optimistic: false
+    retain: true
+    command_topic: "catingham_palace/greenhouse/light/switch"
+    state_topic: "catingham_palace/greenhouse/light/status"
+  - platform: mqtt
+    name: "Driveway"
+    command_topic: "catingham_palace/driveway/lights/state"
+    state_topic: "catingham_palace/driveway/lights/state"
+    qos: 1
+  - platform: mqtt
+    name: "Entryway"
+    state_topic: "catingham_palace/entryway/light/stat/POWER"
+    command_topic: "catingham_palace/entryway/light/cmnd/POWER"
+    availability_topic: "catingham_palace/entryway/light/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+  - platform: mqtt
+    name: "Kitchen countertop"
+    state_topic: "catingham_palace/kitchen/countertop_light/stat/POWER"
+    command_topic: "catingham_palace/kitchen/countertop_light/cmnd/POWER"
+    availability_topic: "catingham_palace/kitchen/countertop_light/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+  - platform: mqtt
+    name: "Kitchen hood"
+    state_topic: "catingham_palace/kitchen/hood_light/stat/POWER"
+    command_topic: "catingham_palace/kitchen/hood_light/cmnd/POWER"
+    availability_topic: "catingham_palace/kitchen/hood_light/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+
+  - platform: mqtt
+    name: "Living room main"
+    state_topic: "catingham_palace/living_room/light/stat/RESULT"
+    value_template: "{{ value_json.POWER3 }}"
+    command_topic: "catingham_palace/living_room/light/cmnd/POWER3"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "catingham_palace/living_room/light/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+  - platform: mqtt
+    name: "Kitchen main"
+    state_topic: "catingham_palace/living_room/light/stat/RESULT"
+    value_template: "{{ value_json.POWER1 }}"
+    command_topic: "catingham_palace/living_room/light/cmnd/POWER1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "catingham_palace/living_room/light/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+  - platform: mqtt
+    name: "Green room desktop light"
+    state_topic: "catingham_palace/green_room/desktop_light/stat/POWER"
+    command_topic: "catingham_palace/green_room/desktop_light/cmnd/POWER"
+    availability_topic: "catingham_palace/green_room/desktop_light/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+
+fan:
+  - platform: mqtt
+    name: "Greenhouse ventilation"
+    qos: 1
+    optimistic: false
+    retain: true
+    command_topic: "catingham_palace/greenhouse/ventilation/switch"
+    state_topic: "catingham_palace/greenhouse/ventilation/status"
+
+ifttt:
+  key: !secret ifttt_key
+
+notify:
+  - name: CatinghamPalaceBot
+    platform: telegram
+    #chat_id: !secret telegram_rubens_chat
+    chat_id: !secret telegram_catingham_palace_group
+  - name: telegram2rubens
+    platform: telegram
+    chat_id: !secret telegram_rubens_chat
+  - name: telegram2vale
+    platform: telegram
+    chat_id: !secret telegram_vale_chat
+
+telegram_bot:
+  - platform: webhooks
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_rubens_chat
+      - !secret telegram_vale_chat
+      - !secret telegram_catingham_palace_group
+
+input_number:
+  covers_min_position:
+    name: Covers min position
+    min: 0
+    max: 100
+    initial: 25
+    step: 5
+    unit_of_measurement: "%"
+    icon: mdi:cat
+  greenhouse_humidifier_target_humidity:
+    name: Target humidity
+    min: 0
+    max: 100
+    step: 5
+    initial: 60
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+binary_sensor: !include_dir_merge_list ../binary_sensor/
+
+camera: !include ../camera.yaml
+
+cover: !include ../covers.yaml
+
+person:
+  - name: Rubens
+    id: rubens
+    device_trackers:
+      - device_tracker.rubens_phone
+  - name: Valentina
+    id: valentina
+    device_trackers:
+      - device_tracker.valentina_phone
+
+media_player:
+  - platform: samsungtv
+    name: Living room TV
+    host: !secret living_room_tv_ip
+    mac: !secret living_room_tv_mac_address
+    port: 8001
+
+input_select:
+  roller_shutters_scene:
+    name: Roller shutters scene
+    options:
+      - "day"
+      - "night"
+
+google_assistant:
+  project_id: catingham-palace
+  service_account: !secret google_assistant_service_account
+  entity_config:
+    lock.driveway_gate:
+      aliases:
+        - cancello
+        - cancellone
+      room: Driveway
+    lock.driveway_door:
+      aliases:
+        - cancelletto
+      room: Driveway
+    lock.stair_front_door:
+      aliases:
+        - porta
+      room: Scale
+    light.driveway_lights:
+      aliases:
+        - luci in giardino
+        - luci nel vialetto
+      room: Driveway
+    light.entryway:
+      room: Ingresso
+    light.living_room_main:
+      room: Sala
+      name: Luce grande
+      aliases:
+        - luce principale
+    light.kitchen_main:
+      room: Cucina
+      name: Luce grande
+      aliases:
+        - luce principale
+    light.kitchen_hood:
+      room: Cucina
+      name: Luce della cappa
+    light.kitchen_countertop:
+      room: Cucina
+      name: Luce piano cucina
+      aliases:
+        - luce sotto lavello
+    light.green_room_desktop_light:
+      room: Ufficio
+      name: Luce scrivania
+
+cast:
+
+octoprint:
+  host: !secret octoprint_host
+  api_key: !secret octoprint_api_key
+  name: S200
+  bed: true
+  number_of_tools: 1
+
+timer:
+  tv_shut_down_delay:
+    duration: 30
+
+vacuum:
+  - platform: roomba
+    name: Roomba
+    host: !secret roomba_ip_address
+    username: !secret roomba_username
+    password: !secret roomba_password
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    name: home
+
+lovelace:
+  mode: yaml
+
+system_health:
+
+group: !include_dir_named ../groups
+
+automation: !include ../automations.yaml
+automation folder: !include_dir_list ../automations
+
+zone: !include ../zones.yaml
+
+script: !include ../scripts.yaml
+
+python_script:
+
+mobile_app:
+# alexa:
+#   smart_home:
+#     locale: it-IT
+#     endpoint: https://api.eu.amazonalexa.com/v3/events
+#     client_id: !secret alexa_client_id
+#     client_secret: !secret alexa_client_secret
