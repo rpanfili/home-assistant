@@ -99,8 +99,6 @@ telegram_bot:
 
 binary_sensor: !include_dir_merge_list ../binary_sensor/
 
-camera: !include ../camera.yaml
-
 person:
   - name: Rubens
     id: rubens
