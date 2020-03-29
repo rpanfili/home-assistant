@@ -1,0 +1,8 @@
+---
+platform: mqtt
+name: "Greenhouse humidifier power"
+command_topic: "catingham_palace/greenhouse/humidifier/switch"
+state_topic: "catingham_palace/greenhouse/humidifier/status"
+optimistic: false
+retain: true
+qos: 1

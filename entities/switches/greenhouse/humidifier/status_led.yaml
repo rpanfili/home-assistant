@@ -1,0 +1,7 @@
+platform: mqtt
+name: "Greenhouse humidifier status leds"
+command_topic: "catingham_palace/greenhouse/humidifier/leds/switch"
+state_topic: "catingham_palace/greenhouse/humidifier/leds/status"
+optimistic: false
+retain: true
+qos: 1

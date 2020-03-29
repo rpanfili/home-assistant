@@ -107,56 +107,7 @@ lock:
     optimistic: false
     qos: 1
 
-switch:
-  - platform: mqtt
-    name: "Automatic cat passage"
-    command_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
-    state_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
-    optimistic: false
-    retain: true
-    qos: 1
-
-  - platform: mqtt
-    name: "Greenhouse humidifier power"
-    command_topic: "catingham_palace/greenhouse/humidifier/switch"
-    state_topic: "catingham_palace/greenhouse/humidifier/status"
-    optimistic: false
-    retain: true
-    qos: 1
-  - platform: mqtt
-    name: "Greenhouse humidifier status leds"
-    command_topic: "catingham_palace/greenhouse/humidifier/leds/switch"
-    state_topic: "catingham_palace/greenhouse/humidifier/leds/status"
-    optimistic: false
-    retain: true
-    qos: 1
-  - platform: mqtt
-    name: "Greenhouse humidifier mode"
-    command_topic: "catingham_palace/greenhouse/humidifier/mode"
-    state_topic: "catingham_palace/greenhouse/humidifier/mode"
-    payload_off: "manual"
-    payload_on: "auto"
-    optimistic: false
-    retain: true
-    qos: 1
-  - platform: mqtt
-    name: "Roller shutters away mode"
-    command_topic: "catingham_palace/roller_shutters/away_mode"
-    state_topic: "catingham_palace/roller_shutters/away_mode"
-    optimistic: false
-    retain: true
-    qos: 1
-  - platform: mqtt
-    name: "Pallone"
-    state_topic: "catingham_palace/green_room/pallone/stat/POWER"
-    command_topic: "catingham_palace/green_room/pallone/cmnd/POWER"
-    availability_topic: "catingham_palace/green_room/pallone/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+switch: !include_dir_list ./entities/switches
 
 owntracks:
   # max_gps_accuracy: 200
