@@ -1,0 +1,11 @@
+---
+platform: rollershutteriot
+name: "Pink room"
+command_topic: "catingham_palace/pink_room/rolling_shutter/position/set"
+position_topic: "catingham_palace/pink_room/rolling_shutter/position"
+set_position_topic: "catingham_palace/pink_room/rolling_shutter/position/set"
+qos: 1
+retain: false
+optimistic: true
+payload_close: 0
+payload_open: 100

@@ -1,0 +1,14 @@
+---
+platform: rollershutteriot
+name: "Living room right"
+command_topic: "catingham_palace/living_room/right_rolling_shutter/position/set"
+position_topic: "catingham_palace/living_room/right_rolling_shutter/position"
+set_position_topic: "catingham_palace/living_room/right_rolling_shutter/position/set"
+qos: 1
+retain: false
+optimistic: true
+payload_close: 0
+payload_open: 100
+position_min: input_number.covers_min_position
+position_min_enable: switch.automatic_cat_passage
+window_sensor: binary_sensor.living_room_right_window

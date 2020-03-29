@@ -240,8 +240,6 @@ binary_sensor: !include_dir_merge_list ../binary_sensor/
 
 camera: !include ../camera.yaml
 
-cover: !include ../covers.yaml
-
 person:
   - name: Rubens
     id: rubens
