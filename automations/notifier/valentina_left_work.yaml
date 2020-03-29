@@ -1,0 +1,13 @@
+---
+id: "valentina_left_work"
+alias: "Valentina left work"
+initial_state: True
+trigger:
+  - platform: zone
+    entity_id: person.valentina
+    zone: zone.work_2
+    event: leave
+action:
+  - service: notify.telegram2rubens
+    data:
+      message: "Valentina sta tornando a casa"

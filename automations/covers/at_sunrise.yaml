@@ -1,0 +1,22 @@
+---
+id: "roller_shutter_sunrise"
+alias: "Roller shutter sunrise"
+description: "Open all covers at sunrise"
+initial_state: True
+trigger:
+  - platform: sun
+    event: sunrise
+    offset: "-00:30:00"
+  - platform: time
+    at: "08:00:00"
+condition:
+  condition: and
+  conditions:
+    - condition: sun
+      after: sunrise
+      after_offset: "-00:30:00"
+    - condition: time
+      after: "08:00:00"
+action:
+  - service: cover.open_cover
+    entity_id: all

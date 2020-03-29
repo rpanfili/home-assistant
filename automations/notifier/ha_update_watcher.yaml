@@ -1,0 +1,11 @@
+---
+alias: "Update Available Notifications"
+description: "Send a notification when an update for HomeAssistant is available."
+initial_state: True
+trigger:
+  platform: state
+  entity_id: updater.updater
+action:
+  - service: notify.telegram2rubens
+    data:
+      message: "A new update for Home Assistant is available."

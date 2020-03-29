@@ -1,0 +1,18 @@
+---
+id: "living_room_roller_shutter_tv_on_aware"
+alias: "Living room roller shutter TV ON aware"
+initial_state: True
+trigger:
+  - platform: state
+    entity_id: media_player.living_room_tv
+    from: "off"
+    to: "on"
+condition:
+  condition: state
+  entity_id: sun.sun
+  state: "above_horizon"
+action:
+  - service: timer.cancel
+    entity_id: timer.tv_shut_down_delay
+  - service: cover.close_cover
+    entity_id: cover.living_room_left

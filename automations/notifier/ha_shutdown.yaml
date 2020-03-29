@@ -1,0 +1,11 @@
+---
+id: "notify_homeassistant_shutdown"
+alias: "Notify HomeAssistant shutdown"
+initial_state: True
+trigger:
+  - platform: homeassistant
+    event: shutdown
+action:
+  - service: notify.telegram2rubens
+    data:
+      message: "HomeAssistant is shutting down 👋"

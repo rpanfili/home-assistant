@@ -1,0 +1,13 @@
+---
+alias: RFID Stair lock
+initial_state: "on"
+trigger:
+  - platform: mqtt
+    topic: catingham_palace/stair/rfid_reader
+condition:
+  condition: template
+  value_template: '{{ trigger.payload_json.username in ("Rubens", "Valentina", "Lino", "Carla", "Ivan") }}'
+action:
+  - service: lock.unlock
+    data:
+      entity_id: lock.stair_front_door

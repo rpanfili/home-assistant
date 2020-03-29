@@ -1,0 +1,13 @@
+---
+id: "notifier_ping"
+alias: "Telegram bot that reply pong to ping"
+initial_state: True
+trigger:
+  platform: event
+  event_type: telegram_command
+  event_data:
+    command: "/ping"
+action:
+  - service: notify.catinghampalacebot
+    data:
+      message: "pong"

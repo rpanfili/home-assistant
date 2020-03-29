@@ -561,6 +561,7 @@ system_health:
 
 group: !include groups.yaml
 automation: !include automations.yaml
+automation folder: !include_dir_list automations
 zone: !include zones.yaml
 
 script: !include scripts.yaml

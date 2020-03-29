@@ -89,8 +89,9 @@ automation.roller_shutter_sunset:
 automation.automatic_cat_passage:
     icon: mdi:auto-fix
 
-automation.sync_kitchen_auxiliary_lights:
+automation.kitchen_sync_auxiliary_lights:
     icon: mdi:sync
+    friendly_name: "Sync auxiliary lights"
 
 sensor.emonpi_total_power:
     icon: mdi:power-plug

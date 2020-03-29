@@ -1,0 +1,14 @@
+---
+id: "greenhouse_auto_humidity_power_off"
+alias: "Greenhouse auto humidity power off"
+initial_state: True
+trigger:
+  - platform: template
+    value_template: '{% if (states("sensor.greenhouse_humidity")| int > (states("input_number.greenhouse_humidifier_target_humidity")|int) + 3) %}true{% endif %}'
+condition:
+  condition: state
+  entity_id: switch.greenhouse_humidifier_mode
+  state: "on"
+action:
+  - service: switch.turn_off
+    entity_id: switch.greenhouse_humidifier_power

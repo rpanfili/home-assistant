@@ -1,0 +1,12 @@
+---
+alias: "Emulate entryhome switch"
+trigger:
+  - platform: state
+    entity_id: light.entryway
+action:
+  service_template: "mqtt.publish"
+  data_template:
+    topic: "catingham_palace/living_room/light/cmnd/POWER2"
+    payload: "{{trigger.to_state.state | upper }}"
+    qos: 1
+    retain: false
