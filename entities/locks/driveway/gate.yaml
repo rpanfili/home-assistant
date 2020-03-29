@@ -1,0 +1,9 @@
+---
+platform: mqtt
+name: "Driveway Gate"
+command_topic: "catingham_palace/driveway/gate/state"
+state_topic: "catingham_palace/driveway/gate/state"
+payload_unlock: "OPEN"
+payload_lock: "CLOSED"
+optimistic: false
+qos: 1

@@ -1,0 +1,9 @@
+---
+platform: mqtt
+name: "Stair Front door"
+command_topic: "catingham_palace/stair/front_door/state"
+state_topic: "catingham_palace/stair/front_door/state"
+payload_unlock: "OPEN"
+payload_lock: "CLOSED"
+optimistic: false
+qos: 1
