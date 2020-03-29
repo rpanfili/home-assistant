@@ -1,0 +1,2 @@
+---
+input_number: !include_dir_named ../entities/inputs_number

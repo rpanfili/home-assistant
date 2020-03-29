@@ -1,0 +1,8 @@
+---
+name: Covers min position
+min: 0
+max: 100
+initial: 25
+step: 5
+unit_of_measurement: "%"
+icon: mdi:cat

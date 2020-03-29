@@ -97,24 +97,6 @@ telegram_bot:
       - !secret telegram_vale_chat
       - !secret telegram_catingham_palace_group
 
-input_number:
-  covers_min_position:
-    name: Covers min position
-    min: 0
-    max: 100
-    initial: 25
-    step: 5
-    unit_of_measurement: "%"
-    icon: mdi:cat
-  greenhouse_humidifier_target_humidity:
-    name: Target humidity
-    min: 0
-    max: 100
-    step: 5
-    initial: 60
-    unit_of_measurement: "%"
-    icon: mdi:water-percent
-
 binary_sensor: !include_dir_merge_list ../binary_sensor/
 
 camera: !include ../camera.yaml

@@ -1,0 +1,8 @@
+---
+name: Target humidity
+min: 0
+max: 100
+step: 5
+initial: 60
+unit_of_measurement: "%"
+icon: mdi:water-percent
