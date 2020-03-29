@@ -1,0 +1,6 @@
+---
+name: train station
+latitude: !secret zones_train_station_latitude
+longitude: !secret zones_train_station_longitude
+radius: 100
+icon: mdi:train

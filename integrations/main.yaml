@@ -1,57 +1,4 @@
 ---
-# Show links to resources in log and frontend
-#introduction:
-
-# Enables the frontend
-frontend:
-
-# Enables configuration UI
-config:
-
-http:
-  # Uncomment this if you are using SSL or running in Docker etc
-  base_url: !secret http_base_url
-  ssl_certificate: !secret http_ssl_certificate
-  ssl_key: !secret http_ssl_key
-  use_x_forwarded_for: true
-  trusted_proxies: !secret trusted_proxies
-
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
-
-# Discover some devices automatically
-discovery:
-  ignore:
-    - apple_tv
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables support for tracking state changes over time.
-history:
-
-# View all events in a logbook
-logbook:
-
-logger:
-  default: info
-  logs:
-    roomba: warning
-    homeassistant.components.vacuum: warning
-
-# Track the sun
-sun:
-
-sensor: !include_dir_list ../entities/sensors
-
-# Text to speech
-tts:
-  platform: google_translate
-
 mqtt:
   broker: !secret mqtt_broker
   port: !secret mqtt_port
@@ -62,11 +9,6 @@ mqtt:
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
-
-switch: !include_dir_list ../entities/switches
-
-owntracks:
-  # max_gps_accuracy: 200
 
 # device_tracker:
 #   - platform: owntracks
@@ -85,19 +27,6 @@ fan:
     retain: true
     command_topic: "catingham_palace/greenhouse/ventilation/switch"
     state_topic: "catingham_palace/greenhouse/ventilation/status"
-
-ifttt:
-  key: !secret ifttt_key
-
-telegram_bot:
-  - platform: webhooks
-    api_key: !secret telegram_api_key
-    allowed_chat_ids:
-      - !secret telegram_rubens_chat
-      - !secret telegram_vale_chat
-      - !secret telegram_catingham_palace_group
-
-binary_sensor: !include_dir_merge_list ../binary_sensor/
 
 person:
   - name: Rubens
@@ -181,14 +110,8 @@ weather:
 lovelace:
   mode: yaml
 
-system_health:
-
-group: !include_dir_named ../groups
-
 automation: !include ../automations.yaml
 automation folder: !include_dir_list ../automations
-
-zone: !include ../zones.yaml
 
 script: !include ../scripts.yaml
 

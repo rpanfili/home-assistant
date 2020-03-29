@@ -1,0 +1,6 @@
+---
+name: work
+latitude: !secret zones_vale_work_latitude
+longitude: !secret zones_vale_work_longitude
+radius: 50
+icon: mdi:store

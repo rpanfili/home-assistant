@@ -1,0 +1,6 @@
+---
+logger:
+  default: info
+  logs:
+    roomba: warning
+    homeassistant.components.vacuum: warning
