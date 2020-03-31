@@ -1,2 +1,2 @@
 ---
-input_select: !include_dir_list ../entities/inputs_select
+input_select: !include_dir_named ../entities/inputs_select

@@ -1,0 +1,5 @@
+---
+alias: "Shutters up"
+sequence:
+  - service: cover.open_cover
+    entity_id: all
