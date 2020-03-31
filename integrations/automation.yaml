@@ -1,0 +1,3 @@
+---
+automation: !include ../automations.yaml
+automation folder: !include_dir_list ../automations

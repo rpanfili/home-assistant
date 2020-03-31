@@ -1,0 +1,5 @@
+---
+name: Valentina
+id: valentina
+device_trackers:
+  - device_tracker.valentina_phone

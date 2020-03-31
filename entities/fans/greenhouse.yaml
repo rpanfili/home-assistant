@@ -1,0 +1,8 @@
+---
+platform: mqtt
+name: "Greenhouse ventilation"
+qos: 1
+optimistic: false
+retain: true
+command_topic: "catingham_palace/greenhouse/ventilation/switch"
+state_topic: "catingham_palace/greenhouse/ventilation/status"

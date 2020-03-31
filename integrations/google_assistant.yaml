@@ -1,0 +1,46 @@
+---
+google_assistant:
+  project_id: catingham-palace
+  service_account: !secret google_assistant_service_account
+  entity_config:
+    lock.driveway_gate:
+      aliases:
+        - cancello
+        - cancellone
+      room: Driveway
+    lock.driveway_door:
+      aliases:
+        - cancelletto
+      room: Driveway
+    lock.stair_front_door:
+      aliases:
+        - porta
+      room: Scale
+    light.driveway_lights:
+      aliases:
+        - luci in giardino
+        - luci nel vialetto
+      room: Driveway
+    light.entryway:
+      room: Ingresso
+    light.living_room_main:
+      room: Sala
+      name: Luce grande
+      aliases:
+        - luce principale
+    light.kitchen_main:
+      room: Cucina
+      name: Luce grande
+      aliases:
+        - luce principale
+    light.kitchen_hood:
+      room: Cucina
+      name: Luce della cappa
+    light.kitchen_countertop:
+      room: Cucina
+      name: Luce piano cucina
+      aliases:
+        - luce sotto lavello
+    light.green_room_desktop_light:
+      room: Ufficio
+      name: Luce scrivania

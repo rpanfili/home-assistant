@@ -1,0 +1,6 @@
+---
+roller_shutters_scene:
+name: Roller shutters scene
+options:
+  - "day"
+  - "night"
