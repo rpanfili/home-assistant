@@ -62,7 +62,7 @@ elif mode in ['notte estiva']:
 elif mode in ['notte invernale', 'notte']:
     cover_conf = {
         'cover.bathroom':          0,
-        'cover.bedroom':           10,
+        'cover.bedroom':           0,
         'cover.green_room':        0,
         'cover.kitchen_left':      0,
         'cover.kitchen_right':     0,
