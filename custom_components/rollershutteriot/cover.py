@@ -90,6 +90,12 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
                             limit_enabled = window.state == STATE_ON
         return bool(limit_enabled)
 
+    def is_position_safe(self, given_position: int) -> bool:
+        """Return true if current position is safe, false otherwise"""
+        _LOGGER.debug(
+            f"IsPositionSafe | is min enabled: {self.is_position_min_enabled} - position min: {self.position_min} - given position: {given_position}")
+        return given_position is None or not self.is_position_min_enabled or self.position_min <= int(given_position)
+
     async def async_added_to_hass(self):
         """Subscribe MQTT events."""
         await super().async_added_to_hass()
@@ -115,7 +121,14 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
 
     async def _check_min_position(self):
         current_position = self.current_cover_position
-        if current_position is not None:
+        # updates current position only if needed
+
+        if current_position is None:
+            _LOGGER.warning(
+                f"Unknown current position for \"{self._unique_id}\" cover")
+            return
+
+        if not self.is_position_safe(current_position):
             await self.async_set_cover_position(
                 **{ATTR_POSITION: current_position})
 
@@ -132,13 +145,12 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
         # if a position limit is set then limit down position to position_min
         if ATTR_POSITION in kwargs:
             given_position = kwargs[ATTR_POSITION]
-
             position_min = self.position_min
             _LOGGER.debug(
-                f"Position min: {position_min} - Given position: {given_position}")
-            if position_min > int(given_position):
+                f"SetCoverPosition | Position min: {position_min} - Given position: {given_position}")
+            if not self.is_position_safe(given_position):
                 _LOGGER.debug(
-                    f"requested position below active position limit: {position_min} => override")
-                kwargs[ATTR_POSITION] = str(self.position_min)
+                    f"Requested position below active position limit: {position_min} => override")
+                kwargs[ATTR_POSITION] = str(position_min)
 
         await super().async_set_cover_position(**kwargs)
