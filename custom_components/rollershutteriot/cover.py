@@ -125,7 +125,7 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
 
         if current_position is None:
             _LOGGER.warning(
-                f"Unknown current position for \"{self._unique_id}\" cover")
+                f"Unknown current position for \"{self.entity_id}\" cover")
             return
 
         if not self.is_position_safe(current_position):
