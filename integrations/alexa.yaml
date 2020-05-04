@@ -13,3 +13,4 @@ alexa:
         - scene
         - script
         - timer
+    entity_config: !include_dir_merge_named ../assistants/alexa
