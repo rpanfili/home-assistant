@@ -1,11 +1,19 @@
 ---
 platform: rollershutteriot
 name: "Living room left"
-command_topic: "catingham_palace/living_room/left_rolling_shutter/position/set"
-position_topic: "catingham_palace/living_room/left_rolling_shutter/position"
-set_position_topic: "catingham_palace/living_room/left_rolling_shutter/position/set"
+availability_topic: "catingham_palace/living_room/left_rolling_shutter/tele/LWT"
+command_topic: "catingham_palace/living_room/left_rolling_shutter/cmnd/Backlog"
+position_topic: "catingham_palace/living_room/left_rolling_shutter/stat/SHUTTER1"
+set_position_topic: "catingham_palace/living_room/left_rolling_shutter/cmnd/ShutterPosition1"
+payload_available: "Online"
+payload_not_available: "Offline"
 qos: 1
 retain: false
 optimistic: true
-payload_close: 0
-payload_open: 100
+position_open: 100
+position_closed: 0
+payload_close: "ShutterClose1"
+payload_open: "ShutterOpen1"
+position_min: input_number.covers_min_position
+# position_min_enable: switch.automatic_cat_passage
+# window_sensor: binary_sensor.living_room_left_window
