@@ -15,3 +15,6 @@ action:
     entity_id: light.kitchen_main
   - service: light.turn_off
     entity_id: light.kitchen_hood
+  - service: notify.catinghampalacebot
+    data:
+      message: "Siccome non c'è nessuno in cucina da un po' ho spento le luci 🌱🦔"

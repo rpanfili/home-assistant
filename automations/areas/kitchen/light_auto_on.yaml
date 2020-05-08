@@ -16,3 +16,6 @@ action:
   - service: light.turn_on
     data_template:
       entity_id: light.kitchen_countertop
+  - service: notify.catinghampalacebot
+    data:
+      message: "Ho appena acceso per voi la luce in cucina 🙋‍♂️💡"
