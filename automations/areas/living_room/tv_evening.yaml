@@ -1,0 +1,33 @@
+---
+id: "living_room_tv_evening_aware"
+alias: "Living room TV evening aware"
+initial_state: True
+trigger:
+  - platform: state
+    entity_id: media_player.living_room_tv
+    from: "off"
+    to: "on"
+condition:
+  - condition: sun
+    after: sunset
+    before: sunrise
+  - condition: state
+    entity_id: binary_sensor.kitchen_motion
+    state: "off"
+    for: "00:01:00"
+action:
+  - service: light.turn_off
+    entity_id: light.kitchen_countertop
+  - service: light.turn_off
+    entity_id: light.kitchen_main
+  - service: light.turn_off
+    entity_id: light.kitchen_hood
+  - service: light.turn_off
+    entity_id: light.entryway
+  - service: notify.catinghampalacebot
+    data:
+      message: "Buona visione 👋📺"
+  - service: tts.google_translate_say
+    entity_id: media_player.kitchen_speaker
+    data:
+      message: "Buona visione!"
