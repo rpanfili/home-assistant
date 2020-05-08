@@ -47,6 +47,8 @@ views:
           - light.kitchen_countertop
           - light.kitchen_hood
           - automation.kitchen_sync_auxiliary_lights
+          - automation.automate_kitchen_lights_on
+          - automation.automate_kitchen_lights_off
 
           # - climate.entryway
           # - sensor.entryway_thermostat_temperature

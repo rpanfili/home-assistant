@@ -1,0 +1,17 @@
+---
+id: "automate_kitchen_lights_off"
+alias: "Automate kitchen lights OFF"
+initial_state: True
+trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_motion
+    from: "on"
+    to: "off"
+    for: "00:15:00" # 15 minutes
+action:
+  - service: light.turn_off
+    entity_id: light.kitchen_countertop
+  - service: light.turn_off
+    entity_id: light.kitchen_main
+  - service: light.turn_off
+    entity_id: light.kitchen_hood

@@ -1,0 +1,18 @@
+---
+id: "automate_kitchen_lights_on"
+alias: "Automate kitchen lights ON"
+initial_state: True
+trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_motion
+    from: "off"
+    to: "on"
+condition:
+  - condition: sun
+    after: sunset
+    after_offset: "-00:30:00"
+    before: sunrise
+action:
+  - service: light.turn_on
+    data_template:
+      entity_id: light.kitchen_countertop

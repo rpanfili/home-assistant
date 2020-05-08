@@ -1,0 +1,8 @@
+---
+automation.automate_kitchen_lights_on:
+  friendly_name: Lights auto ON
+  icon: mdi:lightbulb-group
+
+automation.automate_kitchen_lights_off:
+  friendly_name: Lights auto OFF
+  icon: mdi:lightbulb-group-off
