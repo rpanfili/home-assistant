@@ -1,0 +1,6 @@
+---
+platform: mqtt
+state_topic: "catingham_palace/green_room/motion"
+name: "Green room motion"
+qos: 1
+device_class: "motion"

@@ -1,0 +1,6 @@
+---
+platform: mqtt
+state_topic: "catingham_palace/entryway/motion"
+name: "Entryway motion"
+qos: 1
+device_class: "motion"

@@ -1,0 +1,8 @@
+---
+platform: mqtt
+state_topic: "catingham_palace/living_room/left_window/state"
+name: "Living room left window"
+qos: 1
+payload_on: "OPEN"
+payload_off: "CLOSED"
+device_class: "window"
