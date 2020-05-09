@@ -19,14 +19,13 @@ trigger:
     entity_id: binary_sensor.kitchen_motion
     from: "on"
     to: "off"
-    for: "00:15:00" # 15 minutes
+    for: "00:10:00"
 action:
   - service: light.turn_off
-    entity_id: light.kitchen_countertop
-  - service: light.turn_off
-    entity_id: light.kitchen_main
-  - service: light.turn_off
-    entity_id: light.kitchen_hood
+    entity_id:
+      - light.kitchen_countertop
+      - light.kitchen_main
+      - light.kitchen_hood
   - service: notify.catinghampalacebot
     data:
       message: "Siccome non c'è nessuno in cucina da un po' ho spento le luci 🌱🦔"

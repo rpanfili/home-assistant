@@ -17,13 +17,11 @@ condition:
     for: "00:01:00"
 action:
   - service: light.turn_off
-    entity_id: light.kitchen_countertop
-  - service: light.turn_off
-    entity_id: light.kitchen_main
-  - service: light.turn_off
-    entity_id: light.kitchen_hood
-  - service: light.turn_off
-    entity_id: light.entryway
+    entity_id:
+      - light.kitchen_countertop
+      - light.kitchen_main
+      - light.kitchen_hood
+      - light.entryway
   - service: notify.catinghampalacebot
     data:
       message: "Buona visione 👋📺"
