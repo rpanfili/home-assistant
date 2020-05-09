@@ -8,10 +8,13 @@ trigger:
     from: "off"
     to: "on"
 condition:
-  - condition: sun
-    after: sunset
-    after_offset: "-00:30:00"
-    before: sunrise
+  condition: or
+  conditions:
+    - condition: sun
+      after: sunset
+      after_offset: "-00:30:00"
+    - condition: sun
+      before: sunrise
 action:
   - condition: state
     entity_id: light.kitchen_countertop
