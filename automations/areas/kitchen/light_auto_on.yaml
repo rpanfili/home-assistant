@@ -8,13 +8,24 @@ trigger:
     from: "off"
     to: "on"
 condition:
-  condition: or
+  condition: and
   conditions:
-    - condition: sun
-      after: sunset
-      after_offset: "-00:30:00"
-    - condition: sun
-      before: sunrise
+    # avoid to turn ON again after a manual switch off.
+    # this lets the user exit the room.
+    - condition: state
+      entity_id: light.kitchen_countertop
+      state: "off"
+      for:
+        seconds: 10
+
+    # during the night
+    - condition: or
+      conditions:
+        - condition: sun
+          after: sunset
+          after_offset: "-00:30:00"
+        - condition: sun
+          before: sunrise
 action:
   - condition: state
     entity_id: light.kitchen_countertop
