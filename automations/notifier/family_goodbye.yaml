@@ -1,0 +1,23 @@
+---
+id: "29630B8D-706F-4940-A381-06A4B17A8E03"
+alias: "family_goodbye"
+description: "Says goodbye to the family when everybody is away"
+initial_state: True
+trigger:
+  platform: state
+  entity_id: group.family
+  from: "home"
+  to: "not_home"
+action:
+  - service: notify.catinghampalacebot
+    data_template:
+      message: |-
+        Siete usciti tutti di casa 🏡
+        A presto e{{' '}}
+        {%- if (now().hour | int) < 13 -%}
+          buona giornata
+        {%- elif (now().hour | int) < 17 -%}
+          buon pomeriggio
+        {%- else -%}
+          buona serata
+        {%- endif -%}! 🐈
