@@ -12,6 +12,6 @@ action:
   - service: python_script.cover_mode
     data_template:
       mode: "fuori casa"
-  - service: notify.telegram2rubens
-    data:
-      message: "Tutti i componenti della famiglia sono fuori casa"
+  - service: notify.catinghampalacebot
+    data_template:
+      message: "Siate usciti tutti di casa 🏡A presto! 🐈"
