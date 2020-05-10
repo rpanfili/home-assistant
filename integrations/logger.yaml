@@ -4,3 +4,4 @@ logger:
   logs:
     roomba: warning
     homeassistant.components.vacuum: warning
+    homeassistant.components.alexa.state_report: fatal
