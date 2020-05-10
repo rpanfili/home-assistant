@@ -1,0 +1,6 @@
+---
+light.living_room_main:
+  room: Sala
+  name: Luce grande
+  aliases:
+    - luce principale

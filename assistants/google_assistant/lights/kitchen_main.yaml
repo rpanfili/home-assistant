@@ -1,0 +1,6 @@
+---
+light.kitchen_main:
+  room: Cucina
+  name: Luce grande
+  aliases:
+    - luce principale

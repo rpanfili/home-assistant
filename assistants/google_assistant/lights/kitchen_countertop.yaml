@@ -1,0 +1,6 @@
+---
+light.kitchen_countertop:
+  room: Cucina
+  name: Luce piano cucina
+  aliases:
+    - luce sotto lavello

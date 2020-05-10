@@ -1,0 +1,5 @@
+---
+lock.stair_front_door:
+  aliases:
+    - porta
+  room: Scale

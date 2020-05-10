@@ -1,0 +1,6 @@
+---
+lock.driveway_gate:
+  aliases:
+    - cancello
+    - cancellone
+  room: Driveway

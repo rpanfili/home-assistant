@@ -1,0 +1,6 @@
+---
+light.driveway_lights:
+  aliases:
+    - luci in giardino
+    - luci nel vialetto
+  room: Driveway

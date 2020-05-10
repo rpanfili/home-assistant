@@ -1,0 +1,5 @@
+---
+lock.driveway_door:
+  aliases:
+    - cancelletto
+  room: Driveway
