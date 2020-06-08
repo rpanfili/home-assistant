@@ -5,8 +5,8 @@ url: !secret emoncms_url
 id: 1
 unit_of_measurement: "W"
 sensor_names:
-  11: "power 2"
-  13: "power 1"
+  11: "power2"
+  13: "power1"
   19: "total power"
 include_only_feed_id:
   - 11

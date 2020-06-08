@@ -1,0 +1,4 @@
+---
+total_energy_daily:
+  source: sensor.total_power_kwh
+  cycle: daily

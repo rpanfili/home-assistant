@@ -218,26 +218,60 @@ views:
         entities:
           - sensor.greenhouse_plant1_soil_moisture
 
+  - title: Energy use
+    path: energy
+    type: entities
+    icon: mdi:power-plug-outline
+    show_header_toggle: false
+    cards:
+      - type: entities
+        title: Energy consumption
+        show_header_toggle: false
+        entities:
+          - entity: utility_meter.total_energy_daily
+            name: Power consumption (daily)
+          - entity: utility_meter.total_energy_monthly
+            name: Power consumption (monthly)
+      - type: vertical-stack
+        cards:
+          - type: gauge
+            entity: sensor.total_power
+            name: Total power
+            severity:
+              yellow: 2000
+              red: 3000
+          - type: sensor
+            entity: sensor.total_power
+            name: Total power
+          - type: sensor
+            entity: sensor.power1
+            name: Power 1
+            hours_to_show: 1
+          - type: sensor
+            entity: sensor.power2
+            name: Power 2
+            hours_to_show: 1
+
   - title: energy
-    id: energy
+    id: energy-old
     icon: mdi:flash
     cards:
       - type: entities
         title: Energy consumption
         show_header_toggle: true
         entities:
-          - sensor.emonpi_total_power
-          - sensor.emonpi_power_1
-          - sensor.emonpi_power_2
-          - sensor.emonpi_total_power_kwh
+          - sensor.total_power
+          - sensor.power1
+          - sensor.power2
+          - sensor.total_power_kwh
       - type: history-graph
         title: Power consumption
         hours_to_show: 24
         refresh_interval: 5
         entities:
-          - sensor.emonpi_total_power
-          - sensor.emonpi_power_1
-          - sensor.emonpi_power_2
+          - sensor.total_power
+          - sensor.power1
+          - sensor.power2
       - type: history-graph
         title: Power consumption kWh
         hours_to_show: 24
