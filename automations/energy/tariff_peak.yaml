@@ -1,0 +1,23 @@
+---
+id: "58758EA1-8FA9-48BC-B7C9-5D2EEF4A9BD1"
+alias: "energy_tariff_peak"
+description: "Set energy utility meters peak tariff"
+initial_state: True
+trigger:
+  - platform: time
+    at: "08:00:00"
+condition:
+  condition: time
+  weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.total_energy_daily
+        - utility_meter.total_energy_monthly
+      tariff: peak

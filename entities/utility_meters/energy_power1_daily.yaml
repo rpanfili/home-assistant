@@ -1,4 +1,0 @@
----
-energy_power1_daily:
-  source: sensor.power1_kwh
-  cycle: daily

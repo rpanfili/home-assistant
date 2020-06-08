@@ -2,3 +2,6 @@
 total_energy_monthly:
   source: sensor.total_power_kwh
   cycle: monthly
+  tariffs:
+    - peak
+    - offpeak

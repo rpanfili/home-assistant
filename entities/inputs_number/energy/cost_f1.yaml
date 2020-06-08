@@ -1,0 +1,9 @@
+---
+# https://www.servizioelettriconazionale.it/it-IT/tariffe/uso-domestico/biorarie/residente
+name: Energy cost (F1)
+mode: box
+initial: 0.040580
+min: 0
+max: 10
+unit_of_measurement: "€/kWh"
+icon: mdi:currency-eur

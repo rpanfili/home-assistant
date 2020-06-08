@@ -1,0 +1,15 @@
+---
+id: "B355A5D0-FECC-4DB6-BA13-EF05D41566DE"
+alias: "energy_tariff_offpeak"
+description: "Set energy utility meters offpeak tariff"
+initial_state: True
+trigger:
+  - platform: time
+    at: "19:00:00"
+action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.total_energy_daily
+        - utility_meter.total_energy_monthly
+      tariff: offpeak
