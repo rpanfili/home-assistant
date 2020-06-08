@@ -1,5 +1,0 @@
----
-platform: mqtt
-state_topic: "catingham_palace/emonpi/power1pluspower2"
-name: "EmonPi Total power"
-unit_of_measurement: "W"

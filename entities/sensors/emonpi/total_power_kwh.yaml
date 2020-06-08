@@ -1,6 +1,0 @@
----
-platform: mqtt
-state_topic: "catingham_palace/emonpi/total_power_kwh"
-name: "EmonPi Total power kWh"
-value_template: "{{ value | round(2) }}"
-unit_of_measurement: "kWh"
