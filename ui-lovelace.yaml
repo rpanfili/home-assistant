@@ -221,7 +221,7 @@ views:
   - title: Energy use
     path: energy
     type: entities
-    icon: mdi:power-plug-outline
+    icon: mdi:power-plug
     show_header_toggle: false
     cards:
       - type: entities
@@ -237,20 +237,32 @@ views:
           - type: gauge
             entity: sensor.total_power
             name: Total power
+            min: 0
+            max: 4500
             severity:
+              green: 0
               yellow: 2000
               red: 3000
           - type: sensor
             entity: sensor.total_power
             name: Total power
+            unit: W
+            icon: mdi:flash
+            graph: line
           - type: sensor
             entity: sensor.power1
             name: Power 1
             hours_to_show: 1
+            unit: W
+            icon: mdi:flash
+            graph: line
           - type: sensor
             entity: sensor.power2
             name: Power 2
             hours_to_show: 1
+            unit: W
+            icon: mdi:flash
+            graph: line
 
   - title: energy
     id: energy-old
