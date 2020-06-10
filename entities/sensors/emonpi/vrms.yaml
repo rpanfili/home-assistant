@@ -1,0 +1,10 @@
+---
+platform: emoncms
+api_key: !secret emoncms_api_key
+url: !secret emoncms_url
+id: 3
+unit_of_measurement: "V"
+sensor_names:
+  22: "Vrms"
+include_only_feed_id:
+  - 22
