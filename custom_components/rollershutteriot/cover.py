@@ -151,6 +151,6 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             if not self.is_position_safe(given_position):
                 _LOGGER.debug(
                     f"Requested position below active position limit: {position_min} => override")
-                kwargs[ATTR_POSITION] = str(position_min)
+                kwargs[ATTR_POSITION] = float(position_min)
 
         await super().async_set_cover_position(**kwargs)
