@@ -1,5 +1,0 @@
-platform: roomba
-name: Roomba
-host: !secret roomba_ip_address
-username: !secret roomba_username
-password: !secret roomba_password
