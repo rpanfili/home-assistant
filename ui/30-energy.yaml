@@ -1,0 +1,76 @@
+---
+title: Energy
+path: energy
+type: entities
+icon: mdi:power-plug
+show_header_toggle: false
+cards:
+  - type: entities
+    title: Energy consumption
+    show_header_toggle: false
+    entities:
+      - entity: utility_meter.total_energy_daily
+        name: Power consumption (daily)
+      - entity: utility_meter.total_energy_monthly
+        name: Power consumption (monthly)
+  - type: vertical-stack
+    cards:
+      - type: gauge
+        entity: sensor.total_power
+        name: Total power
+        min: 0
+        max: 4500
+        severity:
+          green: 0
+          yellow: 2000
+          red: 3000
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            entity: sensor.power1
+            name: Power 1
+            min: 0
+            max: 4500
+            severity:
+              green: 0
+              yellow: 2000
+              red: 3000
+          - type: gauge
+            entity: sensor.power2
+            name: Power 2
+            min: 0
+            max: 4500
+            severity:
+              green: 0
+              yellow: 2000
+              red: 3000
+      - type: history-graph
+        title: Power consumption
+        hours_to_show: 24
+        refresh_interval: 5
+        entities:
+          - sensor.total_power
+          - sensor.power1
+          - sensor.power2
+      - type: sensor
+        entity: sensor.total_power
+        name: Total power
+        unit: W
+        icon: mdi:flash
+        graph: line
+      - type: horizontal-stack
+        cards:
+          - type: sensor
+            entity: sensor.power1
+            name: Power 1
+            hours_to_show: 1
+            unit: W
+            icon: mdi:flash
+            graph: line
+          - type: sensor
+            entity: sensor.power2
+            name: Power 2
+            hours_to_show: 1
+            unit: W
+            icon: mdi:flash
+            graph: line

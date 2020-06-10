@@ -1,0 +1,118 @@
+---
+title: default_view
+id: home
+icon: mdi:home
+cards:
+  - type: entities
+    title: Family locations
+    show_header_toggle: false
+    entities:
+      - person.rubens
+      - person.valentina
+  - type: glance
+    title: Driveway
+    show_state: false
+    entities:
+      - entity: lock.driveway_gate
+        name: Gate
+        tap_action:
+          action: call-service
+          service: lock.unlock
+          service_data:
+            entity_id: lock.driveway_gate
+      - entity: lock.driveway_door
+        name: Door
+        tap_action:
+          action: call-service
+          service: lock.unlock
+          service_data:
+            entity_id: lock.driveway_door
+      - entity: lock.stair_front_door
+        name: Stair
+        tap_action:
+          action: call-service
+          service: lock.unlock
+          service_data:
+            entity_id: lock.stair_front_door
+      - entity: light.driveway
+        name: Lights
+        tap_action:
+          action: toggle
+  - type: entities
+    title: Kitchen
+    show_header_toggle: true
+    entities:
+      - light.kitchen_main
+      - light.kitchen_countertop
+      - light.kitchen_hood
+      - automation.kitchen_sync_auxiliary_lights
+      - automation.automate_kitchen_lights_on
+      - automation.automate_kitchen_lights_off
+
+      # - climate.entryway
+      # - sensor.entryway_thermostat_temperature
+      # - sensor.entryway_thermostat_humidity
+
+  - type: entities
+    title: Entryway
+    show_header_toggle: false
+    entities:
+      - light.entryway
+      # - climate.entryway
+      # - sensor.entryway_thermostat_temperature
+      # - sensor.entryway_thermostat_humidity
+  - type: entities
+    title: Living room
+    show_header_toggle: false
+    entities:
+      - light.living_room_main
+  - type: entities
+    title: Green room
+    show_header_toggle: false
+    entities:
+      - light.green_room_desktop_light
+      - switch.pallone
+
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.living_room_camera_online
+        state_not: "unavailable"
+    card:
+      type: picture-glance
+      title: Living room
+      camera_image: camera.living_room
+      tap_action:
+        action: more-info
+      entities:
+        - camera.living_room
+        - binary_sensor.living_room_camera_person_detected
+        - binary_sensor.living_room_camera_motion_detected
+        - binary_sensor.living_room_camera_sound_detected
+
+  - type: conditional
+    conditions:
+      - entity: media_player.living_room_tv
+        state: "on"
+    card:
+      type: media-control
+      entity: media_player.living_room_tv
+
+  - type: weather-forecast
+    entity: weather.home
+  - type: entities
+    title: Environment
+    show_header_toggle: false
+    entities:
+      - sun.sun
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.entryway_thermostat_online
+        state_not: "unavailable"
+    card:
+      type: thermostat
+      entity: climate.entryway
+  # - type: entities
+  #   title: Green Room
+  #   show_header_toggle: true
+  #   entities:
+  #     - binary_sensor.green_room_motion

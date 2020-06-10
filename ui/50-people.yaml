@@ -1,0 +1,16 @@
+---
+title: people
+id: people
+path: people
+icon: mdi:account-multiple
+cards:
+  - type: entities
+    title: Family locations
+    show_header_toggle: true
+    entities:
+      - person.rubens
+      - person.valentina
+  - type: map
+    entities:
+      - person.rubens
+      - person.valentina

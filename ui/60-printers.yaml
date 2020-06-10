@@ -1,0 +1,10 @@
+---
+title: Printers
+id: printers
+icon: mdi:printer-3d-nozzle
+cards:
+  - type: picture-glance
+    title: S200
+    entities: []
+    camera_image: camera.octopi_s200
+    camera_view: live

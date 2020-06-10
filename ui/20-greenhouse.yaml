@@ -1,0 +1,41 @@
+---
+title: Greenhouse
+id: greenhouse
+path: greenhouse
+icon: mdi:leaf
+cards:
+  - type: entities
+    title: Environment
+    show_header_toggle: true
+    entities:
+      - sensor.greenhouse_temperature
+      - sensor.greenhouse_humidity
+      - sensor.greenhouse_plant1_soil_moisture
+      - light.greenhouse
+      - fan.greenhouse_ventilation
+  - type: entities
+    title: Humidifier
+    show_header_toggle: true
+    entities:
+      - input_number.greenhouse_humidifier_target_humidity
+      - switch.greenhouse_humidifier_mode
+      - switch.greenhouse_humidifier_power
+      - switch.greenhouse_humidifier_status_leds
+  - type: history-graph
+    title: Temperature
+    hours_to_show: 24
+    refresh_interval: 60
+    entities:
+      - sensor.greenhouse_temperature
+  - type: history-graph
+    title: Humidity
+    hours_to_show: 24
+    refresh_interval: 60
+    entities:
+      - sensor.greenhouse_humidity
+  - type: history-graph
+    title: Soil moisture
+    hours_to_show: 24
+    refresh_interval: 60
+    entities:
+      - sensor.greenhouse_plant1_soil_moisture
