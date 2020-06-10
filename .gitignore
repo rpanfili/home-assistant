@@ -24,3 +24,5 @@ tts
 .vscode
 
 !.gitkeep
+custom_components/hacs
+custom_components/samsungtv_tizen
