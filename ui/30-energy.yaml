@@ -13,6 +13,38 @@ cards:
         name: Power consumption (daily)
       - entity: utility_meter.total_energy_monthly
         name: Power consumption (monthly)
+  - type: "custom:mini-graph-card"
+    icon: mdi:flash
+    color_thresholds:
+      - color: "#039BE5"
+        value: 0
+      - color: "#0da035"
+        value: 500
+      - color: "#e0b400"
+        value: 1500
+      - color: "#e45e65"
+        value: 3000
+    color_thresholds_transition: hard
+    entities:
+      - sensor.total_power
+    group: false
+    hour24: true
+    hours_to_show: 24
+    line_width: 4
+    name: Power consumption
+    points_per_hour: 4
+    show:
+      extrema: true
+      fill: fade
+      icon: true
+      labels: false
+      name: true
+      state: true
+    state_map:
+      - label: Peak
+        value: "off"
+      - label: Off-peak
+        value: "on"
   - type: vertical-stack
     cards:
       - type: gauge
