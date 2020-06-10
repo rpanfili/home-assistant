@@ -1,0 +1,10 @@
+---
+platform: template
+sensors:
+  energy_cost_today_peak:
+    friendly_name: "Peak energy cost Today"
+    entity_id:
+      - sensor.total_energy_daily_peak
+      - input_number.cost_f1
+    value_template: "{{ (states('sensor.total_energy_daily_peak')|float * states('input_number.cost_f1')|float)|round(2) }}"
+    unit_of_measurement: "€"

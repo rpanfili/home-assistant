@@ -1,0 +1,8 @@
+---
+platform: statistics
+name: "Power stats"
+entity_id: sensor.total_power
+sampling_size: 10000
+max_age:
+  hours: 24
+precision: 1

@@ -6,6 +6,29 @@ icon: mdi:power-plug
 show_header_toggle: false
 cards:
   - type: entities
+    title: Energy use today
+    entities:
+      - entity: sensor.energy_cost_today_peak
+        name: Peak energy
+      - entity: sensor.energy_cost_today_offpeak
+        name: Off-peak energy
+      - entity: sensor.energy_cost_today
+  - type: entities
+    head:
+      label: Main Energy Meters
+      type: section
+    entities:
+      - entity: utility_meter.total_energy_daily
+        name: Current tariff
+
+      - entity: sensor.total_energy_daily_peak
+        name: Peak power
+      - entity: sensor.total_energy_daily_offpeak
+        name: Off-peak power
+      - entity: sensor.total_energy_day
+        name: Total power today
+
+  - type: entities
     title: Energy consumption
     show_header_toggle: false
     entities:
