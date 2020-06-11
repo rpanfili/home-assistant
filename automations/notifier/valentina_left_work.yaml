@@ -5,7 +5,7 @@ initial_state: True
 trigger:
   - platform: zone
     entity_id: person.valentina
-    zone: zone.work_2
+    zone: zone.work
     event: leave
 action:
   - service: notify.telegram2rubens
