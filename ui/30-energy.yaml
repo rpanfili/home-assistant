@@ -130,3 +130,22 @@ cards:
             unit: W
             icon: mdi:flash
             graph: line
+      - type: "custom:mini-graph-card"
+        aggregate_func: max
+        entities:
+          - sensor.vrms
+        group: false
+        hour24: true
+        hours_to_show: 24
+        icon: mdi:resistor
+        line_width: 4
+        line_color: blue
+        name: Main voltage
+        points_per_hour: 2
+        show:
+          extrema: true
+          fill: fade
+          icon: true
+          labels: false
+          name: true
+          state: true
