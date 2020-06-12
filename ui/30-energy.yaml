@@ -37,7 +37,7 @@ cards:
       - entity: utility_meter.total_energy_monthly
         name: Power consumption (monthly)
   - type: "custom:mini-graph-card"
-    icon: mdi:flash
+    aggregate_func: max
     color_thresholds:
       - color: "#039BE5"
         value: 0
@@ -53,6 +53,7 @@ cards:
     group: false
     hour24: true
     hours_to_show: 24
+    icon: mdi:flash
     line_width: 4
     name: Power consumption
     points_per_hour: 4
