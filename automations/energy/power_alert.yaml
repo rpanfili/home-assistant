@@ -6,9 +6,9 @@ initial_state: True
 trigger:
   platform: numeric_state
   entity_id: sensor.total_power
-  above: "3000"
+  value_template: "{{ (state.state | float) - (states('input_number.power_alert_threshold') | float) }}"
+  above: 0
   for: "00:00:10"
-
 action:
   - service: notify.catinghampalacebot
     data_template:
