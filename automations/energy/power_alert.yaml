@@ -1,0 +1,24 @@
+---
+id: "ECAA0EA1-1B95-4473-A245-FB309E025CA0"
+alias: "energy_power_alert"
+description: "Notifies power compsuntion over threshold"
+initial_state: True
+trigger:
+  platform: numeric_state
+  entity_id: sensor.total_power
+  above: "3000"
+  for: "00:00:10"
+
+action:
+  - service: notify.catinghampalacebot
+    data_template:
+      message: |-
+        🐙 **Consumo elettrico**: {{ states('sensor.total_power') | int }} W
+        🐈 {{ states('sensor.power1') | int }} W | 👵🏻 {{ states('sensor.power2') | int }} W
+        {{ [
+          'Cudiaul! Schepa giò che se no chi le sciopa su tuch coss',
+          'Smorza giò, crist!',
+          'Va che te fa salta giù la curent',
+          'Te paghei te i bulett?'
+          'Té! Va che la custa la curent!'
+        ] | random }}

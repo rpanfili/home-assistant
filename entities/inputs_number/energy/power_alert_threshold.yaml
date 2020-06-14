@@ -1,0 +1,8 @@
+---
+name: Power alert threshold
+mode: box
+initial: 3500
+min: 0
+max: 10000
+unit_of_measurement: "W"
+icon: mdi:flash
