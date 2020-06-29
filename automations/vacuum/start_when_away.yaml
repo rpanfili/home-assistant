@@ -1,0 +1,24 @@
+---
+alias: "Vacuum start when away"
+description: "Starts vacuuming process when nobody's home"
+trigger:
+  platform: state
+  entity_id: group.family
+  from: "home"
+  to: "not_home"
+condition:
+  - condition: state
+    entity_id: vacuum.roomba
+    state: "docked"
+    for:
+      hours: 12 # if didn't clean up in the last 12 hours
+action:
+  - service: vacuum.start
+    entity_id: vacuum.roomba
+  - service: notify.catinghampalacebot
+    data_template:
+      message: |-
+        Già che ci sono pulisco il pavimento! 🤖🧹
+      data:
+        inline_keyboard:
+          - [["No grazie, ferma", "/stop_vacuum"]]
