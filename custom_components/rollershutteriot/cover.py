@@ -79,6 +79,7 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             if enabler is None:
                 _LOGGER.warning(
                     f"Entity is missing: {enabler_id} - (option: {CONF_POSITION_MIN_ENABLE}). Feature disabled")
+                limit_enabled = False
             else:
                 limit_enabled = enabler.state == STATE_ON
                 if limit_enabled:
