@@ -1,0 +1,7 @@
+---
+update:
+  description: Update all entities with fresh data from Silea
+  fields:
+    id:
+      description: Specific unique entry ID to update
+      example: 250d5ef5706fae392df851bcbe76edfd6163e6ae

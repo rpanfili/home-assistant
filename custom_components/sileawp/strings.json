@@ -1,0 +1,22 @@
+{
+    "title": "Silea waste pickup",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Address configuration",
+                "description": "Set up Silea integration providing waste collection information on your address.",
+                "data": {
+                    "client_id": "IDCliente",
+                    "street_id": "IDVia"
+                }
+            }
+        },
+        "error": {
+            "connection_error": "Failed to connect.",
+            "invalid_address": "Address not found in Silea service area."
+        },
+        "abort": {
+            "address_exists": "Address already set up."
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "domain": "sileawp",
+    "name": "Silea waste pickup",
+    "config_flow": true,
+    "documentation": "",
+    "dependencies": [],
+    "after_dependencies": [
+        "http"
+    ],
+    "codeowners": [],
+    "requirements": []
+}
