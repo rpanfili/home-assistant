@@ -1,0 +1,17 @@
+---
+id: "notify_paper_waste_pickup"
+alias: "Notify paper waste pickup"
+initial_state: True
+trigger:
+  - platform: time
+    at: "20:30:00"
+condition:
+  - condition: template
+    value_template: >
+      {%- set next_pick = strptime(states("sensor.paper_waste_pickup"),"%Y-%m-%d") -%}
+      {%- set countdown = next_pick|as_timestamp - (now()|as_timestamp) -%}
+      {{ 1*(24*60*60) > countdown and countdown > 0 }}
+action:
+  - service: notify.catinghampalacebot
+    data:
+      message: "Domani mattina vengono a ritirare la carta 📃🥡🃏"
