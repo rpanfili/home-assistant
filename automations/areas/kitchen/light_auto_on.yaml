@@ -28,12 +28,15 @@ condition:
           before: sunrise
 action:
   - condition: state
-    entity_id: light.kitchen_countertop
+    entity_id:
+      - light.kitchen_countertop
+      - light.kitchen_main
+      - light.kitchen_hood
     state: "off"
   - service: light.turn_on
     data:
       entity_id:
         - light.kitchen_countertop
-  - service: notify.catinghampalacebot
-    data:
-      message: "Ho appena acceso per voi la luce in cucina 🙋‍♂️💡"
+  # - service: notify.catinghampalacebot
+  #   data:
+  #     message: "Ho appena acceso per voi la luce in cucina 🙋‍♂️💡"
