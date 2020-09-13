@@ -1,0 +1,13 @@
+---
+id: "BADAC61F-B435-4F8D-A891-C539F02B7B83"
+alias: "alarm_auto_arm_away"
+description: "Arm Alarm when everybody is away"
+initial_state: True
+trigger:
+  platform: state
+  entity_id: group.family
+  from: "home"
+  to: "not_home"
+action:
+  - service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.home_alarm

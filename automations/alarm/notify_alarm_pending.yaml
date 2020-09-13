@@ -1,0 +1,17 @@
+---
+id: "notify_alarm_pending"
+alias: "Send notification when alarm is pending"
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: "pending"
+action:
+  - service: notify.catinghampalacebot
+    data:
+      title: "ALLARME pending ⏲"
+      message: "L'allarme sta per scattare. Disattivalo quanto prima"
+  - service: tts.google_translate_say
+    entity_id: media_player.kitchen_speaker
+    data:
+      message: "L'allarme sta per scattare. Prego, disattivalo prima che scatti."
+      language: "it"

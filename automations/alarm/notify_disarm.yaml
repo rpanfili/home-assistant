@@ -1,0 +1,12 @@
+---
+id: "notify_alarm_disarm"
+alias: "Send notification when alarm is Disarmed"
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: "disarmed"
+action:
+  - service: notify.catinghampalacebot
+    data:
+      title: "ALARM disarmed 🗝"
+      message: "The alarm is Disarmed"

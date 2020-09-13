@@ -1,0 +1,17 @@
+---
+id: "notify_alarm_triggered"
+alias: "Send notification when alarm triggered"
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: "triggered"
+action:
+  - service: notify.catinghampalacebot
+    data:
+      title: "ALLARME! 🚨"
+      message: "L'allarme è scattato"
+  - service: tts.google_translate_say
+    entity_id: media_player.kitchen_speaker
+    data:
+      message: "L'allarme è scattato. Le forze dell'ordine sono state avvertite."
+      language: "it"

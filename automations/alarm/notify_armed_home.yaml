@@ -1,0 +1,12 @@
+---
+id: "notify_armed_home"
+alias: "Send notification when alarm is Armed in Home mode"
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: "armed_home"
+action:
+  - service: notify.catinghampalacebot
+    data:
+      title: "ALLARME attivato 🦾"
+      message: "L'allarme è stato attivato in modalità **Home**"

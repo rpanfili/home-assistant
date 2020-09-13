@@ -1,0 +1,9 @@
+---
+title: Alarm
+id: alarm
+path: alarm
+icon: mdi:shield
+cards:
+  - type: alarm-panel
+    name: House Alarm
+    entity: alarm_control_panel.home_alarm

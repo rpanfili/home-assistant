@@ -1,0 +1,24 @@
+---
+alias: "Windows trigger alarm while armed away"
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.bathroom_window
+      - binary_sensor.bedroom_window
+      - binary_sensor.kitchen_left_window
+      - binary_sensor.kitchen_right_window
+      - binary_sensor.living_room_left_window
+      - binary_sensor.living_room_right_window
+      - binary_sensor.green_room_window
+      - binary_sensor.pink_room_window
+    to: "on"
+condition:
+  - condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_away
+action:
+  - service: notify.catinghampalacebot
+    data_template:
+      message: "La finestra **{{ trigger.from_state.name }}** è stata aperta! 🖼"
+  - service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
