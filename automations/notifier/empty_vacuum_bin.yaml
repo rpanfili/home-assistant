@@ -1,0 +1,16 @@
+---
+id: "EB9BD110-7808-445A-8AD7-5F873C48823A"
+alias: "empty_vacuum_bin"
+description: "Remember to empty vacuum bin"
+initial_state: True
+trigger:
+  - platform: time
+    at: "08:45:00"
+condition:
+  - condition: state
+    entity_id: binary_sensor.roomba_bin_full
+    state: "on"
+action:
+  - service: notify.catinghampalacebot
+    data:
+      message: "Ricordatevi di svuotare il roomba! 💃"
