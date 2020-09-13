@@ -114,8 +114,7 @@ class SileaWp:
     def unique_id(self) -> Optional[str]:
         """Return unique address ID."""
         if self._unique_id is None:
-            from hashlib import md5
-            self._unique_id = md5(f"{self.client_id}_{self.street_id}".encode()).hexdigest()
+            self._unique_id = f"IDCliente={self.client_id}|IDVia={self.street_id}"
         return self._unique_id
         
 
