@@ -6,9 +6,10 @@ from homeassistant.components import cover, mqtt
 from homeassistant.components.mqtt.cover import MqttCover, PLATFORM_SCHEMA
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.typing import ConfigType, HomeAssistantType
-from homeassistant.const import (
-    CONF_DEVICE, CONF_DEVICE_CLASS, CONF_NAME, CONF_OPTIMISTIC,
-    CONF_VALUE_TEMPLATE, STATE_CLOSED, STATE_OPEN, STATE_UNKNOWN, STATE_ON)
+from homeassistant.const import (CONF_DEVICE, CONF_DEVICE_CLASS, CONF_NAME,
+                                 CONF_OPTIMISTIC, CONF_VALUE_TEMPLATE,
+                                 STATE_CLOSED, STATE_OPEN, STATE_UNKNOWN,
+                                 STATE_ON)
 from homeassistant.helpers.restore_state import RestoreEntity
 from homeassistant.helpers.event import async_track_state_change
 
@@ -25,34 +26,40 @@ CONF_POSITION_MIN_ENABLE = 'position_min_enable'
 CONF_WINDOW_SENSOR = 'window_sensor'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.validators[0].extend({
-    vol.Optional(CONF_POSITION_MIN): cv.entity_id,
-    vol.Optional(CONF_POSITION_MIN_ENABLE): cv.entity_id,
-    vol.Optional(CONF_WINDOW_SENSOR): cv.entity_id
+    vol.Optional(CONF_POSITION_MIN):
+    cv.entity_id,
+    vol.Optional(CONF_POSITION_MIN_ENABLE):
+    cv.entity_id,
+    vol.Optional(CONF_WINDOW_SENSOR):
+    cv.entity_id
 })
 
 
-async def async_setup_platform(hass: HomeAssistantType, config: ConfigType,
-                               async_add_entities, discovery_info=None):
+async def async_setup_platform(hass: HomeAssistantType,
+                               config: ConfigType,
+                               async_add_entities,
+                               discovery_info=None):
     """Set up MQTT cover through configuration.yaml."""
     await _async_setup_entity(hass, config, async_add_entities)
 
 
-async def _async_setup_entity(hass, config, async_add_entities, config_entry=None,
-                              discovery_hash=None):
+async def _async_setup_entity(hass,
+                              config,
+                              async_add_entities,
+                              config_entry=None,
+                              discovery_data=None):
     """Set up the MQTT Cover."""
-    async_add_entities([RollerShutterIoTCover(hass,
-                                              config,
-                                              config_entry,
-                                              discovery_hash)])
+    async_add_entities(
+        [RollerShutterIoTCover(hass, config, config_entry, discovery_data)])
 
 
 class RollerShutterIoTCover(MqttCover, RestoreEntity):
     _position_min_id = None
 
-    def __init__(self, hass, config, config_entry, discovery_hash):
+    def __init__(self, hass, config, config_entry, discovery_data):
         """Initialize the cover."""
         _LOGGER.debug("RollerShutterIoT cover init..")
-        super().__init__(config, config_entry, discovery_hash)
+        super().__init__(hass, config, config_entry, discovery_data)
         self.hass = hass
 
     @property
@@ -65,7 +72,8 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
                 limit = self.hass.states.get(position_min_id)
                 if limit is None:
                     _LOGGER.warning(
-                        f"Entity is missing: {position_min_id} - (option: {CONF_POSITION_MIN}). Feature disabled")
+                        f"Entity is missing: {position_min_id} - (option: {CONF_POSITION_MIN}). Feature disabled"
+                    )
                 else:
                     position_min = limit.state
         return int(float(position_min))
@@ -78,7 +86,8 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             enabler = self.hass.states.get(enabler_id)
             if enabler is None:
                 _LOGGER.warning(
-                    f"Entity is missing: {enabler_id} - (option: {CONF_POSITION_MIN_ENABLE}). Feature disabled")
+                    f"Entity is missing: {enabler_id} - (option: {CONF_POSITION_MIN_ENABLE}). Feature disabled"
+                )
                 limit_enabled = False
             else:
                 limit_enabled = enabler.state == STATE_ON
@@ -94,8 +103,10 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
     def is_position_safe(self, given_position: int) -> bool:
         """Return true if current position is safe, false otherwise"""
         _LOGGER.debug(
-            f"IsPositionSafe | is min enabled: {self.is_position_min_enabled} - position min: {self.position_min} - given position: {given_position}")
-        return given_position is None or not self.is_position_min_enabled or self.position_min <= int(given_position)
+            f"IsPositionSafe | is min enabled: {self.is_position_min_enabled} - position min: {self.position_min} - given position: {given_position}"
+        )
+        return given_position is None or not self.is_position_min_enabled or self.position_min <= int(
+            given_position)
 
     async def async_added_to_hass(self):
         """Subscribe MQTT events."""
@@ -108,8 +119,8 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             if entity_id:
                 _LOGGER.debug(
                     f"Register listener for {entity_id} entity changes")
-                async_track_state_change(
-                    self.hass, entity_id, self._handle_position_changed)
+                async_track_state_change(self.hass, entity_id,
+                                         self._handle_position_changed)
             return entity_id is not None
 
         if register_listerner(CONF_POSITION_MIN_ENABLE):
@@ -140,7 +151,8 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
         await self._check_min_position()
 
     async def async_close_cover(self, **kwargs):
-        await self.async_set_cover_position(**{ATTR_POSITION: self.position_min})
+        await self.async_set_cover_position(
+            **{ATTR_POSITION: self.position_min})
 
     async def async_set_cover_position(self, **kwargs):
         # if a position limit is set then limit down position to position_min
@@ -148,10 +160,12 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             given_position = kwargs[ATTR_POSITION]
             position_min = self.position_min
             _LOGGER.debug(
-                f"SetCoverPosition | Position min: {position_min} - Given position: {given_position}")
+                f"SetCoverPosition | Position min: {position_min} - Given position: {given_position}"
+            )
             if not self.is_position_safe(given_position):
                 _LOGGER.debug(
-                    f"Requested position below active position limit: {position_min} => override")
+                    f"Requested position below active position limit: {position_min} => override"
+                )
                 kwargs[ATTR_POSITION] = float(position_min)
 
         await super().async_set_cover_position(**kwargs)
