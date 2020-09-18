@@ -3,8 +3,5 @@ platform: template
 sensors:
   energy_cost_today_offpeak:
     friendly_name: "Off-peak energy cost Today"
-    entity_id:
-      - sensor.total_energy_daily_offpeak
-      - input_number.cost_f23
     value_template: "{{ (states('sensor.total_energy_daily_offpeak')|float * states('input_number.cost_f23')|float)|round(2) }}"
     unit_of_measurement: "€"
