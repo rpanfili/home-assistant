@@ -1,0 +1,10 @@
+---
+id: notify_alexa_auth_required
+alias: Alexa Media Player Auth required
+trigger:
+  platform: event
+  event_type: alexa_media_relogin_required
+action:
+  - service: notify.telegram2rubens
+    data:
+      message: Alexa Media Player necessita di essere ri-autenticato! 🔑
