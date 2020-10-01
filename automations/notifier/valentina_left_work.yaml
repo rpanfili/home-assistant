@@ -11,3 +11,12 @@ action:
   - service: notify.telegram2rubens
     data:
       message: "Valentina sta tornando a casa"
+  - service: notify.alexa_media
+    data_template:
+      data:
+        type: tts
+        method: speak
+      message: "Valentina sta tornando a casa"
+      target:
+        - media_player.laboratorio
+        - media_player.cucina
