@@ -24,8 +24,12 @@ action:
         ] | random }}
   - condition: template
     value_template: '{{ (4500 * 0.9) > (states("sensor.total_power")|float) }}'
-  - service: tts.google_translate_say
-    entity_id: media_player.kitchen_speaker
+  - service: notify.alexa_media
     data_template:
+      data:
+        type: tts
+        method: speak
       message: "Attenzione! State consumando {{states('sensor.total_power')|int}} watt, rischia di saltare la luce!"
-      language: "it"
+      target:
+        - media_player.laboratorio
+        - media_player.cucina
