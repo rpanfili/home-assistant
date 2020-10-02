@@ -1,0 +1,4 @@
+---
+lock.driveway_door:
+  icon: mdi:lock
+  friendly_name: "Cancelletto"

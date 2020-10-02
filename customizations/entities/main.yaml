@@ -1,10 +1,4 @@
 ---
-lock.driveway_gate:
-    icon: mdi:gate
-lock.driveway_door:
-    icon: mdi:lock
-lock.stair_front_door:
-    icon: mdi:stairs
 switch.automatic_cat_passage:
     icon: mdi:auto-fix
 sensor.entryway_thermostat_humidity:

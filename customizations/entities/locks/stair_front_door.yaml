@@ -1,0 +1,4 @@
+---
+lock.stair_front_door:
+  icon: mdi:stairs
+  friendly_name: "Porta sulle scale"

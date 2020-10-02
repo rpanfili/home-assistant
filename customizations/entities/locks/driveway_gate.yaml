@@ -1,0 +1,4 @@
+---
+lock.driveway_gate:
+  icon: mdi:gate
+  friendly_name: "Cancello"
