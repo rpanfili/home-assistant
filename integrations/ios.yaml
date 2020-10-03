@@ -18,3 +18,12 @@ ios:
       icon:
         icon: sparkles
         color: "#07ACE5"
+
+    - name: "open_gate"
+      background_color: "#666666"
+      label:
+        text: "Apri cancello 🚗"
+        color: "F5F5F5"
+      icon:
+        icon: gate
+        color: "#07ACE5"

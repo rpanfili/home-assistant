@@ -1,0 +1,14 @@
+---
+id: "open_gate"
+alias: "Open gate"
+initial_state: True
+trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: "open_gate"
+action:
+  - service: lock.unlock
+    data:
+      entity_id:
+        - lock.driveway_gate
