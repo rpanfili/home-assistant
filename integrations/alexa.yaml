@@ -24,7 +24,7 @@ alexa:
 
   intents:
     # Octoprint status
-    S200PrinterStatus:
+    printerStatusEsseDuecento:
       speech:
         type: plaintext
         text: >
