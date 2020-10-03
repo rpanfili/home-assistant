@@ -1,0 +1,20 @@
+---
+ios:
+  actions:
+    - name: "back_home"
+      background_color: "#666666"
+      label:
+        text: "Mi apri? 🏡"
+        color: "F5F5F5"
+      icon:
+        icon: home
+        color: "#07ACE5"
+
+    - name: "start_vacuum"
+      background_color: "#666666"
+      label:
+        text: "Pulisci 🧹🤖"
+        color: "F5F5F5"
+      icon:
+        icon: sparkles
+        color: "#07ACE5"

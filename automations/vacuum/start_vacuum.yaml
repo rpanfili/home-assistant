@@ -1,0 +1,16 @@
+---
+id: "start_vacuum"
+alias: "Start vacuuming"
+initial_state: True
+trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: "start_vacuum"
+action:
+  - service: vacuum.start
+    data:
+      entity_id: vacuum.roomba
+  - service: notify.catinghampalacebot
+    data:
+      message: "Pulisco casa! 🧹🤖🏡"

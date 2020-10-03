@@ -1,0 +1,30 @@
+---
+id: "back_home"
+alias: "Back home"
+initial_state: True
+trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: "back_home"
+action:
+  - service: lock.unlock
+    data:
+      entity_id:
+        - lock.driveway_door
+        - lock.stair_front_door
+
+  - condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-00:30:00"
+      - condition: sun
+        before: sunrise
+
+  - service: light.toggle
+    entity_id: light.driveway
+  - delay:
+      minutes: 10
+  - service: light.toggle
+    entity_id: light.driveway
