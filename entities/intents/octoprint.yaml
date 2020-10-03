@@ -1,0 +1,11 @@
+---
+printerStatusEsseDuecento:
+  speech:
+    type: plain
+    text: >
+      La stampante in questo momento 
+        {%- if is_state("binary_sensor.s200_printing", "on") -%} 
+          sta stampando ed è al {{states("sensor.s200_job_percentage")| round}} percento
+        {%- else -%}
+          non sta stampando
+        {%- endif -%}.

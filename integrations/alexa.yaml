@@ -21,16 +21,3 @@ alexa:
       #   - script
       #   - timer
     entity_config: !include_dir_merge_named ../assistants/alexa
-
-  intents:
-    # Octoprint status
-    printerStatusEsseDuecento:
-      speech:
-        type: plaintext
-        text: >
-          Il dispositivo in questo momento 
-            {% if is_state("binary_sensor.s200_printing", "on") %} 
-              sta stampando ed è al {{states("sensor.s200_job_percentage")| round}} percento.
-            {% else %}
-              non sta stampando
-            {% endif %}.
