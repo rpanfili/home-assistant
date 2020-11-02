@@ -1,7 +1,7 @@
 dist: xenial   # required for Python >= 3.7
 language: python
 python:
-  - "3.7"
+  - "3.8"
 before_install:
   - mv travis_secrets.yaml secrets.yaml
   # comment out the camera module to avoid issues with ubuntu av==6.1.2 requirement 
