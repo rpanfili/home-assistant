@@ -1,7 +1,6 @@
 ---
 title: Energy
 path: energy
-type: entities
 icon: mdi:power-plug
 show_header_toggle: false
 cards:
