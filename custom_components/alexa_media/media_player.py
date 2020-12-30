@@ -315,7 +315,7 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
         if not event_serial:
             return
         self._available = True
-        self.async_schedule_update_ha_state()
+        self.async_write_ha_state()
         if "last_called_change" in event:
             if event_serial == self.device_serial_number or any(
                 item["serialNumber"] == event_serial for item in self._app_device_list
@@ -351,8 +351,8 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
                 self._source_list = self._get_source_list()
                 self._connected_bluetooth = self._get_connected_bluetooth()
                 self._bluetooth_list = self._get_bluetooth_list()
-                if self.hass and self.async_schedule_update_ha_state:
-                    self.async_schedule_update_ha_state()
+                if self.hass and self.async_write_ha_state:
+                    self.async_write_ha_state()
         elif "player_state" in event:
             player_state = event["player_state"]
             if event_serial == self.device_serial_number:
@@ -381,12 +381,12 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
                         player_state["volumeSetting"],
                     )
                     self._media_vol_level = player_state["volumeSetting"] / 100
-                    if self.hass and self.async_schedule_update_ha_state:
-                        self.async_schedule_update_ha_state()
+                    if self.hass and self.async_write_ha_state:
+                        self.async_write_ha_state()
                 elif "dopplerConnectionState" in player_state:
                     self.available = player_state["dopplerConnectionState"] == "ONLINE"
-                    if self.hass and self.async_schedule_update_ha_state:
-                        self.async_schedule_update_ha_state()
+                    if self.hass and self.async_write_ha_state:
+                        self.async_write_ha_state()
                 await _refresh_if_no_audiopush(already_refreshed)
         elif "push_activity" in event:
             if self.state in {STATE_IDLE, STATE_PAUSED, STATE_PLAYING}:
@@ -481,7 +481,7 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
             self._set_authentication_details(device["auth_info"])
         session = None
         if self.available:
-            _LOGGER.debug("%s: Refreshing %s", self.account, self.name)
+            _LOGGER.debug("%s: Refreshing %s", self.account, self)
             self._assumed_state = False
             if "PAIR_BT_SOURCE" in self._capabilities:
                 self._source = self._get_source()
@@ -493,7 +493,8 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
                 self._last_called_timestamp = self.hass.data[DATA_ALEXAMEDIA][
                     "accounts"
                 ][self._login.email]["last_called"]["timestamp"]
-            if skip_api:
+            if skip_api and self.hass:
+                self.async_write_ha_state()
                 return
             if "MUSIC_SKILL" in self._capabilities:
                 if self._parent_clusters and self.hass:
@@ -634,6 +635,8 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
                             ),
                         )
                     )
+        if self.hass:
+            self.async_write_ha_state()
 
     @property
     def source(self):
@@ -863,7 +866,7 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
             else:
                 _LOGGER.debug("Disabling polling for %s", self.name)
         self._last_update = util.utcnow()
-        self.async_schedule_update_ha_state()
+        self.async_write_ha_state()
 
     @property
     def media_content_type(self):
@@ -945,7 +948,7 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
     def shuffle(self, state):
         """Set the Shuffle state."""
         self._shuffle = state
-        self.async_schedule_update_ha_state()
+        self.async_write_ha_state()
 
     @property
     def repeat_state(self):
@@ -956,7 +959,7 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
     def repeat_state(self, state):
         """Set the Repeat state."""
         self._repeat = state
-        self.async_schedule_update_ha_state()
+        self.async_write_ha_state()
 
     @property
     def supported_features(self):
@@ -1196,6 +1199,19 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
         elif media_type == "image":
             _LOGGER.debug("%s:Setting background to %s", self, media_id)
             await self.alexa_api.set_background(media_id)
+        elif media_type == "custom":
+            _LOGGER.debug(
+                '%s:Running custom command: "%s" with queue_delay %s',
+                self,
+                media_id,
+                queue_delay,
+            )
+            await self.alexa_api.run_custom(
+                media_id,
+                customer_id=self._customer_id,
+                queue_delay=queue_delay,
+                **kwargs,
+            )
         else:
             _LOGGER.debug(
                 "%s:Playing music %s on %s with queue_delay %s",
@@ -1209,6 +1225,7 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
                 media_id,
                 customer_id=self._customer_id,
                 queue_delay=queue_delay,
+                timer=kwargs.get("extra", {}).get("timer", None),
                 **kwargs,
             )
         if not (
