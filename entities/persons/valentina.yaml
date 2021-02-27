@@ -3,3 +3,4 @@ name: Valentina
 id: valentina
 device_trackers:
   - device_tracker.valentina_phone
+  - device_tracker.iphone_di_valentina_frigerio

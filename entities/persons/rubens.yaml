@@ -3,3 +3,4 @@ name: Rubens
 id: rubens
 device_trackers:
   - device_tracker.rubens_phone
+  - device_tracker.rubens_owntracks
