@@ -12,7 +12,7 @@ cards:
       - person.valentina
   - type: markdown
     content: |
-      **Rubens**: {{ state_attr("sensor.robbaz_iphone_geocoded_location", "Name") }}, {{ state_attr("sensor.robbaz_iphone_geocoded_location", "Locality") }}
+      **Rubens**: {{ state_attr("sensor.rubens_phone_geocoded_location", "Name") }}, {{ state_attr("sensor.rubens_phone_geocoded_location", "Locality") }}
       **Vale**: {{ state_attr("sensor.iphone_di_valentina_frigerio_geocoded_location", "Name") }}, {{ state_attr("sensor.iphone_di_valentina_frigerio_geocoded_location", "Locality") }}
   - type: map
     entities:
