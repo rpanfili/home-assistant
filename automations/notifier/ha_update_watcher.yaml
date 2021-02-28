@@ -1,11 +1,13 @@
 ---
-alias: "Update Available Notifications"
+alias: "Update Available Notification"
 description: "Send a notification when an update for HomeAssistant is available."
 initial_state: True
 trigger:
-  platform: state
-  entity_id: updater.updater
+  - platform: state
+    entity_id: binary_sensor.updater
+    from: "off"
+    to: "on"
 action:
   - service: notify.telegram2rubens
     data:
-      message: "A new update for Home Assistant is available."
+      message: "Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version') }} is available."
