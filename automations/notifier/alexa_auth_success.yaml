@@ -1,0 +1,16 @@
+---
+id: notify_alexa_auth_success
+alias: Alexa Media Player re-authentication succeed
+trigger:
+  platform: event
+  event_type: alexa_media_relogin_success
+action:
+  - service: notify.alexa_media
+    data_template:
+      data:
+        type: tts
+        method: speak
+      message: "Scusami rieccomi, mi sono persa qualcosa?"
+      target:
+        - media_player.laboratorio
+        - media_player.cucina
