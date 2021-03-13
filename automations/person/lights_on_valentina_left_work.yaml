@@ -1,6 +1,6 @@
 ---
-id: "driveway_lights_on_valentina_left_work"
-alias: "Driveway lights ON when Valentina left work"
+id: "lights_on_valentina_left_work"
+alias: "lights ON when Valentina left work"
 initial_state: True
 mode: restart
 trigger:
@@ -18,12 +18,19 @@ condition:
       - condition: sun
         before: sunrise
 action:
+  - service: light.turn_on
+    target:
+      entity_id:
+        - light.kitchen_countertop
+        - light.entryway
   - service: light.toggle
-    entity_id: light.driveway
+    target:
+      entity_id: light.driveway
   - delay:
       minutes: 10
   - service: light.toggle
-    entity_id: light.driveway
+    target:
+      entity_id: light.driveway
   - service: notify.telegram2rubens
     data:
       message: "Ho spento le luci nel vialetto 💡🚗"
