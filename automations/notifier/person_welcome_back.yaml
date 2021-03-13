@@ -1,0 +1,28 @@
+---
+id: "notify_person_welcome_back"
+alias: "Notify - person welcome back"
+initial_state: True
+trigger:
+  platform: state
+  entity_id:
+    - person.valentina
+  from: "not_home"
+  to: "home"
+action:
+  - service: notify.alexa_media
+    data_template:
+      data:
+        type: tts
+        method: speak
+      message: |-
+        {{ [
+          "Bentornata Valentina, ci sei mancata!",
+          "Ciao cara, com'è va?",
+          "Guarda un po' chi si rivede!",
+          "Ciao grandissima",
+          "È sempre bello vederti",
+          "Ti vedo radiosa quest'oggi"
+        ] | random }}
+      target:
+        - media_player.laboratorio
+        - media_player.cucina
