@@ -26,11 +26,3 @@ action:
   - service: light.toggle
     target:
       entity_id: light.driveway
-  - delay:
-      minutes: 10
-  - service: light.toggle
-    target:
-      entity_id: light.driveway
-  - service: notify.telegram2rubens
-    data:
-      message: "Ho spento le luci nel vialetto 💡🚗"

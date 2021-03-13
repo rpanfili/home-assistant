@@ -1,0 +1,31 @@
+---
+id: "driveway_light_auto_off"
+alias: "Driveway - automate light OFF"
+initial_state: True
+mode: restart
+trigger:
+  # - platform: state
+  #   entity_id: light.driveway
+  #   from: "off"
+  #   to: "on"
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.valentina_left_work_lights_on
+
+action:
+  - wait_for_trigger:
+      - platform: state
+        entity_id: light.driveway
+        from: "off"
+        to: "on"
+    timeout:
+      seconds: 5
+    continue_on_timeout: true
+  - condition: template
+    value_template: "{{ wait.trigger == None }}"
+
+  - service: light.toggle
+    target:
+      entity_id:
+        - light.driveway
