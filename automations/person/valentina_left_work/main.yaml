@@ -1,0 +1,12 @@
+---
+id: "valentina_left_work"
+alias: "Valentina left work"
+initial_state: True
+trigger:
+  - platform: zone
+    entity_id: person.valentina
+    zone: zone.work
+    event: leave
+action:
+  - variables:
+      dummy: true

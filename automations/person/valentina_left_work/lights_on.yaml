@@ -1,13 +1,13 @@
 ---
-id: "lights_on_valentina_left_work"
-alias: "lights ON when Valentina left work"
+id: "valentina_left_work_lights_on"
+alias: "Valentina left work - lights on"
 initial_state: True
 mode: restart
 trigger:
-  - platform: zone
-    entity_id: person.valentina
-    zone: zone.work
-    event: leave
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.valentina_left_work
 condition:
   # during the night
   - condition: or

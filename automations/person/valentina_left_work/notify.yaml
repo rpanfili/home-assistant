@@ -1,12 +1,12 @@
 ---
-id: "valentina_left_work"
-alias: "Valentina left work"
+id: "valentina_left_work_notify"
+alias: "Valentina left work - notify"
 initial_state: True
 trigger:
-  - platform: zone
-    entity_id: person.valentina
-    zone: zone.work
-    event: leave
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.valentina_left_work
 action:
   - service: notify.telegram2rubens
     data:
