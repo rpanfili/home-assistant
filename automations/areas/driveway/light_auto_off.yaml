@@ -14,17 +14,8 @@ trigger:
       entity_id: automation.valentina_left_work_lights_on
 
 action:
-  - wait_for_trigger:
-      - platform: state
-        entity_id: light.driveway
-        from: "off"
-        to: "on"
-    timeout:
-      seconds: 5
-    continue_on_timeout: true
-  - condition: template
-    value_template: "{{ wait.trigger == None }}"
-
+  - delay:
+      minutes: 10
   - service: light.toggle
     target:
       entity_id:
