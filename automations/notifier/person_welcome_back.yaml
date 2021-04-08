@@ -8,6 +8,7 @@ trigger:
     - person.valentina
   from: "not_home"
   to: "home"
+  for: "00:04:00"
 action:
   - service: notify.alexa_media
     data_template:
