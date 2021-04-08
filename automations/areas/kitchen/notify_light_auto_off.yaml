@@ -1,0 +1,21 @@
+---
+id: "notify_kitchen_light_auto_off"
+alias: "Notify kitchen light auto off"
+initial_state: True
+mode: single
+trigger:
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.automate_kitchen_lights_off
+action:
+  - service: notify.catinghampalacebot
+    data_template:
+      message: |-
+        {{ [
+          "Siccome non c'è nessuno in cucina da un po' ho spento le luci 🌱🦔",
+          "🌱🦔",
+          "👋🦔",
+          "Ho spento le luci in cucina 🌿"
+        ] | random }}
+  - delay: 7200 # 2 hours
