@@ -9,11 +9,13 @@ trigger:
     event: leave
 condition:
   # let Valentina arrive at work (enter exit zone multiple times)
-  - condition: state
-    entity_id: person.valentina
-    state: not_home
-    for:
-      minutes: 60
+  condition: not
+  conditions:
+    - condition: state
+      entity_id: person.valentina
+      state: home
+      for:
+        minutes: 60
 action:
   - variables:
       dummy: true
