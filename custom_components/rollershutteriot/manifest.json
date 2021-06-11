@@ -1,0 +1,9 @@
+{
+    "domain": "rollershutteriot",
+    "name": "RIoT covers",
+    "dependencies": ["mqtt"],
+    "after_dependencies": ["http"],
+    "codeowners": ["@rpanfili"],
+    "requirements": [],
+    "version": "1.0.0"
+  }
