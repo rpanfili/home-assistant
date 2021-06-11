@@ -22,7 +22,10 @@ action:
           "Guarda un po' chi si rivede!",
           "Ciao grandissima",
           "È sempre bello vederti",
-          "Ti vedo radiosa quest'oggi"
+          "Ti vedo radiosa quest'oggi",
+          "Ué vecchia teppa, come te la passi?",
+          "Come sempre è un piacere riaverti tra noi",
+          "Ciao cara, come vanno le cose?"
         ] | random }}
       target:
         - media_player.laboratorio
