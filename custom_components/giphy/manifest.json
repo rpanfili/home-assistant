@@ -1,0 +1,13 @@
+{
+    "domain": "giphy",
+    "name": "Giphy integration",
+    "config_flow": true,
+    "documentation": "",
+    "dependencies": [],
+    "after_dependencies": [
+        "http"
+    ],
+    "codeowners": ["@rpanfili"],
+    "requirements": [],
+    "version": "0.0.1"
+}

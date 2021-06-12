@@ -1,0 +1,19 @@
+{
+    "title": "Giphy integration",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Credentials",
+                "description": "Set up authentication providing Giphy api key.",
+                "data": {
+                    "api_key": "Api Key"
+                }
+            }
+        },
+        "error": {
+            "connection_error": "Failed to connect."
+        },
+        "abort": {
+        }
+    }
+}
