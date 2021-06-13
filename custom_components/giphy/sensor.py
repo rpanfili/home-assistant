@@ -35,10 +35,10 @@ async def async_setup_entry(
 
     sensors = [
         GiphySensor(
-            client, 
-            unique_id=entry.data[CONF_ID], 
-            name="giphy_trending",
-            updater=lambda client: client.trending()
+            client,
+            device_id=entry.data[CONF_ID],
+            name="Giphy Trending",
+            updater=lambda client: client.trending(),
         ),
     ]
 
@@ -47,10 +47,10 @@ async def async_setup_entry(
         term = conf.get(CONF_SEARCH_TERM)
         sensors.append(
             GiphySensor(
-                client, 
-                unique_id=entry.data[CONF_ID], 
-                name=f"giphy_{conf.get(CONF_NAME, conf.get(CONF_SEARCH_TERM))}",
-                updater=lambda client, t=term: client.search(t)
+                client,
+                device_id=entry.data[CONF_ID],
+                name=f"Giphy search {conf.get(CONF_NAME, conf.get(CONF_SEARCH_TERM))}",
+                updater=lambda client, t=term: client.search(t),
             )
         )
 
@@ -61,22 +61,20 @@ class GiphySensor(Entity):
     """Defines a Giphy sensor."""
 
     def __init__(
-        self, 
-        client: GiphyClient,
-        name: str,
-        unique_id: str,
-        updater: Callable
+        self, client: GiphyClient, name: str, device_id: str, updater: Callable
     ) -> None:
         """Initialize the Giphy entity."""
-        self._unique_id = unique_id
+        self._available = True
+        self._device_id = device_id
+
         self._name = name
+
         self.client = client
         self._unsub_dispatcher = None
 
         self._images = []
         self._state = None
         self._updater = updater
-
 
     @property
     def name(self) -> str:
@@ -89,6 +87,17 @@ class GiphySensor(Entity):
         return "mdi:gif"
 
     @property
+    def available(self) -> bool:
+        """Return True if entity is available."""
+        return self._available
+
+    @property
+    def unique_id(self) -> str:
+        """Return the unique ID for this sensor."""
+        uniq = self._name.lower().replace(" ", "_")
+        return f"{DOMAIN}_{self._device_id}_{uniq}"
+
+    @property
     def should_poll(self) -> bool:
         """Return the polling requirement of the entity."""
         return True
@@ -96,9 +105,7 @@ class GiphySensor(Entity):
     @property
     def extra_state_attributes(self):
         """Return the state attributes."""
-        return {
-            ATTR_IMAGES: self._images
-        }
+        return {ATTR_IMAGES: self._images}
 
     async def async_added_to_hass(self) -> None:
         """Connect to dispatcher listening for entity data notifications."""
@@ -129,7 +136,7 @@ class GiphySensor(Entity):
     def device_info(self) -> Dict[str, Any]:
         """Return device information about Giphy."""
         return {
-            "identifiers": {(DOMAIN, self._unique_id)},
+            "identifiers": {(DOMAIN, self._device_id)},
             "name": "Giphy",
             "manufacturer": "Giphy",
         }
