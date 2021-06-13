@@ -15,7 +15,7 @@ action:
       message: "buona giornata"
       data:
         video:
-          - url: '{{((state_attr(["sensor.giphy_you_are_awesome", "sensor.giphy_funny", "sensor.giphy_trending"]|random,"images") or [None]) |random).mp4 }}'
+          - url: '{{((state_attr(["sensor.giphy_search_you_are_awesome", "sensor.giphy_search_funny", "sensor.giphy_search_trending"]|random,"images") or [None]) |random).mp4 }}'
             caption: |-
               {{[
                 "Ti auguro un'ottima giornata 😘",
