@@ -21,3 +21,17 @@ action:
         {%- else -%}
           buona serata
         {%- endif -%}! 🐈
+  - service: notify.catinghampalacebot
+    data:
+      message: "lol"
+      data:
+        video:
+          - url: '{{((state_attr("sensor.giphy_lolcat","images") or [None]) |random).mp4 }}'
+            caption: |-
+              {{[
+                "Non temete, ci penso io ai gattini",
+                "I mici vi mandano i loro saluti!",
+                "miao miao miao 🐈",
+                "Ci pensiamo noi a proteggere casa 🐨 🦁 🐮",
+                "E come sempre, viva i gatti 😆"
+              ] | random }}

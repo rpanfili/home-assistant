@@ -1,0 +1,26 @@
+---
+id: "3321650B-1370-47A5-B62D-06071460130C"
+alias: "valentina_goodbye"
+description: "Says goodbye to Valentina when she is away"
+initial_state: True
+trigger:
+  platform: state
+  entity_id:
+    - person.valentina
+  from: "home"
+  to: "not_home"
+action:
+  - service: notify.telegram2vale
+    data:
+      message: "buona giornata"
+      data:
+        video:
+          - url: '{{((state_attr(["sensor.giphy_you_are_awesome", "sensor.giphy_funny", "sensor.giphy_trending"]|random,"images") or [None]) |random).mp4 }}'
+            caption: |-
+              {{[
+                "Ti auguro un'ottima giornata 😘",
+                "Sei fantastica ☺️ 🦄 ✨",
+                "A presto, ci manchi già 🥰",
+                "Passa una buona giornata! ⭐️",
+                "Sai che sei tanto importante per noi? Ti vogliamo tutti tanto bene!"
+              ] | random }}
