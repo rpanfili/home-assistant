@@ -53,20 +53,13 @@ async def _update_pic(hass: HomeAssistantType, unique_id: Optional[str]) -> None
 async def async_setup(hass: HomeAssistantType, config: ConfigType) -> bool:
     """Set up the Giphy components."""
     hass.data.setdefault(DOMAIN, {})
-
-    # async def update(call) -> None:
-    #     """Service call to manually update the data."""
-    #     unique_id = call.data.get(CONF_ID)
-    #     await _update_pic(hass, unique_id)
-
-    # hass.services.async_register(DOMAIN, SERVICE_UPDATE, update, schema=SERVICE_SCHEMA)
-
     return True
 
 
 async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool:
     """Set up Giphy from a config entry."""
     _LOGGER.info("Setup entry %s..", entry.data[CONF_ID])
+    _LOGGER.info("Entry conf: %s", entry)
     session = async_get_clientsession(hass)
     client = GiphyClient(
         api_key=entry.data[CONF_API_KEY],

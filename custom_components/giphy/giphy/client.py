@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, date
 from typing import Dict, Optional
 from hashlib import sha256
 import urllib.parse as urlparse
-from urllib.parse import ParseResult, parse_qsl, unquote, urlencode, urlsplit
+from urllib.parse import ParseResult, parse_qsl, unquote, urlencode, urlsplit, quote
 
 import aiohttp
 import async_timeout
@@ -115,7 +115,18 @@ class GiphyClient:
 
         _LOGGER.debug("Fetch trending")
 
-        response_data = await self._request("/v1/gifs/trending")
+        response_data = await self._request("/v1/gifs/trending?rating=r")
+
+        images = [urls.get('original') for urls in [image.get('images') for image in response_data.get('data')]]
+
+        return images
+
+    async def search(self, term: str) -> None:
+        """Search gifs."""
+
+        _LOGGER.debug("Search for %s", term)
+
+        response_data = await self._request(f"/v1/gifs/search?rating=r&q={quote(term)}")
 
         images = [urls.get('original') for urls in [image.get('images') for image in response_data.get('data')]]
 
