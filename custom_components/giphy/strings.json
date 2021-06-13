@@ -8,10 +8,21 @@
                 "data": {
                     "api_key": "Api Key"
                 }
+            },
+            "search": {
+                "title": "Additional searches",
+                "description": "Track additional searches.",
+                "data": {
+                    "search": "Term to search",
+                    "name": "Name of the sensor (default as Term)",
+                    "add_another": "Track another term after this",
+                    "skip_step": "Skip this step"
+                }
             }
         },
         "error": {
-            "connection_error": "Failed to connect."
+            "connection_error": "Failed to connect.",
+            "invalid_search": "This search configuration is invalid. Please provide a valid term or skip this step."
         },
         "abort": {
         }
