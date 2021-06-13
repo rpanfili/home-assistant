@@ -20,7 +20,7 @@ ATTR_IMAGES = "images"
 
 _LOGGER = logging.getLogger(__name__)
 
-SCAN_INTERVAL = timedelta(hours=2)
+SCAN_INTERVAL = timedelta(hours=1)
 PARALLEL_UPDATES = 1
 
 
@@ -57,6 +57,7 @@ class GiphySensor(Entity):
         self._images = []
         self._state = None
 
+
     @property
     def name(self) -> str:
         """Return the name of the entity."""
@@ -70,7 +71,7 @@ class GiphySensor(Entity):
     @property
     def should_poll(self) -> bool:
         """Return the polling requirement of the entity."""
-        return False
+        return True
 
     @property
     def extra_state_attributes(self):
@@ -98,7 +99,7 @@ class GiphySensor(Entity):
     @property
     def state(self):
         """Return an image from cache"""
-        return choice(self._images)
+        return choice(self._images).get("mp4")
 
     async def async_update(self) -> None:
         """Update Giphy entity."""

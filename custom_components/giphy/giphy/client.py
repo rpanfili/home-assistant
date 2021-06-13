@@ -117,7 +117,7 @@ class GiphyClient:
 
         response_data = await self._request("/v1/gifs/trending")
 
-        images = [urls.get('original').get('url') for urls in [image.get('images') for image in response_data.get('data')]]
+        images = [urls.get('original') for urls in [image.get('images') for image in response_data.get('data')]]
 
         return images
 
