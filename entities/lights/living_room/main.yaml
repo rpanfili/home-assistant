@@ -2,7 +2,7 @@
 platform: mqtt
 name: "Living room main"
 state_topic: "catingham_palace/living_room/light/stat/RESULT"
-value_template: "{{ value_json.POWER3 }}"
+state_value_template: "{{ value_json.POWER3 }}"
 command_topic: "catingham_palace/living_room/light/cmnd/POWER3"
 payload_on: "ON"
 payload_off: "OFF"
