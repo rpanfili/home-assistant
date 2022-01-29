@@ -2,6 +2,7 @@
 platform: statistics
 name: "Power stats"
 entity_id: sensor.total_power
+state_characteristic: mean
 sampling_size: 10000
 max_age:
   hours: 24
