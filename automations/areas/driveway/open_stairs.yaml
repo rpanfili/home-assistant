@@ -1,0 +1,14 @@
+---
+id: "open_stairs"
+alias: "Open stair front door"
+initial_state: True
+trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: "open_stairs"
+action:
+  - service: lock.unlock
+    data:
+      entity_id:
+        - lock.stair_front_door

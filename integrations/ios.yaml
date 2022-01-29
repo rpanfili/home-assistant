@@ -19,6 +19,15 @@ ios:
         icon: sparkles
         color: "#07ACE5"
 
+    - name: "open_stairs"
+      background_color: "#666666"
+      label:
+        text: "Apri porta scale 🪜"
+        color: "F5F5F5"
+      icon:
+        icon: stairs
+        color: "#07ACE5"
+
     - name: "open_gate"
       background_color: "#666666"
       label:
