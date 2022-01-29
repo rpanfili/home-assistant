@@ -10,6 +10,8 @@ trigger:
   above: 0
   for: "00:00:10"
 action:
+  - condition: template
+    value_template: '{{ (4500 * 0.9) > (states("sensor.total_power")|float) }}'
   - service: notify.catinghampalacebot
     data_template:
       message: |-
@@ -22,14 +24,16 @@ action:
           'Te paghei te i bulett?'
           'Té! Va che la custa la curent!'
         ] | random }}
-  - condition: template
-    value_template: '{{ (4500 * 0.9) > (states("sensor.total_power")|float) }}'
   - service: notify.alexa_media
     data_template:
       data:
         type: tts
         method: speak
-      message: "Attenzione! State consumando {{states('sensor.total_power')|int}} watt, rischia di saltare la luce!"
+      message: |-
+        Attenzione! State consumando {{states('sensor.total_power')|int}} watt, rischia di saltare la luce! 
+        {% if states('sensor.power2')|int / 4500 > 0.25 %}
+          Giù da basso hanno acceso qualcosa di grosso da {{states('sensor.power2')|int}} Watt.
+        {% endif %}
       target:
         - media_player.laboratorio
         - media_player.cucina
