@@ -11,7 +11,7 @@ import async_timeout
 from yarl import URL
 
 from .__version__ import __version__
-from .const import API_BASE_URI, API_TOKEN, API_HOST, API_TO_SERVICE
+from .const import API_BASE_URI, API_HOST, API_TO_SERVICE
 from .exceptions import (
     SileaWpAddressError,
     SileaWpConnectionError,
@@ -19,6 +19,7 @@ from .exceptions import (
 )
 
 import logging
+
 _LOGGER = logging.getLogger(__name__)
 
 
@@ -73,17 +74,25 @@ class SileaWp:
         }
 
         import urllib.parse
-        raw_data = {**{
-            "Token": API_TOKEN,
-            "IDCliente" : self.client_id,
-            "IDVia": self.street_id
-        },**(data or {})}
+
+        raw_data = {
+            **{
+                "action": "get_calendar",
+                "id_cliente": self.client_id,
+                "id_via": self.street_id,
+                "id_mese": 9,  # todo!
+            },
+            **(data or {}),
+        }
 
         try:
             with async_timeout.timeout(self.request_timeout):
                 response = await self._session.request(
-                    method, url, 
-                    data=raw_data, headers=headers, ssl=True,
+                    method,
+                    url,
+                    data=raw_data,
+                    headers=headers,
+                    ssl=True,
                 )
         except asyncio.TimeoutError as exception:
             raise SileaWpConnectionError(
@@ -100,12 +109,8 @@ class SileaWp:
             response.close()
 
             if content_type == "application/json":
-                raise SileaWpError(
-                    response.status, json.loads(contents.decode("utf8"))
-                )
-            raise SileaWpError(
-                response.status, {"message": contents.decode("utf8")}
-            )
+                raise SileaWpError(response.status, json.loads(contents.decode("utf8")))
+            raise SileaWpError(response.status, {"message": contents.decode("utf8")})
 
         if "application/json" in response.headers["Content-Type"]:
             return await response.json()
@@ -116,16 +121,13 @@ class SileaWp:
         if self._unique_id is None:
             self._unique_id = f"IDCliente={self.client_id}|IDVia={self.street_id}"
         return self._unique_id
-        
 
     async def update(self) -> None:
         """Fetch data from Silea waste pickup."""
 
         _LOGGER.info("Triggered calendar update")
 
-        calendar = await self._request(
-            "getCalendario/"
-        )
+        calendar = await self._request("getCalendario/")
 
         services = {}
         now = datetime.now()
@@ -138,14 +140,18 @@ class SileaWp:
 
             pickup_date = None
             if pickup["Data"]:
-                pickup_date = datetime.strptime(
-                    pickup["Data"], "%Y-%m-%dT%H:%M:%S"
-                )
+                pickup_date = datetime.strptime(pickup["Data"], "%Y-%m-%dT%H:%M:%S")
 
                 if pickup_date < now:
                     continue
 
-                services[service] = pickup_date if (services.get(service) is None or pickup_date < services[service]) else services[service]
+                services[service] = (
+                    pickup_date
+                    if (
+                        services.get(service) is None or pickup_date < services[service]
+                    )
+                    else services[service]
+                )
 
         for service, pickup_date in services.items():
             self._pickup.update({service: pickup_date})  # type: ignore

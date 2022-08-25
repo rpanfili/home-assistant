@@ -2,8 +2,7 @@
 """Silea waste pickup constants."""
 
 API_HOST = "www.sileaspa.it"
-API_BASE_URI = "/api/servizi/"
-API_TOKEN = "9101D451-E505-4461-A8E8-0AC205FC8703"
+API_BASE_URI = "/wp-admin/admin-ajax.php"
 
 WASTE_TYPE_NON_RECYCLABLE = "Non-recyclable"
 WASTE_TYPE_ORGANIC = "Organic"
@@ -18,5 +17,5 @@ API_TO_SERVICE = {
     "raccolta RICICLABILE": WASTE_TYPE_PLASTIC,
     "raccolta CARTA CARTONE": WASTE_TYPE_PAPER,
     "raccolta VETRO": WASTE_TYPE_GLASS,
-    "Pulizia Meccanizzata": STREET_CLEAN
+    "Pulizia Meccanizzata": STREET_CLEAN,
 }

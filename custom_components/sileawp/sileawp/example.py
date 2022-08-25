@@ -9,7 +9,7 @@ from .const import (  # noqa
     WASTE_TYPE_ORGANIC,
     WASTE_TYPE_PAPER,
     WASTE_TYPE_PLASTIC,
-    STREET_CLEAN
+    STREET_CLEAN,
 )
 from .sileawp import (  # noqa
     SileaWp,
@@ -21,7 +21,7 @@ from .sileawp import (  # noqa
 
 async def main(loop):
     """Show example on stats from SileaWp Milieu."""
-    async with SileaWp(client_id=1234, street_id=12345, loop=loop) as tw:
+    async with SileaWp(client_id=1238, street_id=20184, loop=loop) as tw:
         await tw.update()
         pickup = await tw.next_pickup(WASTE_TYPE_ORGANIC)
         print("Next pickup for Organic:", pickup)
