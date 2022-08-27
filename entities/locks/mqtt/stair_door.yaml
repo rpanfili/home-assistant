@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 name: "Stair Front door"
 command_topic: "catingham_palace/stair/front_door/state"
 state_topic: "catingham_palace/stair/front_door/state"

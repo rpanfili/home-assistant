@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 name: "Driveway Door"
 command_topic: "catingham_palace/driveway/door/state"
 state_topic: "catingham_palace/driveway/door/state"
