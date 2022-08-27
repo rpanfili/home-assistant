@@ -1,5 +1,5 @@
 ---
 - unique_id: energy_cost_today_peak
   name: "Peak energy cost Today"
-  state: "{{ (states('sensor.total_energy_daily_peak')|float * states('input_number.cost_f1')|float)|round(2) }}"
+  state: "{{ ((states.sensor.total_energy_daily_peak.state or 0)|float * (states.input_number.cost_f1.state or 0)|float)|round(2) }}"
   unit_of_measurement: "€"
