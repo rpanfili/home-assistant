@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 name: "Greenhouse"
 qos: 1
 optimistic: false

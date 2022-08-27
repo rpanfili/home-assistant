@@ -1,9 +1,8 @@
 ---
-platform: mqtt
-name: "Living room main"
+name: "Kitchen main"
 state_topic: "catingham_palace/living_room/light/stat/RESULT"
-state_value_template: "{{ value_json.POWER3 }}"
-command_topic: "catingham_palace/living_room/light/cmnd/POWER3"
+state_value_template: "{{ value_json.POWER1 }}"
+command_topic: "catingham_palace/living_room/light/cmnd/POWER1"
 payload_on: "ON"
 payload_off: "OFF"
 availability_topic: "catingham_palace/living_room/light/tele/LWT"

@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 name: "Kitchen countertop"
 state_topic: "catingham_palace/kitchen/countertop_light/stat/POWER"
 command_topic: "catingham_palace/kitchen/countertop_light/cmnd/POWER"

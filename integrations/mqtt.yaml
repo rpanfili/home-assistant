@@ -5,3 +5,5 @@ mqtt:
   client_id: lamp1
   username: !secret mqtt_username
   password: !secret mqtt_password
+
+  light: !include_dir_list ../entities/lights/mqtt
