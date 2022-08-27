@@ -8,4 +8,5 @@ mqtt:
 
   binary_sensor: !include_dir_list ../entities/binary_sensors/mqtt
   light: !include_dir_list ../entities/lights/mqtt
+  fan: !include_dir_list ../entities/fans/mqtt
   sensor: !include_dir_list ../entities/sensors/mqtt

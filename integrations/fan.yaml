@@ -1,2 +1,2 @@
 ---
-fan: !include_dir_list ../entities/fans
+fan: !include_dir_list ../entities/fans/generic
