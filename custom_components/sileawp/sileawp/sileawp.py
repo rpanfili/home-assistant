@@ -9,6 +9,7 @@ from typing import Dict, Optional
 import aiohttp
 import async_timeout
 from yarl import URL
+from re import sub
 
 from .__version__ import __version__
 from .const import API_BASE_URI, API_HOST, API_TO_SERVICE
@@ -59,36 +60,91 @@ class SileaWp:
         if self.user_agent is None:
             self.user_agent = "SileaWpClient/{}".format(__version__)
 
-    async def _request(self, uri: str, method: str = "POST", data=None):
-        """Handle a request to Silea waste pickup."""
+    def get_next_service(self, calendar: list) -> dict:
 
-        url = URL.build(
-            scheme="https", host=API_HOST, port=443, path=API_BASE_URI
-        ).join(URL(uri))
+        services = {}
+        now = datetime.now()
+        for pickup in calendar:
+            service_date = pickup["date"]
+            if service_date < now:
+                continue
 
+            services[pickup["service"]] = (
+                service_date
+                if (
+                    services.get(pickup["service"]) is None
+                    or service_date < services[pickup["service"]]
+                )
+                else services[pickup["service"]]
+            )
+
+        return services
+
+    async def get_calendar(self):
+        current_month = int(date.today().strftime("%-m"))
+        months_limit = 3
+        iteration = 0
+
+        calendar = {}
+
+        while iteration < months_limit:
+            month = (current_month + iteration) % 12 or 12
+            month_calendar = await self._get_calendar(month)
+            if len(month_calendar):
+                calendar = {**month_calendar, **calendar}
+
+            iteration += 1
+
+        pickups = []
+        for day in calendar.values():
+            pickup_day = datetime.strptime(day["date"], "%Y-%m-%dT%H:%M:%S")
+
+            for pickup in day.get("services", []):
+                service = API_TO_SERVICE.get(pickup["type"])
+                if service is None:
+                    continue
+
+                pickup_time = datetime.strptime(
+                    sub(" -.+", "", pickup["hours"]), "%H:%M"
+                )
+                pickup_date = pickup_day.replace(
+                    hour=pickup_time.hour,
+                    minute=pickup_time.minute,
+                    second=0,
+                )
+
+                pickups.append({"service": service, "date": pickup_date})
+
+        return pickups
+
+    async def _get_calendar(self, month: int):
+        raw_data = {
+            "action": "get_calendar",
+            "id_cliente": self.client_id,
+            "id_via": self.street_id,
+            "id_mese": month,
+        }
         headers = {
             "user-agent": self.user_agent,
             "origin": "https://www.sileaspa.it",
             "authority": "www.sileaspa.it",
-            "referer": "https://www.sileaspa.it/servizi/servizi-ai-cittadini/giorni-orari-raccolta/",
+            "referer": "https://www.sileaspa.it/calendario-raccolta-rifiuti/",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Cookie": "cmplz_banner-status=dismissed",
+            "X-Requested-With": "XMLHttpRequest",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
         }
 
-        import urllib.parse
+        calendar_url = ""
 
-        raw_data = {
-            **{
-                "action": "get_calendar",
-                "id_cliente": self.client_id,
-                "id_via": self.street_id,
-                "id_mese": 9,  # todo!
-            },
-            **(data or {}),
-        }
+        url = URL.build(
+            scheme="https", host=API_HOST, port=443, path=API_BASE_URI
+        ).join(URL(calendar_url))
 
         try:
             with async_timeout.timeout(self.request_timeout):
                 response = await self._session.request(
-                    method,
+                    "POST",
                     url,
                     data=raw_data,
                     headers=headers,
@@ -127,33 +183,10 @@ class SileaWp:
 
         _LOGGER.info("Triggered calendar update")
 
-        calendar = await self._request("getCalendario/")
+        calendar = await self.get_calendar()
+        next_services = self.get_next_service(calendar)
 
-        services = {}
-        now = datetime.now()
-
-        for pickup in calendar:
-            service = API_TO_SERVICE.get(pickup["TipologiaServizio"])
-
-            if service is None:
-                continue
-
-            pickup_date = None
-            if pickup["Data"]:
-                pickup_date = datetime.strptime(pickup["Data"], "%Y-%m-%dT%H:%M:%S")
-
-                if pickup_date < now:
-                    continue
-
-                services[service] = (
-                    pickup_date
-                    if (
-                        services.get(service) is None or pickup_date < services[service]
-                    )
-                    else services[service]
-                )
-
-        for service, pickup_date in services.items():
+        for service, pickup_date in next_services.items():
             self._pickup.update({service: pickup_date})  # type: ignore
 
     async def next_pickup(self, waste_type: str) -> Optional[datetime]:
