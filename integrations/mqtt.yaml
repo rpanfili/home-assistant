@@ -6,4 +6,5 @@ mqtt:
   username: !secret mqtt_username
   password: !secret mqtt_password
 
+  binary_sensor: !include_dir_list ../entities/binary_sensors/mqtt
   light: !include_dir_list ../entities/lights/mqtt

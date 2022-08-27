@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 state_topic: "catingham_palace/bedroom/bed/rubens"
 name: "Rubens bed"
 qos: 1

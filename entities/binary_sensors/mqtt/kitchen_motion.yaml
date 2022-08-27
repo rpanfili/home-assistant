@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 state_topic: "catingham_palace/kitchen/motion"
 name: "Kitchen motion"
 qos: 1

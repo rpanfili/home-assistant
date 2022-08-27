@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 state_topic: "catingham_palace/bathroom/window/state"
 name: "Bathroom window"
 qos: 1

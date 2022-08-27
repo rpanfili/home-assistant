@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 state_topic: "catingham_palace/kitchen/right_window/state"
 name: "Kitchen right window"
 qos: 1
