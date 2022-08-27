@@ -1,5 +1,0 @@
----
-platform: mjpeg
-name: octopi S200
-still_image_url: !secret octoprint_camera_url_snapshot
-mjpeg_url: !secret octoprint_camera_url_stream
