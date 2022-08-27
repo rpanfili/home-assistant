@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 state_topic: "catingham_palace/entryway/temperature"
 name: "Entryway temperature"
 unit_of_measurement: "°C"

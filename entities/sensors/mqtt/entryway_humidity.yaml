@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 state_topic: "catingham_palace/entryway/humidity"
 name: "Entryway humidity"
 unit_of_measurement: "%"

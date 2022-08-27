@@ -1,4 +1,4 @@
-platform: mqtt
+---
 state_topic: "catingham_palace/green_room/air_quality_meter"
 name: "air_quality_meter"
 value_template: "{{ value_json }}"

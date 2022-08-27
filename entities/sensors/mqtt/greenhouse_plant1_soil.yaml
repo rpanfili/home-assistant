@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 state_topic: "catingham_palace/greenhouse/plant1/soil_moisture"
 name: "Greenhouse plant1 soil_moisture"
 unit_of_measurement: "%"
