@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 name: "Roller shutters away mode"
 command_topic: "catingham_palace/roller_shutters/away_mode"
 state_topic: "catingham_palace/roller_shutters/away_mode"

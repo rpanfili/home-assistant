@@ -1,2 +1,2 @@
 ---
-switch: !include_dir_list ../entities/switches
+switch: !include_dir_list ../entities/switches/generic

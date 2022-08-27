@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 name: "Automatic cat passage"
 command_topic: "catingham_palace/roller_shutters/automatic_cat_passage"
 state_topic: "catingham_palace/roller_shutters/automatic_cat_passage"

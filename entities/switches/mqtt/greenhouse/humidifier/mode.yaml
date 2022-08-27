@@ -1,4 +1,4 @@
-platform: mqtt
+---
 name: "Greenhouse humidifier mode"
 command_topic: "catingham_palace/greenhouse/humidifier/mode"
 state_topic: "catingham_palace/greenhouse/humidifier/mode"

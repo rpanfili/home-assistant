@@ -1,5 +1,4 @@
 ---
-platform: mqtt
 name: "Pallone"
 state_topic: "catingham_palace/green_room/pallone/stat/POWER"
 command_topic: "catingham_palace/green_room/pallone/cmnd/POWER"
