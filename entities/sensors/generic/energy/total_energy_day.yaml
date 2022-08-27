@@ -1,7 +1,0 @@
----
-platform: template
-sensors:
-  total_energy_day:
-    friendly_name: "Total energy used today"
-    value_template: "{{ (states('sensor.total_energy_daily_peak')|float + states('sensor.total_energy_daily_offpeak')|float)|round(3) }}"
-    unit_of_measurement: "kWh"

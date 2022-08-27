@@ -1,7 +1,0 @@
----
-platform: template
-sensors:
-  energy_cost_today:
-    friendly_name: "Energy cost Today"
-    value_template: "{{ ((states('sensor.energy_cost_today_peak')|float) + (states('sensor.energy_cost_today_offpeak')|float)) | round(2)}}"
-    unit_of_measurement: "€"

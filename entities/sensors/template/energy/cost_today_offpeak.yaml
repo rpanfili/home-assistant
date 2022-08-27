@@ -1,0 +1,5 @@
+---
+- unique_id: energy_cost_today_offpeak
+  name: "Off-peak energy cost Today"
+  state: "{{ (states('sensor.total_energy_daily_offpeak')|float * states('input_number.cost_f23')|float)|round(2) }}"
+  unit_of_measurement: "€"

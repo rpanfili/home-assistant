@@ -1,0 +1,5 @@
+---
+- unique_id: total_energy_day
+  name: "Total energy used today"
+  state: "{{ (states('sensor.total_energy_daily_peak')|float + states('sensor.total_energy_daily_offpeak')|float)|round(3) }}"
+  unit_of_measurement: "kWh"

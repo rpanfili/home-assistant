@@ -1,0 +1,3 @@
+---
+template:
+  - sensor: !include_dir_merge_list ../entities/sensors/template
