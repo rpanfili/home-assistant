@@ -15,9 +15,10 @@ condition:
     - thu
     - fri
 action:
-  - service: utility_meter.select_tariff
-    data:
+  - service: select.select_option
+    target:
       entity_id:
-        - utility_meter.total_energy_daily
-        - utility_meter.total_energy_monthly
-      tariff: peak
+        - select.total_energy_daily
+        - select.total_energy_monthly
+    data:
+      option: peak

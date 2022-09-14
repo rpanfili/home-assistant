@@ -17,7 +17,7 @@ cards:
       label: Main Energy Meters
       type: section
     entities:
-      - entity: utility_meter.total_energy_daily
+      - entity: select.total_energy_daily
         name: Current tariff
 
       - entity: sensor.total_energy_daily_peak
@@ -31,9 +31,9 @@ cards:
     title: Energy consumption
     show_header_toggle: false
     entities:
-      - entity: utility_meter.total_energy_daily
+      - entity: select.total_energy_daily
         name: Power consumption (daily)
-      - entity: utility_meter.total_energy_monthly
+      - entity: select.total_energy_monthly
         name: Power consumption (monthly)
   - type: "custom:mini-graph-card"
     aggregate_func: max

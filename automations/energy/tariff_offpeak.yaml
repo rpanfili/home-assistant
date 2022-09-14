@@ -7,9 +7,10 @@ trigger:
   - platform: time
     at: "19:00:00"
 action:
-  - service: utility_meter.select_tariff
-    data:
+  - service: select.select_option
+    target:
       entity_id:
         - utility_meter.total_energy_daily
         - utility_meter.total_energy_monthly
-      tariff: offpeak
+    data:
+      option: offpeak
