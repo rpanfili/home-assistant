@@ -10,7 +10,7 @@ action:
   - service: select.select_option
     target:
       entity_id:
-        - utility_meter.total_energy_daily
-        - utility_meter.total_energy_monthly
+        - select.total_energy_daily
+        - select.total_energy_monthly
     data:
       option: offpeak
