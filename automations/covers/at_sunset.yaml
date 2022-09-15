@@ -2,7 +2,7 @@
 id: "roller_shutter_sunset"
 alias: "Roller shutter sunset"
 description: "Close all covers at sunset"
-initial_state: True
+initial_state: False
 trigger:
   platform: sun
   event: sunset
