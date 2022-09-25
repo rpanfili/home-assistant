@@ -2,7 +2,7 @@
 id: "roller_shutter_away_mode"
 alias: "Roller shutter away mode"
 description: "Switch cover mode to away when nobody is in the house"
-initial_state: True
+initial_state: False
 trigger:
   platform: state
   entity_id: group.family
