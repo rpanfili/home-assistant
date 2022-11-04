@@ -1,7 +1,5 @@
 ---
 mqtt:
-  client_id: lamp1
-
   binary_sensor: !include_dir_list ../entities/binary_sensors/mqtt
   light: !include_dir_list ../entities/lights/mqtt
   lock: !include_dir_list ../entities/locks/mqtt
