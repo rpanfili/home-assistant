@@ -1,7 +1,7 @@
 ---
 id: "living_room_tv_evening_aware"
 alias: "Living room TV evening aware"
-initial_state: True
+initial_state: False
 trigger:
   - platform: state
     entity_id: media_player.living_room_tv
