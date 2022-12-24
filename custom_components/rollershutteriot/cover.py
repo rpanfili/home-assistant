@@ -3,7 +3,8 @@
 import logging
 import voluptuous as vol
 from homeassistant.components import cover, mqtt
-from homeassistant.components.mqtt.cover import MqttCover, PLATFORM_SCHEMA
+from homeassistant.core import HomeAssistant
+from homeassistant.components.mqtt.cover import MqttCover, PLATFORM_SCHEMA, _PLATFORM_SCHEMA_BASE, PLATFORM_SCHEMA_MODERN
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.typing import ConfigType, HomeAssistantType
 from homeassistant.const import (CONF_DEVICE, CONF_DEVICE_CLASS, CONF_NAME,
@@ -25,21 +26,25 @@ CONF_POSITION_MIN = 'position_min'
 CONF_POSITION_MIN_ENABLE = 'position_min_enable'
 CONF_WINDOW_SENSOR = 'window_sensor'
 
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.validators[0].extend({
-    vol.Optional(CONF_POSITION_MIN):
-    cv.entity_id,
-    vol.Optional(CONF_POSITION_MIN_ENABLE):
-    cv.entity_id,
-    vol.Optional(CONF_WINDOW_SENSOR):
-    cv.entity_id
+EXTRA_SCHEMA = vol.Schema({
+    vol.Optional(CONF_POSITION_MIN): cv.entity_id,
+    vol.Optional(CONF_POSITION_MIN_ENABLE): cv.entity_id,
+    vol.Optional(CONF_WINDOW_SENSOR): cv.entity_id
 })
 
+PLATFORM_SCHEMA = vol.All(
+    cv.PLATFORM_SCHEMA.extend(
+        _PLATFORM_SCHEMA_BASE.extend(
+            EXTRA_SCHEMA.schema).schema),
+)
 
-async def async_setup_platform(hass: HomeAssistantType,
+async def async_setup_platform(hass: HomeAssistant,
                                config: ConfigType,
                                async_add_entities,
                                discovery_info=None):
-    """Set up MQTT cover through configuration.yaml."""
+    """Set up rIoT cover through configuration.yaml."""
+    _LOGGER.debug("Setup rIoT cover with following config:");
+    _LOGGER.debug(config)
     await _async_setup_entity(hass, config, async_add_entities)
 
 
@@ -48,7 +53,7 @@ async def _async_setup_entity(hass,
                               async_add_entities,
                               config_entry=None,
                               discovery_data=None):
-    """Set up the MQTT Cover."""
+    """Set up the rIoT Cover."""
     async_add_entities(
         [RollerShutterIoTCover(hass, config, config_entry, discovery_data)])
 
@@ -108,9 +113,9 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
         return given_position is None or not self.is_position_min_enabled or self.position_min <= int(
             given_position)
 
-    async def async_added_to_hass(self):
+    async def mqtt_async_added_to_hass(self):
         """Subscribe MQTT events."""
-        await super().async_added_to_hass()
+        await super().mqtt_async_added_to_hass()
         await self._async_init_listeners()
 
     async def _async_init_listeners(self):
