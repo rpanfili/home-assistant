@@ -6,3 +6,4 @@ logger:
     homeassistant.components.vacuum: warning
     homeassistant.components.alexa.state_report: fatal
     homeassistant.components.upnp: warning
+    custom_components.rollershutteriot: debug
