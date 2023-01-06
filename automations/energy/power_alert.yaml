@@ -37,3 +37,8 @@ action:
       target:
         - media_player.laboratorio
         - media_player.cucina
+        - media_player.living_room_tv
+        - media_player.echo_dot_di_rubens
+        - media_player.echo_studio_di_rubens
+        - media_player.echo_dot_di_rubens_2
+        - media_player.echo_dot_di_rubens_3
