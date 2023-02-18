@@ -1,7 +1,3 @@
 ---
 light.entryway:
   name: Ingresso
-light.luci_ingresso_channel_1:
-  name: Ingresso
-light.luci_ingresso_channel_2:
-  name: Antibagno
