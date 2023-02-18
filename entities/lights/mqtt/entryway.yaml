@@ -1,11 +1,12 @@
 ---
 name: "Entryway"
-state_topic: "catingham_palace/entryway/light/stat/POWER"
-command_topic: "catingham_palace/entryway/light/cmnd/POWER"
-availability_topic: "catingham_palace/entryway/light/tele/LWT"
-qos: 1
+state_topic: "catingham_palace/living_room/light/stat/RESULT"
+state_value_template: "{{ value_json.POWER2 }}"
+command_topic: "catingham_palace/living_room/light/cmnd/POWER2"
 payload_on: "ON"
 payload_off: "OFF"
+availability_topic: "catingham_palace/living_room/light/tele/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
+qos: 1
 retain: false
