@@ -2,7 +2,7 @@
 alias: "Emulate entryhome switch"
 trigger:
   - platform: state
-    entity_id: light.entryway
+    entity_id: light.luci_ingresso_channel_1
 action:
   service_template: "mqtt.publish"
   data_template:
