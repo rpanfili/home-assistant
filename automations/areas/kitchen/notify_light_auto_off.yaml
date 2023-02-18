@@ -18,4 +18,4 @@ action:
           "👋🦔",
           "Ho spento le luci in cucina 🌿"
         ] | random }}
-  - delay: 7200 # 2 hours
+  - delay: 86400 # 2 hours
