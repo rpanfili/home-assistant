@@ -8,6 +8,7 @@ alexa:
     filter:
       include_entities:
         - switch.pallone
+        - switch.stufetta
       include_domains:
         - cover
         - light
