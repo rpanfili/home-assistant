@@ -73,8 +73,19 @@ cards:
     title: Green room
     show_header_toggle: false
     entities:
+      - light.luce_laboratorio
       - light.green_room_desktop_light
       - switch.pallone
+  - type: entities
+    title: Bathroom
+    show_header_toggle: false
+    entities:
+      - light.luce_bagno
+  - type: entities
+    title: Pink room
+    show_header_toggle: false
+    entities:
+      - light.luce_soia
 
   - type: conditional
     conditions:
