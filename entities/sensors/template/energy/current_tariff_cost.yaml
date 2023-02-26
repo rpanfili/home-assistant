@@ -1,0 +1,10 @@
+---
+- unique_id: energy_current_tariff_cost
+  name: "Current tariff cost"
+  unit_of_measurement: "EUR/kWh"
+  state: |
+    {%- if is_state("select.total_energy_daily", "peak") -%}
+      {{(states.input_number.cost_f1.state or 0)|float}}
+    {%- else -%}
+      {{(states.input_number.cost_f23.state or 0)|float }}
+    {%- endif -%}
