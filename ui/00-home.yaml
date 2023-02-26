@@ -78,6 +78,11 @@ cards:
       - switch.pallone
       - switch.stufetta
   - type: entities
+    title: Bedroom
+    show_header_toggle: false
+    entities:
+      - light.luce_camera_da_letto
+  - type: entities
     title: Bathroom
     show_header_toggle: false
     entities:
