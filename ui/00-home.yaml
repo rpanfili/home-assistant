@@ -75,6 +75,7 @@ cards:
     entities:
       - light.luce_laboratorio
       - light.green_room_desktop_light
+      - light.desktop_dual_light
       - switch.pallone
       - switch.stufetta
   - type: entities
