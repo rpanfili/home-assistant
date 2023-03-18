@@ -1,0 +1,9 @@
+---
+- unique_id: untracked_power
+  name: "Untracked power"
+  unit_of_measurement: "W"
+  state_class: measurement
+  device_class: power
+  icon: mdi:lightning-bolt
+  state: |
+    {{ max(0,states('sensor.power1')|float(0) - states('sensor.tracked_power')|float(0))|float }}
