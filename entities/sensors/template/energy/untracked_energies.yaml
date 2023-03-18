@@ -1,0 +1,9 @@
+---
+- unique_id: untracked_energies
+  name: "Untracked energies"
+  unit_of_measurement: "kWh"
+  state_class: total_increasing
+  device_class: energy
+  icon: mdi:home-lightning-bolt
+  state: |
+    {{ states('sensor.power1_kwh')|float(0) - states('sensor.tracked_energies')|float(0) }}
