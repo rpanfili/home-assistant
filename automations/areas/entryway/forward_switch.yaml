@@ -3,6 +3,9 @@ alias: "Forward multiswitch status to entryway"
 trigger:
   - platform: state
     entity_id: light.entryway
+    not_to:
+      - "unavailable"
+      - "unknown"
 action:
   - service_template: "light.turn_{{trigger.to_state.state | lower }}"
     data_template:
