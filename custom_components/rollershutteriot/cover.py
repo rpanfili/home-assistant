@@ -4,7 +4,7 @@ import logging
 import voluptuous as vol
 from homeassistant.components import cover, mqtt
 from homeassistant.core import HomeAssistant
-from homeassistant.components.mqtt.cover import MqttCover, PLATFORM_SCHEMA, _PLATFORM_SCHEMA_BASE, PLATFORM_SCHEMA_MODERN
+from homeassistant.components.mqtt.cover import MqttCover, _PLATFORM_SCHEMA_BASE
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.typing import ConfigType, HomeAssistantType
 from homeassistant.const import (CONF_DEVICE, CONF_DEVICE_CLASS, CONF_NAME,
