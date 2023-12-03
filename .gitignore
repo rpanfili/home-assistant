@@ -24,3 +24,6 @@ tts
 .vscode
 
 !.gitkeep
+
+automations.yaml
+
