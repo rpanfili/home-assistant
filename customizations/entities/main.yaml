@@ -88,6 +88,38 @@ automation.kitchen_sync_auxiliary_lights:
     icon: mdi:sync
     friendly_name: "Sync auxiliary lights"
 
+sensor.vrms:
+    unit_of_measurement: "V"
+    state_class: "measurement"
+sensor.power1:
+    icon: mdi:numeric-1-box-outline
+    unit_of_measurement: "W"
+    device_class: "power"
+    state_class: "measurement"
+sensor.power2:
+    icon: mdi:numeric-2-box-outline
+    unit_of_measurement: "W"
+    device_class: "power"
+    state_class: "measurement"
+sensor.power1_kwh:
+    unit_of_measurement: "kWh"
+    device_class: "energy"
+    state_class: "total_increasing"
+sensor.power2_kwh:
+    unit_of_measurement: "kWh"
+    device_class: "energy"
+    state_class: "total_increasing"
+sensor.total_power:
+    icon: mdi:power-plug
+    unit_of_measurement: "W"
+    device_class: "power"
+    state_class: "measurement"
+sensor.total_power_kwh:
+    icon: mdi:flash
+    unit_of_measurement: "kWh"
+    device_class: "energy"
+    state_class: "total_increasing"
+
 light.entryway:
     friendly_name: "Light"
 light.kitchen_main:
