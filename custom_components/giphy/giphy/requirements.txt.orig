@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+aiohttp==3.8.5
+=======
+aiohttp==3.9.2
+>>>>>>> aa78d50 (Bump aiohttp from 3.8.1 to 3.9.2 in /custom_components/giphy/giphy)
+yarl==1.5.1

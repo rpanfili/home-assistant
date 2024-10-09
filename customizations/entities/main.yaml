@@ -88,19 +88,6 @@ automation.kitchen_sync_auxiliary_lights:
     icon: mdi:sync
     friendly_name: "Sync auxiliary lights"
 
-sensor.emonpi_total_power:
-    icon: mdi:power-plug
-    friendly_name: "Power now"
-sensor.emonpi_power_1:
-    icon: mdi:numeric-1-box-outline
-    friendly_name: "Power 1"
-sensor.emonpi_power_2:
-    icon: mdi:numeric-2-box-outline
-    friendly_name: "Power 2"
-sensor.emonpi_total_power_kwh:
-    icon: mdi:flash
-    friendly_name: "Average consumption"
-
 light.entryway:
     friendly_name: "Light"
 light.kitchen_main:
