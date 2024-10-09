@@ -6,7 +6,7 @@ from homeassistant.components import cover, mqtt
 from homeassistant.core import HomeAssistant
 from homeassistant.components.mqtt.cover import MqttCover, _PLATFORM_SCHEMA_BASE
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.typing import ConfigType, HomeAssistantType
+from homeassistant.helpers.typing import ConfigType
 from homeassistant.const import (CONF_DEVICE, CONF_DEVICE_CLASS, CONF_NAME,
                                  CONF_OPTIMISTIC, CONF_VALUE_TEMPLATE,
                                  STATE_CLOSED, STATE_OPEN, STATE_UNKNOWN,
