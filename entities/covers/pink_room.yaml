@@ -17,3 +17,4 @@ payload_open: "ShutterOpen1"
 position_min: input_number.covers_min_position
 position_min_enable: switch.automatic_cat_passage
 window_sensor: binary_sensor.pink_room_window
+unique_id: "pink_room_rollershutter_01"

@@ -17,3 +17,4 @@ payload_open: "ShutterOpen1"
 position_min: input_number.covers_min_position
 position_min_enable: switch.automatic_cat_passage
 window_sensor: binary_sensor.kitchen_left_window
+unique_id: "kitchen_rollershutter_01"

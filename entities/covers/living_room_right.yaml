@@ -12,3 +12,4 @@ payload_open: 100
 position_min: input_number.covers_min_position
 position_min_enable: switch.automatic_cat_passage
 window_sensor: binary_sensor.living_room_right_window
+unique_id: "living_room_rollershutter_02"
