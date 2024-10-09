@@ -13,6 +13,7 @@ from homeassistant.const import (CONF_DEVICE, CONF_DEVICE_CLASS, CONF_NAME,
                                  STATE_ON)
 from homeassistant.helpers.restore_state import RestoreEntity
 from homeassistant.helpers.event import async_track_state_change
+import asyncio
 
 from . import (CONF_UNIQUE_ID)
 
