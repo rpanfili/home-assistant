@@ -34,10 +34,13 @@
           "debug": "Avansert feilsøking",
           "email": "Epostadresse",
           "exclude_devices": "Ekskludert enhet (kommaseparert)",
+          "extended_entity_discovery": "Include devices connected via Echo",
           "hass_url": "Url to access Home Assistant",
           "include_devices": "Inkluder enhet (kommaseparert)",
           "otp_secret": "Built-in 2FA App Key (automatically generate 2FA Codes)",
           "password": "Passord",
+          "public_url": "Offentlig URL delt med eksterne vertstjenester",
+          "queue_delay": "Sekunder for å vente på køkommandoer sammen",
           "scan_interval": "Sekunder mellom skanninger",
           "securitycode": "2FA-kode (anbefales for å unngå påloggingsproblemer)",
           "url": "Amazon-regiondomenet (f.eks. Amazon.co.uk)"
@@ -47,14 +50,59 @@
       }
     }
   },
+  "issues": {
+    "deprecated_yaml_configuration": {
+      "description": "YAML-konfigurasjonen av Alexa Media Player er utdatert \n og vil bli fjernet i versjon 4.14.0. \n Det vil ikke være noen automatisk import av dette. \n Fjern den fra konfigurasjonen din, start Home Assistant på nytt og bruk brukergrensesnittet til å konfigurere det i stedet. \n Innstillinger > Enheter og tjenester > Integrasjoner > LEGG TIL INTEGRASJON",
+      "title": "YAML-konfigurasjonen er utdatert"
+    }
+  },
   "options": {
     "step": {
       "init": {
         "data": {
+          "debug": "Avansert feilsøking",
+          "exclude_devices": "Ekskludert enhet (kommaseparert)",
           "extended_entity_discovery": "Inkluder enheter som er koblet til via Echo",
-          "queue_delay": "Sekunder for å vente på køkommandoer sammen"
-        }
+          "include_devices": "Inkluder enhet (kommaseparert)",
+          "public_url": "Offentlig URL for å få tilgang til Home Assistant (inkludert etterfølgende ''/'')",
+          "queue_delay": "Sekunder for å vente på køkommandoer sammen",
+          "scan_interval": "Sekunder mellom skanninger"
+        },
+        "description": "Required *",
+        "title": "Alexa Media Player - Reconfiguration"
       }
+    }
+  },
+  "services": {
+    "force_logout": {
+      "description": "Force account to logout. Used mainly for debugging.",
+      "fields": {
+        "email": {
+          "description": "Accounts to clear. Empty will clear all.",
+          "name": "Email address"
+        }
+      },
+      "name": "Force Logout"
+    },
+    "restore_volume": {
+      "description": "Gjenopprett forrige volumnivå på Alexa mediespillerenhet",
+      "fields": {
+        "entity_id": {
+          "description": "Entitet for å gjenopprette forrige volumnivå på",
+          "name": "Velg mediespiller:"
+        }
+      },
+      "name": "Gjenopprett forrige volum"
+    },
+    "update_last_called": {
+      "description": "Forces update of last_called echo device for each Alexa account.",
+      "fields": {
+        "email": {
+          "description": "List of Alexa accounts to update. If empty, will update all known accounts.",
+          "name": "Email address"
+        }
+      },
+      "name": "Update Last Called Sensor"
     }
   }
 }

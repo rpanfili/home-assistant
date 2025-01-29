@@ -11,8 +11,8 @@
       "identifier_exists": "Correo electrónico para la URL de Alexa ya registrado",
       "invalid_credentials": "Credenciales no válidas",
       "invalid_url": "La URL no es válida: {message}",
-      "unable_to_connect_hass_url": "No se puede conectar con la URL de Home Assistant. Verifique la URL externa en Configuración - > General",
-      "unknown_error": "Error desconocido: {mensaje}"
+      "unable_to_connect_hass_url": "No se puede conectar con la URL de Home Assistant. Verifique la URL externa en Configuración -> General",
+      "unknown_error": "Error desconocido: {message}"
     },
     "step": {
       "proxy_warning": {
@@ -34,10 +34,13 @@
           "debug": "Depuración avanzada",
           "email": "Dirección de correo electrónico",
           "exclude_devices": "Dispositivo excluido (separado por comas)",
+          "extended_entity_discovery": "Incluir dispositivos conectados vía Echo",
           "hass_url": "Url para acceder a Home Assistant",
           "include_devices": "Dispositivo incluido (separado por comas)",
           "otp_secret": "Clave de aplicación 2FA incorporada (genera automáticamente códigos 2FA). Esto no tiene seis dígitos.",
           "password": "Contraseña",
+          "public_url": "URL pública compartida con servicios alojados externos",
+          "queue_delay": "Segundos a esperar para agrupar comandos",
           "scan_interval": "Segundos entre escaneos",
           "securitycode": "Código 2FA (recomendado para evitar problemas de inicio de sesión)",
           "url": "Región del dominio de Amazon (por ejemplo, amazon.es)"
@@ -47,14 +50,59 @@
       }
     }
   },
+  "issues": {
+    "deprecated_yaml_configuration": {
+      "description": "La configuración YAML de Alexa Media Player está obsoleta \n y se eliminará en la versión 4.14.0. \n No habrá una importación automática de esto. \n Elimínelo de su configuración, reinicie Home Assistant y use la interfaz de usuario para configurarlo. \n Configuración > Dispositivos y servicios > Integraciones > AGREGAR INTEGRACIÓN",
+      "title": "La configuración de YAML está obsoleta"
+    }
+  },
   "options": {
     "step": {
       "init": {
         "data": {
+          "debug": "Depuración avanzada",
+          "exclude_devices": "Dispositivo excluido (separado por comas)",
           "extended_entity_discovery": "Incluir dispositivos conectados a través de Echo",
-          "queue_delay": "Segundos a esperar para agrupar comandos"
-        }
+          "include_devices": "Dispositivo incluido (separado por comas)",
+          "public_url": "URL pública para acceder a Home Assistant (incluyendo la '/' final)",
+          "queue_delay": "Segundos a esperar para agrupar comandos",
+          "scan_interval": "Segundos entre escaneos"
+        },
+        "description": "Obligatorio*",
+        "title": "Alexa Media Player - Reconfiguración"
       }
+    }
+  },
+  "services": {
+    "force_logout": {
+      "description": "Obligar el cierre de sesión de la cuenta. Usar principalmente para depuración.",
+      "fields": {
+        "email": {
+          "description": "Cuentas a borrar. Si se deja vacío se borraran todas.",
+          "name": "Dirección de correo electrónico"
+        }
+      },
+      "name": "Obligar cierre de sesión"
+    },
+    "restore_volume": {
+      "description": "Restaurar el nivel de volumen anterior en el reproductor multimedia Alexa",
+      "fields": {
+        "entity_id": {
+          "description": "Entidad para restaurar el nivel de volumen anterior",
+          "name": "Seleccionar reproductor multimedia:"
+        }
+      },
+      "name": "Restaurar volumen anterior"
+    },
+    "update_last_called": {
+      "description": "Obligar la actualización del último dispositivo Echo llamado para cada cuenta Alexa.",
+      "fields": {
+        "email": {
+          "description": "Cuentas de Alexa para actualizar. Si se deja vacío, se actualizaran todas las cuentas.",
+          "name": "Dirección de correo electrónico"
+        }
+      },
+      "name": "Actualizar el último sensor utilizado"
     }
   }
 }

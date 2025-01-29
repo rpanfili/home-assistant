@@ -34,10 +34,13 @@
           "debug": "Debug avanzato",
           "email": "Indirizzo email",
           "exclude_devices": "Dispositivi da escludere (separati da virgola)",
+          "extended_entity_discovery": "Includi dispositivi collegati tramite Echo",
           "hass_url": "URL per accedere a Home Assistant",
           "include_devices": "Dispositivi da includere (separati da virgola)",
-          "otp_secret": "Chiave dell'app 2FA integrata (generazione automatica di codici 2FA)",
+          "otp_secret": "Chiave app 2FA integrata (genera automaticamente codici 2FA). Questo non è lungo sei cifre.",
           "password": "Password",
+          "public_url": "URL pubblico condiviso con servizi ospitati esterni",
+          "queue_delay": "Secondi di attesa per accodare i comandi insieme",
           "scan_interval": "Tempo in secondi fra le scansioni",
           "securitycode": "Codice 2FA (raccomandato per evitare problemi di login)",
           "url": "Regione del dominio Amazon (ad es., amazon.it)"
@@ -47,14 +50,59 @@
       }
     }
   },
+  "issues": {
+    "deprecated_yaml_configuration": {
+      "description": "La configurazione YAML di Alexa Media Player è obsoleta \n e verrà rimossa nella versione 4.14.0. \n Non verrà eseguita alcuna importazione automatica. \n Rimuovila dalla configurazione, riavvia Home Assistant e utilizza l'interfaccia utente per configurarla. \n Impostazioni > Dispositivi e servizi > Integrazioni > AGGIUNGI INTEGRAZIONE",
+      "title": "La configurazione YAML è deprecata"
+    }
+  },
   "options": {
     "step": {
       "init": {
         "data": {
+          "debug": "Debug avanzato",
+          "exclude_devices": "Dispositivi da escludere (separati da virgola)",
           "extended_entity_discovery": "Includi i dispositivi collegati tramite Echo",
-          "queue_delay": "Secondi di attesa per accodare i comandi insieme"
-        }
+          "include_devices": "Dispositivi da includere (separati da virgola)",
+          "public_url": "URL pubblico per accedere a Home Assistant (incluso il '/' finale)",
+          "queue_delay": "Secondi di attesa per accodare i comandi insieme",
+          "scan_interval": "Tempo in secondi fra le scansioni"
+        },
+        "description": "Necessario *",
+        "title": "Alexa Media Player - Riconfigurazione"
       }
+    }
+  },
+  "services": {
+    "force_logout": {
+      "description": "Forza logout dell'account. Usato principalmente per il debugging.",
+      "fields": {
+        "email": {
+          "description": "Account da eliminare. Se vuoto, verranno cancellati tutti.",
+          "name": "Indirizzo email"
+        }
+      },
+      "name": "Forza Logout"
+    },
+    "restore_volume": {
+      "description": "Ripristina il livello del volume precedente sul dispositivo lettore multimediale Alexa",
+      "fields": {
+        "entity_id": {
+          "description": "Entità per ripristinare il livello del volume precedente",
+          "name": "Seleziona lettore multimediale:"
+        }
+      },
+      "name": "Ripristina il volume precedente"
+    },
+    "update_last_called": {
+      "description": "Forza l'aggiornamento del dispositivo echo last_called per ogni account Alexa.",
+      "fields": {
+        "email": {
+          "description": "Lista di account Alexa da aggiornare. Se vuoto, verranno aggiornati tutti.",
+          "name": "Indirizzo email"
+        }
+      },
+      "name": "Aggiorna sensore last_called"
     }
   }
 }
