@@ -12,7 +12,7 @@ from .const import (
 )
 from .giphy import GiphyClient
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_API_KEY, CONF_ID
+from homeassistant.const import CONF_API_KEY, CONF_ID, Platform
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.dispatcher import async_dispatcher_send
@@ -26,6 +26,7 @@ _LOGGER = logging.getLogger(__name__)
 SERVICE_UPDATE = "update"
 SERVICE_SCHEMA = vol.Schema({vol.Optional(CONF_ID): cv.string})
 
+PLATFORMS: list[Platform] = [Platform.SENSOR]
 
 async def _update_pic(hass: HomeAssistantType, unique_id: Optional[str]) -> None:
     """Update Giphy sensors."""
@@ -70,7 +71,7 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool
     hass.data.setdefault(DOMAIN, {})[unique_id] = client
 
     hass.async_create_task(
-        hass.config_entries.async_forward_entry_setup(entry, "sensor")
+        hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     )
 
     async def _interval_update(now=None) -> None:
@@ -84,7 +85,7 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool
 
 async def async_unload_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool:
     """Unload config entry."""
-    await hass.config_entries.async_forward_entry_unload(entry, "sensor")
+    await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
     del hass.data[DOMAIN][entry.data[CONF_ID]]
 
