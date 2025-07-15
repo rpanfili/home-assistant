@@ -1,2 +1,2 @@
-aiohttp==3.12.13
+aiohttp==3.12.14
 yarl==1.5.1
