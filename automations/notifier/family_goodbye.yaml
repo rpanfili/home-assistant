@@ -8,30 +8,60 @@ trigger:
   entity_id: group.family
   from: "home"
   to: "not_home"
+variables:
+
+  part_of_day: >-
+    {% set h = now().hour | int %}
+    {% if h < 13 %}mattina{% elif h < 18 %}pomeriggio{% else %}sera{% endif %}
+
+  prompt_main: >-
+    Sei un assistente domestico che saluta la famiglia quando tutti escono di casa.
+    Genera un messaggio breve per un canale Telegram (massimo 2 frasi), tono brillante, affettuoso e ironico.
+    Adatta il saluto al momento della giornata: ora è {{ part_of_day }}.
+    Cita, a discrezione, i quattro gatti di casa (Uma, Maki, Pupi e Tanuki) come “guardia” della casa in tua assenza e come pestiferi amici.
+    Non usare istruzioni meta; puoi usare al massimo 2 emoji pertinenti.
+
+  prompt_caption: >-
+    Genera una caption molto breve (max 8 parole) per un video GIF a tema gattini,
+    tono giocoso e ironico, coerente col fatto che la famiglia è uscita di casa.
+    Puoi citare uno dei nomi dei gatti (Uma, Maki, Pupi o Tanuki) ma non più di uno.
+    Niente hashtag; al massimo 1 emoji.
+
 action:
-  - service: notify.catinghampalacebot
-    data_template:
-      message: |-
-        Siete usciti tutti di casa 🏡
-        A presto e{{' '}}
-        {%- if (now().hour | int) < 13 -%}
-          buona giornata
-        {%- elif (now().hour | int) < 17 -%}
-          buon pomeriggio
-        {%- else -%}
-          buona serata
-        {%- endif -%}! 🐈
+  - service: openai_conversation.generate_content
+    data:
+      config_entry: 01K4F0YEQZY97CPY71R0KQX5Z9
+      prompt: "{{ prompt_main }}"
+    response_variable: ai_main
+
+  - variables:
+      main_text: >-
+        {{ ai_main.content
+           or (ai_main.response.speech.plain.speech if ai_main.response is defined and ai_main.response.speech is defined else none)
+           or ai_main.response
+           or ai_main.text
+           or "Siete usciti tutti di casa. A presto!" }}
+
   - service: notify.catinghampalacebot
     data:
-      message: "lol"
+      message: "{{ main_text }}"
+
+  - service: openai_conversation.generate_content
+    data:
+      config_entry: 01K4F0YEQZY97CPY71R0KQX5Z9
+      prompt: "{{ prompt_caption }}"
+    response_variable: ai_cap
+
+  - variables:
+      caption_text: >-
+        {{ ai_cap.content
+           or ai_cap.text
+           or "I gatti tengono d'occhio tutto" }}
+
+  - service: notify.catinghampalacebot
+    data:
+      message: "video"
       data:
         video:
-          - url: '{{((state_attr("sensor.giphy_search_lolcat","images") or [None]) |random).mp4 }}'
-            caption: |-
-              {{[
-                "Non temete, ci penso io ai gattini",
-                "I mici vi mandano i loro saluti!",
-                "miao miao miao 🐈",
-                "Ci pensiamo noi a proteggere casa 🐨 🦁 🐮",
-                "E come sempre, viva i gatti 😆"
-              ] | random }}
+          - url: '{{ ((state_attr("sensor.giphy_search_lolcat","images") or [None]) | random).mp4 }}'
+            caption: "{{ caption_text }}"
