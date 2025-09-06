@@ -1,7 +1,7 @@
 ---
 id: "notify_kitchen_light_auto_off"
 alias: "Notify kitchen light auto off"
-initial_state: True
+initial_state: False
 mode: single
 trigger:
   - platform: event
