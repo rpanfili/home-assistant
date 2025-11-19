@@ -42,8 +42,10 @@ action:
            or ai_main.text
            or "Siete usciti tutti di casa. A presto!" }}
 
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       message: "{{ main_text }}"
 
   - service: openai_conversation.generate_content
@@ -58,10 +60,9 @@ action:
            or ai_cap.text
            or "I gatti tengono d'occhio tutto" }}
 
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_video
     data:
-      message: "video"
-      data:
-        video:
-          - url: '{{ ((state_attr("sensor.giphy_search_lolcat","images") or [None]) | random).mp4 }}'
-            caption: "{{ caption_text }}"
+      target:
+        - "-212768319"
+      url: '{{ ((state_attr("sensor.giphy_search_lolcat","images") or [None]) | random).mp4 }}'
+      caption: "{{ caption_text }}"

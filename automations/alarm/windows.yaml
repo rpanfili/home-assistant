@@ -17,8 +17,10 @@ condition:
     entity_id: alarm_control_panel.home_alarm
     state: armed_away
 action:
-  - service: notify.catinghampalacebot
-    data_template:
+  - service: telegram_bot.send_message
+    data:
+      target:
+        - "-212768319"
       message: "La finestra **{{ trigger.from_state.name }}** è stata aperta! 🖼"
   - service: alarm_control_panel.alarm_trigger
     entity_id: alarm_control_panel.home_alarm

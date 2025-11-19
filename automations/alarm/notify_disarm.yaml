@@ -6,7 +6,9 @@ trigger:
     entity_id: alarm_control_panel.home_alarm
     to: "disarmed"
 action:
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       title: "ALARM disarmed 🗝"
       message: "The alarm is Disarmed"

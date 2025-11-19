@@ -12,6 +12,8 @@ condition:
       {%- set countdown = next_pick|as_timestamp - (now()|as_timestamp) -%}
       {{ 1*(24*60*60) > countdown and countdown > 0 }}
 action:
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       message: "Ricordatevi che domani ritirano l'umido! 🍌🍎🐛"

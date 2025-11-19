@@ -11,6 +11,8 @@ action:
   - service: vacuum.start
     data:
       entity_id: vacuum.roomba
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       message: "Pulisco casa! 🧹🤖🏡"

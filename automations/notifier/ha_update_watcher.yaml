@@ -8,6 +8,8 @@ trigger:
     from: "off"
     to: "on"
 action:
-  - service: notify.telegram2rubens
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "109669781"
       message: "Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version') }} is available."

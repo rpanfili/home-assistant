@@ -6,8 +6,10 @@ trigger:
     entity_id: alarm_control_panel.home_alarm
     to: "triggered"
 action:
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       title: "ALLARME! 🚨"
       message: "L'allarme è scattato"
   - service: tts.google_translate_say

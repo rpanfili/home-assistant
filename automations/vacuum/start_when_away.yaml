@@ -15,10 +15,12 @@ condition:
 action:
   - service: vacuum.start
     entity_id: vacuum.roomba
-  - service: notify.catinghampalacebot
-    data_template:
+  - service: telegram_bot.send_message
+    data:
+      target:
+        - "-212768319"
       message: |-
         Già che ci sono pulisco il pavimento! 🤖🧹
-      data:
-        inline_keyboard:
-          - [["No grazie, ferma", "/stop_vacuum"]]
+      inline_keyboard:
+        - "No grazie, ferma"
+        - "/stop_vacuum"

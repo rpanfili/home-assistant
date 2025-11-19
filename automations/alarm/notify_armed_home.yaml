@@ -6,7 +6,9 @@ trigger:
     entity_id: alarm_control_panel.home_alarm
     to: "armed_home"
 action:
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       title: "ALLARME attivato 🦾"
       message: "L'allarme è stato attivato in modalità **Home**"

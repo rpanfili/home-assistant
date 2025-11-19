@@ -10,17 +10,16 @@ trigger:
   from: "home"
   to: "not_home"
 action:
-  - service: notify.telegram2vale
+  - service: telegram_bot.send_video
     data:
-      message: "buona giornata"
-      data:
-        video:
-          - url: '{{((state_attr(["sensor.giphy_search_you_are_awesome", "sensor.giphy_search_funny", "sensor.giphy_search_trending"]|random,"images") or [None]) |random).mp4 }}'
-            caption: |-
-              {{[
-                "Ti auguro un'ottima giornata 😘",
-                "Sei fantastica ☺️ 🦄 ✨",
-                "A presto, ci manchi già 🥰",
-                "Passa una buona giornata! ⭐️",
-                "Sai che sei tanto importante per noi? Ti vogliamo tutti tanto bene!"
-              ] | random }}
+      target:
+        - "332023042"
+      url: '{{((state_attr(["sensor.giphy_search_you_are_awesome", "sensor.giphy_search_funny", "sensor.giphy_search_trending"]|random,"images") or [None]) |random).mp4 }}'
+      caption: |-
+        {{[
+          "Ti auguro un'ottima giornata 😘",
+          "Sei fantastica ☺️ 🦄 ✨",
+          "A presto, ci manchi già 🥰",
+          "Passa una buona giornata! ⭐️",
+          "Sai che sei tanto importante per noi? Ti vogliamo tutti tanto bene!"
+        ] | random }}

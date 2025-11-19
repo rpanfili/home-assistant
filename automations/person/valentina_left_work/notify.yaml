@@ -8,9 +8,12 @@ trigger:
     event_data:
       entity_id: automation.valentina_left_work
 action:
-  - service: notify.telegram2rubens
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "109669781"
       message: "Valentina sta tornando a casa"
+      parse_mode: markdownv2
   - service: notify.alexa_media
     data_template:
       data:

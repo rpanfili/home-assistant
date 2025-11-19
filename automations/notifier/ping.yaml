@@ -8,6 +8,8 @@ trigger:
   event_data:
     command: "/ping"
 action:
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       message: "pong"

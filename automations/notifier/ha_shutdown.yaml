@@ -6,6 +6,8 @@ trigger:
   - platform: homeassistant
     event: shutdown
 action:
-  - service: notify.telegram2rubens
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "109669781"
       message: "HomeAssistant is shutting down 👋"

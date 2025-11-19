@@ -37,6 +37,8 @@ action:
     data:
       entity_id:
         - light.kitchen_countertop
-  # - service: notify.catinghampalacebot
-  #   data:
-  #     message: "Ho appena acceso per voi la luce in cucina 🙋‍♂️💡"
+# - service: telegram_bot.send_message
+#   data:
+#     target:
+#       - "-212768319"
+#     message: "Ho appena acceso per voi la luce in cucina 🙋‍♂️💡"

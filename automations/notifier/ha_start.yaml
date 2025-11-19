@@ -7,6 +7,8 @@ trigger:
   - platform: homeassistant
     event: start
 action:
-  - service: notify.telegram2rubens
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "109669781"
       message: "HomeAssistant started 🏡"

@@ -9,8 +9,10 @@ trigger:
     event_data:
       entity_id: automation.automate_kitchen_lights_off
 action:
-  - service: notify.catinghampalacebot
-    data_template:
+  - service: telegram_bot.send_message
+    data:
+      target:
+        - "-212768319"
       message: |-
         {{ [
           "Siccome non c'è nessuno in cucina da un po' ho spento le luci 🌱🦔",

@@ -11,6 +11,8 @@ condition:
     entity_id: binary_sensor.roomba_bin_full
     state: "on"
 action:
-  - service: notify.catinghampalacebot
+  - service: telegram_bot.send_message
     data:
+      target:
+        - "-212768319"
       message: "Ricordatevi di svuotare il roomba! 💃"
