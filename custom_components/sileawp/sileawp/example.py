@@ -3,6 +3,9 @@
 """Asynchronous Python client for the Silea waste pickup API."""
 
 import asyncio
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 from .const import (  # noqa
     WASTE_TYPE_NON_RECYCLABLE,
@@ -21,7 +24,7 @@ from .sileawp import (  # noqa
 
 async def main(loop):
     """Show example on stats from SileaWp Milieu."""
-    async with SileaWp(client_id=1238, street_id=20184, loop=loop) as tw:
+    async with SileaWp(client_id="C563", street_id="001439", loop=loop) as tw:
         await tw.update()
         pickup = await tw.next_pickup(WASTE_TYPE_ORGANIC)
         print("Next pickup for Organic:", pickup)

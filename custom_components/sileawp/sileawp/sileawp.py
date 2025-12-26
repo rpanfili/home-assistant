@@ -3,7 +3,8 @@
 import asyncio
 import json
 import socket
-from datetime import datetime, timedelta, date
+from datetime import datetime, date
+from dateutil.relativedelta import relativedelta
 from typing import Dict, Optional
 
 import aiohttp
@@ -61,7 +62,7 @@ class SileaWp:
             self.user_agent = "SileaWpClient/{}".format(__version__)
 
     def get_next_service(self, calendar: list) -> dict:
-
+        _LOGGER.debug("Calculating next services from calendar data")
         services = {}
         now = datetime.now()
         for pickup in calendar:
@@ -81,27 +82,35 @@ class SileaWp:
         return services
 
     async def get_calendar(self):
-        current_month = int(date.today().strftime("%-m"))
+        _LOGGER.info("Fetching calendar from Silea waste pickup API")
+
+        start_date = date.today()
         months_limit = 3
         iteration = 0
 
-        calendar = {}
+        calendar = []
 
         while iteration < months_limit:
-            month = (current_month + iteration) % 12 or 12
-            month_calendar = await self._get_calendar(month)
+
+            # Calculate the first day of the month, handling year rollover
+            fetch_date = datetime(start_date.year, start_date.month, 1) + relativedelta(months=iteration)
+
+            month_calendar = await self._get_calendar(f"{fetch_date.month}_{fetch_date.year}")
             if len(month_calendar):
-                calendar = {**month_calendar, **calendar}
+                calendar.extend(month_calendar)
 
             iteration += 1
 
         pickups = []
-        for day in calendar.values():
-            pickup_day = datetime.strptime(day["date"], "%Y-%m-%dT%H:%M:%S")
+        for day in calendar:
+            pickup_day = datetime.fromisoformat(day["date"]["date"])
 
             for pickup in day.get("services", []):
-                service = API_TO_SERVICE.get(pickup["type"])
+                _LOGGER.debug("Found pickup: %s on %s", pickup, pickup_day)
+                service_type = pickup["service"]
+                service = API_TO_SERVICE.get(service_type)
                 if service is None:
+                    _LOGGER.warning("Unknown service type %s, skipping", service_type)
                     continue
 
                 pickup_time = datetime.strptime(
@@ -117,7 +126,7 @@ class SileaWp:
 
         return pickups
 
-    async def _get_calendar(self, month: int):
+    async def _get_calendar(self, month: str) -> dict:
         raw_data = {
             "action": "get_calendar",
             "id_cliente": self.client_id,
@@ -140,6 +149,8 @@ class SileaWp:
         url = URL.build(
             scheme="https", host=API_HOST, port=443, path=API_BASE_URI
         ).join(URL(calendar_url))
+
+        _LOGGER.debug("Requesting calendar data from %s with payload %s", url, raw_data )
 
         try:
             with async_timeout.timeout(self.request_timeout):
