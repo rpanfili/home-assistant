@@ -2,3 +2,4 @@ aiohttp==3.13.2
 yarl==1.22.0
 async_timeout==5.0.1
 python-dateutil==2.9.0
+pydantic>=2.0.0

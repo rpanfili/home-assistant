@@ -2,11 +2,13 @@
 """Asynchronous Python client for the Silea waste pickup API."""
 
 from .const import (  # noqa
+    ServiceType,
+    # Backward compatibility
     WASTE_TYPE_NON_RECYCLABLE,
     WASTE_TYPE_ORGANIC,
     WASTE_TYPE_PAPER,
     WASTE_TYPE_PLASTIC,
-    STREET_CLEAN
+    STREET_CLEAN,
 )
 from .sileawp import (  # noqa
     SileaWp,

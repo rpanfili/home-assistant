@@ -8,6 +8,8 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 from .const import (  # noqa
+    ServiceType,
+    # Backward compatibility
     WASTE_TYPE_NON_RECYCLABLE,
     WASTE_TYPE_ORGANIC,
     WASTE_TYPE_PAPER,
@@ -22,22 +24,22 @@ from .sileawp import (  # noqa
 )
 
 
-async def main(loop):
+async def main():
     """Show example on stats from SileaWp Milieu."""
-    async with SileaWp(client_id="C563", street_id="001439", loop=loop) as tw:
+    async with SileaWp(client_id="C563", street_id="001439") as tw:
+        print(f"Client: {tw!r}")
         await tw.update()
-        pickup = await tw.next_pickup(WASTE_TYPE_ORGANIC)
+        pickup = await tw.next_pickup(ServiceType.ORGANIC)
         print("Next pickup for Organic:", pickup)
-        pickup = await tw.next_pickup(WASTE_TYPE_PLASTIC)
+        pickup = await tw.next_pickup(ServiceType.PLASTIC)
         print("Next pickup for Plastic:", pickup)
-        pickup = await tw.next_pickup(WASTE_TYPE_PAPER)
+        pickup = await tw.next_pickup(ServiceType.PAPER)
         print("Next pickup for Paper:", pickup)
-        pickup = await tw.next_pickup(WASTE_TYPE_NON_RECYCLABLE)
+        pickup = await tw.next_pickup(ServiceType.NON_RECYCLABLE)
         print("Next pickup for Non-recyclable:", pickup)
-        pickup = await tw.next_pickup(STREET_CLEAN)
+        pickup = await tw.next_pickup(ServiceType.STREET_CLEAN)
         print("Next street clean up:", pickup)
 
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main(loop))
+    asyncio.run(main())
