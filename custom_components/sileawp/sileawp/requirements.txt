@@ -1,4 +1,4 @@
-aiohttp==3.13.2
+aiohttp==3.13.3
 yarl==1.22.0
 async_timeout==5.0.1
 python-dateutil==2.9.0
