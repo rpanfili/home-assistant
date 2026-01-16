@@ -17,7 +17,8 @@ from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.event import async_track_time_interval
-from homeassistant.helpers.typing import ConfigType, HomeAssistantType
+from homeassistant.helpers.typing import ConfigType
+from homeassistant.core import HomeAssistant
 
 SCAN_INTERVAL = timedelta(hours=1)
 
@@ -28,7 +29,7 @@ SERVICE_SCHEMA = vol.Schema({vol.Optional(CONF_ID): cv.string})
 
 PLATFORMS: list[Platform] = [Platform.SENSOR]
 
-async def _update_pic(hass: HomeAssistantType, unique_id: Optional[str]) -> None:
+async def _update_pic(hass: HomeAssistant, unique_id: Optional[str]) -> None:
     """Update Giphy sensors."""
 
     data: dict = hass.data.get(DOMAIN, {})
@@ -51,13 +52,13 @@ async def _update_pic(hass: HomeAssistantType, unique_id: Optional[str]) -> None
             async_dispatcher_send(hass, DATA_UPDATE, uid)
 
 
-async def async_setup(hass: HomeAssistantType, config: ConfigType) -> bool:
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up the Giphy components."""
     hass.data.setdefault(DOMAIN, {})
     return True
 
 
-async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool:
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Giphy from a config entry."""
     _LOGGER.info("Setup entry %s..", entry.data[CONF_ID])
     _LOGGER.info("Entry conf: %s", entry)
@@ -83,7 +84,7 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool
     return True
 
 
-async def async_unload_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool:
+async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload config entry."""
     await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
