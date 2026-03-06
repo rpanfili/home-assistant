@@ -44,8 +44,8 @@ action:
 
   - service: telegram_bot.send_message
     data:
-      target:
-        - "-212768319"
+      entity_id:
+        - "notify.telegram_bot_344202687_212768319"
       message: "{{ main_text }}"
 
   - service: openai_conversation.generate_content
@@ -62,7 +62,7 @@ action:
 
   - service: telegram_bot.send_video
     data:
-      target:
-        - "-212768319"
+      entity_id: 
+        - "notify.telegram_bot_344202687_212768319"
       url: '{{ ((state_attr("sensor.giphy_search_lolcat","images") or [None]) | random).mp4 }}'
       caption: "{{ caption_text }}"

@@ -22,5 +22,5 @@ action:
   #       inline_keyboard: [[]]
   - service: telegram_bot.send_message
     data_template:
-      target: "{{ trigger.event.data.chat_id }}"
+      chat_id: "{{ trigger.event.data.chat_id }}"
       message: "Ok {{ trigger.event.data.from_first | capitalize }}, ho fermato 😊"

@@ -12,8 +12,8 @@ trigger:
 action:
   - service: telegram_bot.send_video
     data:
-      target:
-        - "332023042"
+      entity_id: 
+        - "notify.telegram_bot_344202687_332023042"
       url: '{{((state_attr(["sensor.giphy_search_you_are_awesome", "sensor.giphy_search_funny", "sensor.giphy_search_trending"]|random,"images") or [None]) |random).mp4 }}'
       caption: |-
         {{[
