@@ -14,8 +14,8 @@ action:
     value_template: '{{ (5500 * 0.9) < (states("sensor.total_power")|float) }}'
   - service: telegram_bot.send_message
     data:
-      target:
-        - "-212768319"
+      entity_id:
+        - "notify.telegram_bot_344202687_212768319"
       message: |-
         🐙 **Consumo elettrico**: {{ states('sensor.total_power') | int }} W
         🐈 {{ states('sensor.power1') | int }} W | 👵🏻 {{ states('sensor.power2') | int }} W

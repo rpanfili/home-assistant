@@ -8,7 +8,7 @@ trigger:
 action:
   - service: telegram_bot.send_message
     data:
-      target:
-        - "-212768319"
+      entity_id:
+        - "notify.telegram_bot_344202687_212768319"
       title: "ALLARME attivato 🦾"
       message: "L'allarme è stato attivato in modalità **Away**"

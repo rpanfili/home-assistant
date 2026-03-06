@@ -11,8 +11,8 @@ trigger:
 action:
   - service: telegram_bot.send_message
     data:
-      target:
-        - "-212768319"
+      entity_id:
+        - "notify.telegram_bot_344202687_212768319"
       message: |-
         {{ [
           "Siccome non c'è nessuno in cucina da un po' ho spento le luci 🌱🦔",

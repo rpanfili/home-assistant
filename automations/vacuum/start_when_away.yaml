@@ -17,8 +17,8 @@ action:
     entity_id: vacuum.roomba
   - service: telegram_bot.send_message
     data:
-      target:
-        - "-212768319"
+      entity_id:
+        - "notify.telegram_bot_344202687_212768319"
       message: |-
         Già che ci sono pulisco il pavimento! 🤖🧹
       inline_keyboard:

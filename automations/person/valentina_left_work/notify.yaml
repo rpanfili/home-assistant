@@ -10,8 +10,8 @@ trigger:
 action:
   - service: telegram_bot.send_message
     data:
-      target:
-        - "109669781"
+      entity_id:
+        - "notify.telegram_bot_344202687_109669781"
       message: "Valentina sta tornando a casa"
       parse_mode: markdownv2
   - service: notify.alexa_media

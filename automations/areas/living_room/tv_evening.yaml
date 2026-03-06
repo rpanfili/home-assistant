@@ -24,8 +24,8 @@ action:
       - light.entryway
   - service: telegram_bot.send_message
     data:
-      target:
-        - "-212768319"
+      entity_id:
+        - "notify.telegram_bot_344202687_212768319"
       message: "Buona visione 👋📺"
   - service: tts.google_translate_say
     entity_id: media_player.kitchen_speaker
