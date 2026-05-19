@@ -57,9 +57,9 @@ cards:
     title: Entryway
     show_header_toggle: false
     entities:
-      - entity: light.luci_ingresso_channel_1
+      - entity: light.luci_ingresso
         name: Luci ingresso
-      - entity: light.luci_ingresso_channel_2
+      - entity: light.luci_antibagno
         name: Luci antibagno
       # - climate.entryway
       # - sensor.entryway_thermostat_temperature
