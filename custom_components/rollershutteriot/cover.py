@@ -1,7 +1,7 @@
 """Support for RollerShutterIoT cover devices."""
 
 import logging
-import voluptuous as vol
+import probatio
 from homeassistant.components import cover, mqtt
 from homeassistant.core import HomeAssistant
 from homeassistant.components.mqtt.cover import MqttCover, _PLATFORM_SCHEMA_BASE
@@ -12,7 +12,7 @@ from homeassistant.const import (CONF_DEVICE, CONF_DEVICE_CLASS, CONF_NAME,
                                  STATE_CLOSED, STATE_OPEN, STATE_UNKNOWN,
                                  STATE_ON)
 from homeassistant.helpers.restore_state import RestoreEntity
-from homeassistant.helpers.event import async_track_state_change
+from homeassistant.helpers.event import async_track_state_change_event
 import asyncio
 
 from . import (CONF_UNIQUE_ID)
@@ -27,13 +27,13 @@ CONF_POSITION_MIN = 'position_min'
 CONF_POSITION_MIN_ENABLE = 'position_min_enable'
 CONF_WINDOW_SENSOR = 'window_sensor'
 
-EXTRA_SCHEMA = vol.Schema({
-    vol.Optional(CONF_POSITION_MIN): cv.entity_id,
-    vol.Optional(CONF_POSITION_MIN_ENABLE): cv.entity_id,
-    vol.Optional(CONF_WINDOW_SENSOR): cv.entity_id
+EXTRA_SCHEMA = probatio.Schema({
+    probatio.Optional(CONF_POSITION_MIN): cv.entity_id,
+    probatio.Optional(CONF_POSITION_MIN_ENABLE): cv.entity_id,
+    probatio.Optional(CONF_WINDOW_SENSOR): cv.entity_id
 })
 
-PLATFORM_SCHEMA = vol.All(
+PLATFORM_SCHEMA = probatio.All(
     cv.PLATFORM_SCHEMA.extend(
         _PLATFORM_SCHEMA_BASE.extend(
             EXTRA_SCHEMA.schema).schema),
@@ -125,17 +125,14 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             if entity_id:
                 _LOGGER.debug(
                     f"Register listener for {entity_id} entity changes")
-                async_track_state_change(self.hass, entity_id,
-                                         self._handle_position_changed)
+                self.async_on_remove(
+                    async_track_state_change_event(
+                        self.hass, entity_id, self._handle_position_changed))
             return entity_id is not None
 
         if register_listerner(CONF_POSITION_MIN_ENABLE):
             register_listerner(CONF_POSITION_MIN)
             register_listerner(CONF_WINDOW_SENSOR)
-
-        # subscribe self state changes (for example on mqtt msg received)
-        # async_track_state_change(
-        #     self.hass, self.entity_id, self._handle_position_changed)
 
     async def _check_min_position(self):
         current_position = self.current_cover_position
@@ -150,9 +147,9 @@ class RollerShutterIoTCover(MqttCover, RestoreEntity):
             await self.async_set_cover_position(
                 **{ATTR_POSITION: current_position})
 
-    async def _handle_position_changed(self, entity_id, old_state, new_state):
+    async def _handle_position_changed(self, event):
         """Handle position_min_enable sensor changes."""
-        if new_state is None:
+        if event.data["new_state"] is None:
             return
         await self._check_min_position()
 
