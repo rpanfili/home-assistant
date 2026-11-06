@@ -1,7 +1,7 @@
 ---
 lovelace:
   resources:
-    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+    - url: /local/community/mini-graph-card/mini-graph-card-bundle.js
       type: module
   resource_mode: yaml
   dashboards:
