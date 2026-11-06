@@ -1,6 +1,0 @@
----
-platform: samsungtv_tizen
-name: Living room TV
-host: !secret living_room_tv_ip
-mac: !secret living_room_tv_mac_address
-port: 8001
