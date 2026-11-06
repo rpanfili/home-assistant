@@ -1,4 +1,0 @@
----
-name: telegram2rubens
-platform: telegram
-chat_id: !secret telegram_rubens_chat
